@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>Welcome | Experimental Design</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&amp;display=swap" crossorigin>
+<link rel="preload" as="style" href="./_observablehq/theme-air,near-midnight.css">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&amp;display=swap" crossorigin>
+<link rel="stylesheet" type="text/css" href="./_observablehq/theme-air,near-midnight.css">
+<link rel="modulepreload" href="./_observablehq/client.js">
+<link rel="modulepreload" href="./_observablehq/runtime.js">
+<link rel="modulepreload" href="./_observablehq/stdlib.js">
+<script type="module">
+
+import "./_observablehq/client.js";
+
+</script>
+<input id="observablehq-sidebar-toggle" type="checkbox" title="Toggle sidebar">
+<label id="observablehq-sidebar-backdrop" for="observablehq-sidebar-toggle"></label>
+<nav id="observablehq-sidebar">
+  <ol>
+    <label id="observablehq-sidebar-close" for="observablehq-sidebar-toggle"></label>
+    <li class="observablehq-link observablehq-link-active"><a href="./">Experimental Design</a></li>
+  </ol>
+  <ol>
+    <li class="observablehq-link observablehq-link-active"><a href="./">Introduction</a></li>
+  </ol>
+  <section>
+    <summary>Experimental Design</summary>
+    <ol>
+    <li class="observablehq-link"><a href="./experimental-design">Experimental Design </a></li>
+    <li class="observablehq-link"><a href="./parallel-arm-designs">Individual Randomized Parallel Designs</a></li>
+    <li class="observablehq-link"><a href="./cluster-randomized-designs">Individual Randomized Cluster Designs</a></li>
+    </ol>
+  </section>
+  <section>
+    <summary>Transport Modeling</summary>
+    <ol>
+    <li class="observablehq-link"><a href="./pbpk">Drug Elimination</a></li>
+    </ol>
+  </section>
+  <section>
+    <summary>Self Aggrandizing</summary>
+    <ol>
+    <li class="observablehq-link"><a href="./podcasts">Podcasts &amp; Presentations</a></li>
+    </ol>
+  </section>
+</nav>
+<script>{Object.assign(document.createElement("a"),{href:""}).password&&location.replace(location.href);const e=document.querySelector("#observablehq-sidebar"),t=document.querySelector("#observablehq-sidebar-toggle"),r=sessionStorage.getItem("observablehq-sidebar");r?t.checked=r==="true":t.indeterminate=!0;for(const o of document.querySelectorAll("#observablehq-sidebar summary")){const s=o.parentElement;switch(sessionStorage.getItem(`observablehq-sidebar:${o.textContent}`)){case"true":s.open=!0;break;case"false":s.classList.contains("observablehq-section-active")||(s.open=!1);break}}addEventListener("beforeunload",()=>sessionStorage.setItem("observablehq-sidebar-scrolly",`${e.scrollTop}`));const a=sessionStorage.getItem("observablehq-sidebar-scrolly");a!=null&&(e.style.cssText="overflow: hidden;",e.scrollTop=+a,e.style.cssText="");}</script>
+<div id="observablehq-center">
+<main id="observablehq-main" class="observablehq">
+<style>
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--sans-serif);
+  margin: 4rem 0 8rem;
+  text-wrap: balance;
+  text-align: center;
+}
+
+.hero h1 {
+  margin: 2rem 0;
+  max-width: none;
+  font-size: 14vw;
+  font-weight: 900;
+  line-height: 1;
+  background: linear-gradient(30deg, var(--theme-foreground-focus), currentColor);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero h2 {
+  margin: 0;
+  max-width: 34em;
+  font-size: 20px;
+  font-style: initial;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--theme-foreground-muted);
+}
+
+@media (min-width: 640px) {
+  .hero h1 {
+    font-size: 90px;
+  }
+}
+
+</style>
+<h1 class="hero"> What is even all this? </h1>
+<p>Hi!</p>
+<p>This is just a little observable framework project to host some of my thoughts in an interactive and fun way. Also, my <em>lingua franca</em> is NOT javascript in its many forms. So this is also a way for me to expand and practice an additional langauge.</p>
+<p>I have a bunch of thoughts on experimental design, data science, engineering, and other things. I'll do my best to document things in an appropriate and utilitarian manner. Not for you, but for me.</p>
+<h2 id="my-details-%26-biography" tabindex="-1"><a class="observablehq-header-anchor" href="#my-details-%26-biography">My details &amp; Biography</a></h2>
+<ul>
+<li><a href="https://www.linkedin.com/in/eli-goldberg/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+</ul>
+</main>
+<footer id="observablehq-footer">
+<nav><a rel="next" href="./experimental-design"><span>Experimental Design </span></a></nav>
+<div>Built with <a href="https://observablehq.com/" target="_blank" rel="noopener noreferrer">Observable</a> on <a title="2024-06-09T17:52:46">Jun 9, 2024</a>.</div>
+</footer>
+</div>
