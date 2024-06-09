@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<title>Experimental Design</title>
+<title>Choosing an experimental design | Data Matters</title>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&amp;display=swap" crossorigin>
 <link rel="preload" as="style" href="./_observablehq/theme-air.css">
@@ -67,79 +67,6 @@ define({id: "ba0d0f1d", outputs: ["calculateSampleSizeWithDesignMatrix","calcula
 const [{calculateSampleSizeWithDesignMatrix, calculateFollowUpPeriods, calculateStandardizedMeanDifference, DesignMatrix, DesignMatrixWithDetails, vartheta_Krep, vartheta_m, assignClustersToDesignMatrix}, d3, numeric, {require}] = await Promise.all([import("./_import/components/swmethods.e6391363.js"), import("https://cdn.jsdelivr.net/npm/d3@7/+esm"), import("https://cdnjs.cloudflare.com/ajax/libs/numeric/1.2.6/numeric.min.js"), import("./_node/d3-require@1.3.0/index.js")]);
 const jStat = await require("jstat@1.9.4")
 return {calculateSampleSizeWithDesignMatrix,calculateFollowUpPeriods,calculateStandardizedMeanDifference,DesignMatrix,DesignMatrixWithDetails,vartheta_Krep,vartheta_m,assignClustersToDesignMatrix,d3,numeric,require,jStat};
-}});
-
-define({id: "69989881", inputs: ["Inputs","view"], outputs: ["TrialDesignForm"], body: (Inputs,view) => {
-const TrialDesignForm = Inputs.form({
-  outcome: Inputs.select(["Reversible outcome", "Non-reversible outcome"], {
-    label: "Is the outcome of the trial reversible?",
-    value: "Reversible outcome", // default value
-  }),
-  responseTime: Inputs.select(["Rapid response", "Slow response"], {
-    label: "What is the response time to the treatment?",
-    value: "Rapid response", // default value
-  }),
-  minimizePlacebo: Inputs.select(
-    ["Minimise time on placebo", "Time on placebo not minimised"],
-    {
-      label:
-        "Is it important to minimize the time patients spend on a placebo?n.b., minimizing placebo time can help maintain blinding by reducing the likelihood of patients discerning whether they are on active treatment or placebo however",
-      value: "Minimise time on placebo", // default value
-    }
-  ),
-  activeTreatmentEnd: Inputs.select(
-    ["Active treatment at the end", "No active treatment at the end", null],
-    {
-      label:
-        "Does everyone need to be treated or receive active treatment by the end of the trial? e.g., if yes, stepped wedge is cometh.",
-      value: "Active treatment at the end", // default value
-    }
-  ),
-  interOrIntra: Inputs.select(
-    ["Intra-patient controls", "Inter-patient controls", null],
-    {
-      label:
-        "Is there a possibility of performing intra-patient or inter-patient comparisons? Is a self-control possible e.g., a cross-over ",
-      value: null, // default value
-    }
-  ),
-})
-
-view(TrialDesignForm)
-return {TrialDesignForm};
-}});
-
-define({id: "090b2456", inputs: ["Generators","TrialDesignForm"], outputs: ["TrialDesignForm_Selections"], body: (Generators,TrialDesignForm) => {
-const TrialDesignForm_Selections = Generators.input(TrialDesignForm)
-
-// Use the selections to reduce the trial design tree
-return {TrialDesignForm_Selections};
-}});
-
-define({id: "5e570c80", inputs: ["TrialDesignForm_Selections","reduceTrialDesignTree","translateTrialDesign"], outputs: ["answers","result_tree","human_readable_answer"], body: (TrialDesignForm_Selections,reduceTrialDesignTree,translateTrialDesign) => {
-const answers =
-  TrialDesignForm_Selections.interOrIntra !== null
-    ? [
-        TrialDesignForm_Selections.outcome,
-        TrialDesignForm_Selections.responseTime,
-        TrialDesignForm_Selections.minimizePlacebo,
-        TrialDesignForm_Selections.interOrIntra,
-      ]
-    : [
-        TrialDesignForm_Selections.outcome,
-        TrialDesignForm_Selections.responseTime,
-        TrialDesignForm_Selections.minimizePlacebo,
-        TrialDesignForm_Selections.activeTreatmentEnd,
-      ]
-const result_tree = reduceTrialDesignTree(answers)
-const human_readable_answer = translateTrialDesign(result_tree)
-return {answers,result_tree,human_readable_answer};
-}});
-
-define({id: "7e8d5ded", inline: true, inputs: ["human_readable_answer","display"], body: async (human_readable_answer,display) => {
-display(await(
-human_readable_answer
-))
 }});
 
 define({id: "1d46b041", inputs: ["Plot","flare_flat","indent","view"], outputs: ["result_cluster"], body: (Plot,flare_flat,indent,view) => {
@@ -450,7 +377,7 @@ return {translateTrialDesign};
 <nav id="observablehq-sidebar">
   <ol>
     <label id="observablehq-sidebar-close" for="observablehq-sidebar-toggle"></label>
-    <li class="observablehq-link"><a href="./">Experimental Design</a></li>
+    <li class="observablehq-link"><a href="./">Data Matters</a></li>
   </ol>
   <ol>
     <li class="observablehq-link"><a href="./">Introduction</a></li>
@@ -481,7 +408,7 @@ return {translateTrialDesign};
 <nav>
 <div>Contents</div>
 <ol>
-<li class="observablehq-secondary-link"><a href="#choosing-an-experimental-design">Choosing an experimental design</a></li>
+<li class="observablehq-secondary-link"><a href="#a-flowchart">A flowchart</a></li>
 <li class="observablehq-secondary-link"><a href="#visualizing-common-experimental-designs.">Visualizing common experimental designs.</a></li>
 </ol>
 </nav>
@@ -537,20 +464,16 @@ return {translateTrialDesign};
 
 
     </style>
-<h1 id="experimental-design" tabindex="-1"><a class="observablehq-header-anchor" href="#experimental-design">Experimental design</a></h1>
+<h1 id="choosing-an-experimental-design" tabindex="-1"><a class="observablehq-header-anchor" href="#choosing-an-experimental-design">Choosing an experimental design</a></h1>
 <p>For me <em>measurement</em> is the essence of data science.</p>
 <p>You say your model that has a higher prediction performance works better? <em>Prove it</em>.</p>
 <p>You say your product drives more ROI or impact than your competitors? <em>Prove it</em>.</p>
 <p>You say your new educational program improves student learning outcomes? <em>Prove it</em>.</p>
 <p>In the pharmaceutical world, drugs are heavily examined through the drug development process. I think it's likely arguable that not all are tested under the best approaches (and many drugs are extremely difficult to test due to their operational constraints or targets) and some allowances need to be made. However, in almost every other clinical context (e.g., payer and vendor clinical products), most products are not well tested. There are some obvious counterpoints here, but you get the point. There are products that generate millions or even <em>tens of millions</em> in revenue and no one... and I mean no one, really knows if it actually <em>works</em>.</p>
 <p>To this end, I've taken to dividing measurement into <em>credible</em> measurement and everything else. To credibly measure something is to look past all the marketing, product framing, and business logic, and truly figure out <em>does this thing actually work</em>. For products that are people-facing, I think it's super important that we change this. To this end, I've always wanted to write my own little guide to credible measurement. Not because I would do the math any differently (well, maybe), but because I've always wanted to simply write my thoughts on designing experiments.</p>
-<h2 id="choosing-an-experimental-design" tabindex="-1"><a class="observablehq-header-anchor" href="#choosing-an-experimental-design">Choosing an experimental design</a></h2>
+<h2 id="a-flowchart" tabindex="-1"><a class="observablehq-header-anchor" href="#a-flowchart">A flowchart</a></h2>
 <p>This is a good resource for RCT Designs: <a href="https://link.springer.com/article/10.1186/1750-1172-8-48" target="_blank" rel="noopener noreferrer">Cornu et al., 2013</a></p>
 <p>Within this article, there's a really interesting plot that I've recreated here. However, I've tried to make it a bit easier to navigate by asking a series of question (I'll probably dork this up).</p>
-<div id="cell-69989881" class="observablehq observablehq--block"></div>
-<div id="cell-090b2456" class="observablehq observablehq--block"></div>
-<div id="cell-5e570c80" class="observablehq observablehq--block"></div>
-<p>Based on your choices, the design gods say: <b> <span id="cell-7e8d5ded"><span class="observablehq-loading"></span></span></b></p>
 <div id="cell-1d46b041" class="observablehq observablehq--block"></div>
 <div id="cell-2009b73c" class="observablehq observablehq--block"></div>
 <div id="cell-a365d15f" class="observablehq observablehq--block"></div>
@@ -590,7 +513,7 @@ view(flare_cluster);
 ``` -->
 </main>
 <footer id="observablehq-footer">
-<nav><a rel="prev" href="./"><span>Experimental Design</span></a><a rel="next" href="./parallel-arm-designs"><span>Individual Randomized Parallel Designs</span></a></nav>
-<div>Built with <a href="https://observablehq.com/" target="_blank" rel="noopener noreferrer">Observable</a> on <a title="2024-06-09T17:52:46">Jun 9, 2024</a>.</div>
+<nav><a rel="prev" href="./"><span>Data Matters</span></a><a rel="next" href="./parallel-arm-designs"><span>Individual Randomized Parallel Designs</span></a></nav>
+<div>Built with <a href="https://observablehq.com/" target="_blank" rel="noopener noreferrer">Observable</a> on <a title="2024-06-09T19:49:04">Jun 9, 2024</a>.</div>
 </footer>
 </div>
