@@ -12,14 +12,14 @@ import {
   calculateVarianceFormulaClusterRandomized,
   generateVarianceData,
   generateUnifiedVarianceData,
-} from "./components/parallelmethods.js";
+} from "./components/parallelmethods.js"
 ```
 
 ```js
-import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
-import * as numeric from "https://cdnjs.cloudflare.com/ajax/libs/numeric/1.2.6/numeric.min.js";
-import { require } from "d3-require";
-const jStat = await require("jstat@1.9.4");
+import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm"
+import * as numeric from "https://cdnjs.cloudflare.com/ajax/libs/numeric/1.2.6/numeric.min.js"
+import { require } from "d3-require"
+const jStat = await require("jstat@1.9.4")
 ```
 
 <style>
@@ -125,9 +125,9 @@ Derived from this video [S4b Sample size and power for cluster randomised trial]
 Note, that these are for an _individually_ not _cluster_ randomized designs.
 
 ```js
-const equation_1 = tex.block` \begin{equation}  n = \frac{(z_{1-\alpha/2} + z_{\beta})^2 2\sigma^2}{(\mu_1 - \mu_2)^2} \end{equation}`;
+const equation_1 = tex.block` \begin{equation}  n = \frac{(z_{1-\alpha/2} + z_{\beta})^2 2\sigma^2}{(\mu_1 - \mu_2)^2} \end{equation}`
 
-view(equation_1);
+view(equation_1)
 ```
 
 Calculated Size:
@@ -137,33 +137,33 @@ const z_alpha_2_means = Inputs.range([0, 5], {
   value: 1.96,
   step: 0.01,
   label: tex`Z_{1-\alpha/2}`,
-});
+})
 const z_beta_means = Inputs.range([0, 1], {
   value: 0.84,
   step: 0.01,
   label: tex`Z_\beta`,
-});
+})
 const sigma_means = Inputs.range([0, 100], {
   value: 30,
   step: 0.01,
   label: tex`\sigma`,
-});
+})
 const mu1_means = Inputs.range([0, 1e6], {
   value: 50,
   step: 0.1,
   label: tex`\mu_1`,
-});
+})
 const mu2_means = Inputs.range([0, 100], {
   value: 51,
   step: 0.1,
   label: tex`\mu_2`,
-});
+})
 
-const z_alpha_2_means_selection = Generators.input(z_alpha_2_means);
-const z_beta_means_selection = Generators.input(z_beta_means);
-const sigma_means_selection = Generators.input(sigma_means);
-const mu1_means_selection = Generators.input(mu1_means);
-const mu2_means_selection = Generators.input(mu2_means);
+const z_alpha_2_means_selection = Generators.input(z_alpha_2_means)
+const z_beta_means_selection = Generators.input(z_beta_means)
+const sigma_means_selection = Generators.input(sigma_means)
+const mu1_means_selection = Generators.input(mu1_means)
+const mu2_means_selection = Generators.input(mu2_means)
 ```
 
 ```js
@@ -175,7 +175,7 @@ view(
     mu1_means,
     mu2_means,
   ])
-);
+)
 
 // view(z_alpha_2_means);
 // view(z_beta_means);
@@ -191,7 +191,7 @@ const n_means = calculateSampleSizeForMeans(
   sigma_means_selection,
   mu1_means_selection,
   mu2_means_selection
-);
+)
 ```
 
 Observations needed per arm <b>${view(n_means)}</b>.
@@ -210,9 +210,9 @@ Observations needed per arm <b>${view(n_means)}</b>.
 Note, that these are for an _individually_ not _cluster_ randomized designs.
 
 ```js
-const equation_2 = tex.block` \begin{equation} n = \frac{(z*{1-\alpha/2} + z*{\beta})^2 [p_1 (1 - p_1) + p_2 (1 - p_2)]}{(p_1 - p_2)^2} \end{equation}`;
+const equation_2 = tex.block` \begin{equation} n = \frac{(z_{1-\alpha/2} + z_{\beta})^2 [p_1 (1 - p_1) + p_2 (1 - p_2)]}{(p_1 - p_2)^2} \end{equation}`
 
-view(equation_2);
+view(equation_2)
 ```
 
 ```js
@@ -220,40 +220,40 @@ const z_alpha_2_proportions = Inputs.range([0, 5], {
   value: 1.96,
   step: 0.01,
   label: tex`Z_{1-\alpha/2}`,
-});
+})
 const z_beta_proportions = Inputs.range([0, 5], {
   value: 0.84,
   step: 0.01,
   label: tex`Z_\beta`,
-});
+})
 const sigma_proportions = Inputs.range([0, 10], {
   value: 30,
   step: 0.01,
   label: tex`\sigma`,
-});
+})
 const p1_proportions = Inputs.range([0, 1], {
   value: 0.5,
   step: 0.01,
   label: tex`p_1`,
-});
+})
 const p2_proportions = Inputs.range([0, 1], {
   value: 0.55,
   step: 0.01,
   label: tex`p_2`,
-});
+})
 
-const z_alpha_2_proportions_selection = Generators.input(z_alpha_2_proportions);
-const z_beta_proportions_selection = Generators.input(z_beta_proportions);
+const z_alpha_2_proportions_selection = Generators.input(z_alpha_2_proportions)
+const z_beta_proportions_selection = Generators.input(z_beta_proportions)
 
-const p1_proportions_selection = Generators.input(p1_proportions);
-const p2_proportions_selection = Generators.input(p2_proportions);
+const p1_proportions_selection = Generators.input(p1_proportions)
+const p2_proportions_selection = Generators.input(p2_proportions)
 ```
 
 ```js
-view(z_alpha_2_proportions);
-view(z_beta_proportions);
-view(p1_proportions);
-view(p2_proportions);
+view(z_alpha_2_proportions)
+view(z_beta_proportions)
+view(p1_proportions)
+view(p2_proportions)
 ```
 
 ```js
@@ -262,7 +262,7 @@ const n_proportions = calculateSampleSizeForProportions(
   z_beta_proportions_selection,
   p1_proportions_selection,
   p2_proportions_selection
-);
+)
 ```
 
 Observations needed per arm <b>${view(n_proportions)}</b>.
@@ -279,9 +279,9 @@ ${tex.block`R_{enrollment} = \frac{n_{enrolled}}{n_{mailed}}`}
 Let's say we have a magic wand that incrementally increases the relative enrollment rate by 30%, i.e., ${tex`R_{wand, relative~increase}=0.3`}.
 
 ```js
-const equation_enrollment = tex.block`R_{enrollment, wand} = \frac{n_{enrolled}}{n_{mailed}}\cdot (1+R_{wand, relative~increase})`;
+const equation_enrollment = tex.block`R_{enrollment, wand} = \frac{n_{enrolled}}{n_{mailed}}\cdot (1+R_{wand, relative~increase})`
 
-view(equation_enrollment);
+view(equation_enrollment)
 ```
 
 **Question:** How many people would we need to observe this relative increase in enrollment rate with a given statistical certainty?
@@ -291,7 +291,7 @@ view(equation_enrollment);
 Let's use this equation to calculate:
 
 ```js
-view(equation_2);
+view(equation_2)
 ```
 
 ```js
@@ -317,25 +317,25 @@ const Example1Form = Inputs.form({
     step: 0.01,
     label: tex`R_{wand, relative~increase}`,
   }),
-});
-view(Example1Form);
+})
+view(Example1Form)
 ```
 
 ```js
 const relative_p2_calc =
   Example1Form_Selections.p1_proportions *
-  (1 + Example1Form_Selections.relative_increase);
+  (1 + Example1Form_Selections.relative_increase)
 const p2_proportions_r = Inputs.range([0, 1], {
   value: relative_p2_calc,
   step: 0.01,
   label: tex`p_2`,
   disabled: true,
-});
-view(p2_proportions_r);
+})
+view(p2_proportions_r)
 ```
 
 ```js
-const Example1Form_Selections = Generators.input(Example1Form);
+const Example1Form_Selections = Generators.input(Example1Form)
 ```
 
 ```js
@@ -344,7 +344,7 @@ const n_proportions_wand = calculateSampleSizeForProportions(
   Example1Form_Selections.z_beta_proportions,
   Example1Form_Selections.p1_proportions,
   relative_p2_calc
-);
+)
 ```
 
 <!-- prettier-ignore -->

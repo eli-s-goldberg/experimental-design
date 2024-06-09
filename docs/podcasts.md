@@ -118,8 +118,7 @@ Here are some presentations I've recorded (or had recorded) over the years.
 
 Mass Medic, May 2023.
 
-<iframe width="82%" height = "330px" src="https://www.youtube.com/embed/wzqshP1Zhjg frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-https://www.youtube.com/watch?v=
+<iframe width="82%" height = "330px" src="https://www.youtube.com/embed/wzqshP1Zhjg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 </div>
 

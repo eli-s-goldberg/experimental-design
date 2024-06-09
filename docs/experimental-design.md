@@ -1,6 +1,6 @@
 ---
 theme: light
-title: Experimental Design
+title: Choosing an experimental design
 toc: true
 ---
 
@@ -71,7 +71,7 @@ const jStat = await require("jstat@1.9.4")
 
     </style>
 
-# Experimental design
+# Choosing an experimental design
 
 For me _measurement_ is the essence of data science.
 
@@ -85,77 +85,11 @@ In the pharmaceutical world, drugs are heavily examined through the drug develop
 
 To this end, I've taken to dividing measurement into _credible_ measurement and everything else. To credibly measure something is to look past all the marketing, product framing, and business logic, and truly figure out _does this thing actually work_. For products that are people-facing, I think it's super important that we change this. To this end, I've always wanted to write my own little guide to credible measurement. Not because I would do the math any differently (well, maybe), but because I've always wanted to simply write my thoughts on designing experiments.
 
-## Choosing an experimental design
+## A flowchart
 
 This is a good resource for RCT Designs: [Cornu et al., 2013](https://link.springer.com/article/10.1186/1750-1172-8-48)
 
 Within this article, there's a really interesting plot that I've recreated here. However, I've tried to make it a bit easier to navigate by asking a series of question (I'll probably dork this up).
-
-```js
-const TrialDesignForm = Inputs.form({
-  outcome: Inputs.select(["Reversible outcome", "Non-reversible outcome"], {
-    label: "Is the outcome of the trial reversible?",
-    value: "Reversible outcome", // default value
-  }),
-  responseTime: Inputs.select(["Rapid response", "Slow response"], {
-    label: "What is the response time to the treatment?",
-    value: "Rapid response", // default value
-  }),
-  minimizePlacebo: Inputs.select(
-    ["Minimise time on placebo", "Time on placebo not minimised"],
-    {
-      label:
-        "Is it important to minimize the time patients spend on a placebo?n.b., minimizing placebo time can help maintain blinding by reducing the likelihood of patients discerning whether they are on active treatment or placebo however",
-      value: "Minimise time on placebo", // default value
-    }
-  ),
-  activeTreatmentEnd: Inputs.select(
-    ["Active treatment at the end", "No active treatment at the end", null],
-    {
-      label:
-        "Does everyone need to be treated or receive active treatment by the end of the trial? e.g., if yes, stepped wedge is cometh.",
-      value: "Active treatment at the end", // default value
-    }
-  ),
-  interOrIntra: Inputs.select(
-    ["Intra-patient controls", "Inter-patient controls", null],
-    {
-      label:
-        "Is there a possibility of performing intra-patient or inter-patient comparisons? Is a self-control possible e.g., a cross-over ",
-      value: null, // default value
-    }
-  ),
-})
-
-view(TrialDesignForm)
-```
-
-```js
-const TrialDesignForm_Selections = Generators.input(TrialDesignForm)
-
-// Use the selections to reduce the trial design tree
-```
-
-```js
-const answers =
-  TrialDesignForm_Selections.interOrIntra !== null
-    ? [
-        TrialDesignForm_Selections.outcome,
-        TrialDesignForm_Selections.responseTime,
-        TrialDesignForm_Selections.minimizePlacebo,
-        TrialDesignForm_Selections.interOrIntra,
-      ]
-    : [
-        TrialDesignForm_Selections.outcome,
-        TrialDesignForm_Selections.responseTime,
-        TrialDesignForm_Selections.minimizePlacebo,
-        TrialDesignForm_Selections.activeTreatmentEnd,
-      ]
-const result_tree = reduceTrialDesignTree(answers)
-const human_readable_answer = translateTrialDesign(result_tree)
-```
-
-Based on your choices, the design gods say: <b> ${human_readable_answer}</b>
 
 ```js
 const result_cluster = Plot.plot({
