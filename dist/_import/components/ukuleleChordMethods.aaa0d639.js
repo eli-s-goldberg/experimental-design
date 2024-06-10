@@ -668,8 +668,8 @@ export function ukuchord(chord) {
   }))
   return Plot.plot({
     subtitle: chord,
-    marginTop: 20,
-    marginLeft: 20,
+    // marginTop: 20,
+    // marginLeft: 20,
     height: 140,
     width: 100,
     x: {
@@ -681,8 +681,10 @@ export function ukuchord(chord) {
       domain: [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5],
       ticks: [0, 1, 2, 3, 4, 5],
       label: "",
+      axis: null,
     },
     marks: [
+      Plot.frame(),
       Plot.ruleY([0], { stroke: "red", strokeWidth: 3 }),
       Plot.ruleX(["A", "E", "C", "G"]), // Horizontal lines for strings
       Plot.ruleY([0, 1, 2, 3, 4, 5]), // Vertical lines for frets
