@@ -38,6 +38,15 @@ export default {
       ],
     },
     {
+      name: "Ukelele Modeling",
+      pages: [
+        {
+          name: "Chord Maker",
+          path: "/ukulele",
+        },
+      ],
+    },
+    {
       name: "Self Aggrandizing",
       pages: [
         {
