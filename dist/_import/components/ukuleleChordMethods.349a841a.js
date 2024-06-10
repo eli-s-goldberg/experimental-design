@@ -685,7 +685,7 @@ export function ukuchord(chord) {
     marks: [
       Plot.ruleY([0], { stroke: "red", strokeWidth: 3 }),
       Plot.ruleX(["A", "E", "C", "G"]), // Horizontal lines for strings
-      Plot.ruleY([0, 1, 2, 3, 4]), // Vertical lines for frets
+      Plot.ruleY([0, 1, 2, 3, 4, 5]), // Vertical lines for frets
       Plot.dot(chordData, { y: "fret", x: "string", r: 4, fill: "black" }), // Plot chord positions
     ],
   })
