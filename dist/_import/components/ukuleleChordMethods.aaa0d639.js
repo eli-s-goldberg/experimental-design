@@ -1,4 +1,4 @@
-import * as Plot from "../../_npm/@observablehq/plot@0.6.14/_esm.js"
+import * as Plot from "../../_npm/@observablehq/plot@0.6.15/_esm.js"
 import { html, render } from "../../_node/lit-html@3.1.4/index.js"
 
 const chordData = {

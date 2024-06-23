@@ -11214,8 +11214,8 @@ date,state,stateId,family
 2018-09-25,Other,F,Other
 2018-09-29,China,CN,Other
 2018-10-08,United States,US,Falcon9
-2018-10-08,China,CN,DF5
-2018-10-08,China,CN,DF5
+2018-10-09,China,CN,DF5
+2018-10-09,China,CN,DF5
 2018-10-11,Russia,RU,R-7
 2018-10-15,China,CN,DF5
 2018-10-15,China,CN,DF5
@@ -20550,29 +20550,29 @@ date,state,stateId,family
 2023-12-01,United States,US,Falcon9
 2023-12-01,United States,US,Falcon9
 2023-12-01,United States,US,Falcon9
-2023-12-02,United States,US,Falcon9
-2023-12-02,United States,US,Falcon9
-2023-12-02,United States,US,Falcon9
-2023-12-02,United States,US,Falcon9
-2023-12-02,United States,US,Falcon9
-2023-12-02,United States,US,Falcon9
-2023-12-02,United States,US,Falcon9
-2023-12-02,United States,US,Falcon9
-2023-12-02,United States,US,Falcon9
-2023-12-02,United States,US,Falcon9
-2023-12-02,United States,US,Falcon9
-2023-12-02,United States,US,Falcon9
-2023-12-02,United States,US,Falcon9
-2023-12-02,United States,US,Falcon9
-2023-12-02,United States,US,Falcon9
-2023-12-02,United States,US,Falcon9
-2023-12-02,United States,US,Falcon9
-2023-12-02,United States,US,Falcon9
-2023-12-02,United States,US,Falcon9
-2023-12-02,United States,US,Falcon9
-2023-12-02,United States,US,Falcon9
-2023-12-02,United States,US,Falcon9
-2023-12-02,United States,US,Falcon9
+2023-12-03,United States,US,Falcon9
+2023-12-03,United States,US,Falcon9
+2023-12-03,United States,US,Falcon9
+2023-12-03,United States,US,Falcon9
+2023-12-03,United States,US,Falcon9
+2023-12-03,United States,US,Falcon9
+2023-12-03,United States,US,Falcon9
+2023-12-03,United States,US,Falcon9
+2023-12-03,United States,US,Falcon9
+2023-12-03,United States,US,Falcon9
+2023-12-03,United States,US,Falcon9
+2023-12-03,United States,US,Falcon9
+2023-12-03,United States,US,Falcon9
+2023-12-03,United States,US,Falcon9
+2023-12-03,United States,US,Falcon9
+2023-12-03,United States,US,Falcon9
+2023-12-03,United States,US,Falcon9
+2023-12-03,United States,US,Falcon9
+2023-12-03,United States,US,Falcon9
+2023-12-03,United States,US,Falcon9
+2023-12-03,United States,US,Falcon9
+2023-12-03,United States,US,Falcon9
+2023-12-03,United States,US,Falcon9
 2023-12-04,China,CN,DF5
 2023-12-04,China,CN,DF5
 2023-12-04,China,CN,DF5
@@ -21625,6 +21625,7 @@ date,state,stateId,family
 2024-05-03,China,CN,Other
 2024-05-03,China,CN,Other
 2024-05-03,China,CN,Other
+2024-05-03,China,CN,Other
 2024-05-06,United States,US,Falcon9
 2024-05-06,United States,US,Falcon9
 2024-05-06,United States,US,Falcon9
@@ -21909,3 +21910,100 @@ date,state,stateId,family
 2024-06-01,United States,US,Falcon9
 2024-06-01,United States,US,Falcon9
 2024-06-01,United States,US,Falcon9
+2024-06-03,China,CN,Other
+2024-06-05,United States,US,Falcon9
+2024-06-05,United States,US,Falcon9
+2024-06-05,United States,US,Falcon9
+2024-06-05,United States,US,Falcon9
+2024-06-05,United States,US,Falcon9
+2024-06-05,United States,US,Falcon9
+2024-06-05,United States,US,Falcon9
+2024-06-05,United States,US,Falcon9
+2024-06-05,United States,US,Falcon9
+2024-06-05,United States,US,Falcon9
+2024-06-05,United States,US,Falcon9
+2024-06-05,United States,US,Falcon9
+2024-06-05,United States,US,Falcon9
+2024-06-05,United States,US,Falcon9
+2024-06-05,United States,US,Falcon9
+2024-06-05,United States,US,Falcon9
+2024-06-05,United States,US,Falcon9
+2024-06-05,United States,US,Falcon9
+2024-06-05,United States,US,Falcon9
+2024-06-05,United States,US,Falcon9
+2024-06-05,Other,NZ,Other
+2024-06-05,United States,US,Other
+2024-06-06,China,CN,Other
+2024-06-06,China,CN,Other
+2024-06-06,China,CN,Other
+2024-06-06,China,CN,Other
+2024-06-06,United States,US,Other
+2024-06-08,United States,US,Falcon9
+2024-06-08,United States,US,Falcon9
+2024-06-08,United States,US,Falcon9
+2024-06-08,United States,US,Falcon9
+2024-06-08,United States,US,Falcon9
+2024-06-08,United States,US,Falcon9
+2024-06-08,United States,US,Falcon9
+2024-06-08,United States,US,Falcon9
+2024-06-08,United States,US,Falcon9
+2024-06-08,United States,US,Falcon9
+2024-06-08,United States,US,Falcon9
+2024-06-08,United States,US,Falcon9
+2024-06-08,United States,US,Falcon9
+2024-06-08,United States,US,Falcon9
+2024-06-08,United States,US,Falcon9
+2024-06-08,United States,US,Falcon9
+2024-06-08,United States,US,Falcon9
+2024-06-08,United States,US,Falcon9
+2024-06-08,United States,US,Falcon9
+2024-06-08,United States,US,Falcon9
+2024-06-08,United States,US,Falcon9
+2024-06-08,United States,US,Falcon9
+2024-06-08,United States,US,Falcon9
+2024-06-08,United States,US,Falcon9
+2024-06-08,United States,US,Falcon9
+2024-06-08,United States,US,Falcon9
+2024-06-08,United States,US,Falcon9
+2024-06-08,United States,US,Falcon9
+2024-06-08,United States,US,Falcon9
+2024-06-08,United States,US,Falcon9
+2024-06-08,United States,US,Falcon9
+2024-06-08,United States,US,Falcon9
+2024-06-08,United States,US,Falcon9
+2024-06-08,United States,US,Falcon9
+2024-06-08,United States,US,Falcon9
+2024-06-08,United States,US,Falcon9
+2024-06-08,United States,US,Falcon9
+2024-06-08,United States,US,Falcon9
+2024-06-08,United States,US,Falcon9
+2024-06-08,United States,US,Falcon9
+2024-06-08,United States,US,Falcon9
+2024-06-08,United States,US,Falcon9
+2024-06-19,United States,US,Falcon9
+2024-06-19,United States,US,Falcon9
+2024-06-19,United States,US,Falcon9
+2024-06-19,United States,US,Falcon9
+2024-06-19,United States,US,Falcon9
+2024-06-19,United States,US,Falcon9
+2024-06-19,United States,US,Falcon9
+2024-06-19,United States,US,Falcon9
+2024-06-19,United States,US,Falcon9
+2024-06-19,United States,US,Falcon9
+2024-06-19,United States,US,Falcon9
+2024-06-19,United States,US,Falcon9
+2024-06-19,United States,US,Falcon9
+2024-06-19,United States,US,Falcon9
+2024-06-19,United States,US,Falcon9
+2024-06-19,United States,US,Falcon9
+2024-06-19,United States,US,Falcon9
+2024-06-19,United States,US,Falcon9
+2024-06-19,United States,US,Falcon9
+2024-06-19,United States,US,Falcon9
+2024-06-20,Other,NZ,Other
+2024-06-20,Other,NZ,Other
+2024-06-20,Other,NZ,Other
+2024-06-20,Other,NZ,Other
+2024-06-20,Other,NZ,Other
+2024-06-20,United States,US,Falcon9
+2024-06-22,China,CN,DF5

@@ -17,7 +17,7 @@
 <link rel="modulepreload" href="https://cdnjs.cloudflare.com/ajax/libs/numeric/1.2.6/numeric.min.js">
 <link rel="modulepreload" href="./_node/d3-require@1.3.0/index.js">
 <link rel="modulepreload" href="./_observablehq/stdlib/inputs.js">
-<link rel="modulepreload" href="./_npm/@observablehq/plot@0.6.14/_esm.js">
+<link rel="modulepreload" href="./_npm/@observablehq/plot@0.6.15/_esm.js">
 <link rel="modulepreload" href="./_npm/htl@0.3.1/_esm.js">
 <link rel="modulepreload" href="./_npm/isoformat@0.2.1/_esm.js">
 <link rel="modulepreload" href="./_npm/d3@7.9.0/_esm.js">
@@ -61,7 +61,7 @@
 import {define} from "./_observablehq/client.js";
 import {registerFile} from "./_observablehq/stdlib.js";
 
-registerFile("./data/experimental-flare.json", {"name":"./data/experimental-flare.json","mimeType":"application/json","path":"./_file/data/experimental-flare.7d77350a.json","lastModified":1717969961131});
+registerFile("./data/experimental-flare.json", {"name":"./data/experimental-flare.json","mimeType":"application/json","path":"./_file/data/experimental-flare.7d77350a.json","lastModified":1718233367913});
 
 define({id: "ba0d0f1d", outputs: ["calculateSampleSizeWithDesignMatrix","calculateFollowUpPeriods","calculateStandardizedMeanDifference","DesignMatrix","DesignMatrixWithDetails","vartheta_Krep","vartheta_m","assignClustersToDesignMatrix","d3","numeric","require","jStat"], body: async () => {
 const [{calculateSampleSizeWithDesignMatrix, calculateFollowUpPeriods, calculateStandardizedMeanDifference, DesignMatrix, DesignMatrixWithDetails, vartheta_Krep, vartheta_m, assignClustersToDesignMatrix}, d3, numeric, {require}] = await Promise.all([import("./_import/components/swmethods.e6391363.js"), import("https://cdn.jsdelivr.net/npm/d3@7/+esm"), import("https://cdnjs.cloudflare.com/ajax/libs/numeric/1.2.6/numeric.min.js"), import("./_node/d3-require@1.3.0/index.js")]);
@@ -403,6 +403,12 @@ return {translateTrialDesign};
     </ol>
   </section>
   <section>
+    <summary>Miscellaneous Visualizations</summary>
+    <ol>
+    <li class="observablehq-link"><a href="./happy-city">Is Minneapolis &#x27;happier&#x27; than Boston?</a></li>
+    </ol>
+  </section>
+  <section>
     <summary>Self Aggrandizing</summary>
     <ol>
     <li class="observablehq-link"><a href="./podcasts">Podcasts &amp; Presentations</a></li>
@@ -520,6 +526,6 @@ view(flare_cluster);
 </main>
 <footer id="observablehq-footer">
 <nav><a rel="prev" href="./"><span>Data Matters</span></a><a rel="next" href="./parallel-arm-designs"><span>Individual Randomized Parallel Designs</span></a></nav>
-<div>Built with <a href="https://observablehq.com/" target="_blank" rel="noopener noreferrer">Observable</a> on <a title="2024-06-10T08:46:35">Jun 10, 2024</a>.</div>
+<div>Built with <a href="https://observablehq.com/" target="_blank" rel="noopener noreferrer">Observable</a> on <a title="2024-06-22T23:21:24">Jun 22, 2024</a>.</div>
 </footer>
 </div>

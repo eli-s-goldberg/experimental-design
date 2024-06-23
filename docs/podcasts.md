@@ -54,8 +54,7 @@ title: Welcome
 </style>
 
 # Podcasts
-
-I've had the priveledge of joining a few podcasts over the years.
+Through the years, I've had the pleasure of sharing my thoughts and experiences on various podcasts. Dive in and explore some of the enlightening conversations I've had with thought leaders and experts across different fields.
 
 <div class = "horizontal-line"></div>
 

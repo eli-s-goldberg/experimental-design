@@ -12,7 +12,7 @@
 <link rel="modulepreload" href="./_observablehq/stdlib.js">
 <link rel="modulepreload" href="./_npm/d3-dsv@3.0.1/_esm.js">
 <link rel="modulepreload" href="./_npm/d3@7.9.0/_esm.js">
-<link rel="modulepreload" href="./_npm/@observablehq/plot@0.6.14/_esm.js">
+<link rel="modulepreload" href="./_npm/@observablehq/plot@0.6.15/_esm.js">
 <link rel="modulepreload" href="./_npm/d3-array@3.2.4/_esm.js">
 <link rel="modulepreload" href="./_npm/d3-axis@3.0.0/_esm.js">
 <link rel="modulepreload" href="./_npm/d3-brush@3.0.0/_esm.js">
@@ -53,7 +53,7 @@
 import {define} from "./_observablehq/client.js";
 import {registerFile} from "./_observablehq/stdlib.js";
 
-registerFile("./data/launches.csv", {"name":"./data/launches.csv","mimeType":"text/csv","path":"./_file/data/launches.b270c7a4.csv","lastModified":1717353073868});
+registerFile("./data/launches.csv", {"name":"./data/launches.csv","mimeType":"text/csv","path":"./_file/data/launches.f5dfc885.csv","lastModified":1719112755286});
 
 define({id: "7a66a2dd", inputs: ["FileAttachment"], outputs: ["launches"], body: (FileAttachment) => {
 const launches = FileAttachment("./data/launches.csv").csv({typed: true});
@@ -176,6 +176,12 @@ resize((width) => vehicleChart(launches, {width}))
     </ol>
   </section>
   <section>
+    <summary>Miscellaneous Visualizations</summary>
+    <ol>
+    <li class="observablehq-link"><a href="./happy-city">Is Minneapolis &#x27;happier&#x27; than Boston?</a></li>
+    </ol>
+  </section>
+  <section>
     <summary>Self Aggrandizing</summary>
     <ol>
     <li class="observablehq-link"><a href="./podcasts">Podcasts &amp; Presentations</a></li>
@@ -226,6 +232,6 @@ resize((width) => vehicleChart(launches, {width}))
 <p>Data: Jonathan C. McDowell, <a href="https://planet4589.org/space/gcat" target="_blank" rel="noopener noreferrer">General Catalog of Artificial Space Objects</a></p>
 </main>
 <footer id="observablehq-footer">
-<div>Built with <a href="https://observablehq.com/" target="_blank" rel="noopener noreferrer">Observable</a> on <a title="2024-06-10T08:46:35">Jun 10, 2024</a>.</div>
+<div>Built with <a href="https://observablehq.com/" target="_blank" rel="noopener noreferrer">Observable</a> on <a title="2024-06-22T23:21:24">Jun 22, 2024</a>.</div>
 </footer>
 </div>
