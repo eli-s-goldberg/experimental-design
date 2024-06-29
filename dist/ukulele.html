@@ -5,17 +5,20 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&amp;display=swap" crossorigin>
 <link rel="preload" as="style" href="./_observablehq/theme-air.css">
+<link rel="preload" as="style" href="./_observablehq/stdlib/inputs.css">
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&amp;display=swap" crossorigin>
 <link rel="stylesheet" type="text/css" href="./_observablehq/theme-air.css">
+<link rel="stylesheet" type="text/css" href="./_observablehq/stdlib/inputs.css">
 <link rel="modulepreload" href="./_observablehq/client.js">
 <link rel="modulepreload" href="./_observablehq/runtime.js">
 <link rel="modulepreload" href="./_observablehq/stdlib.js">
-<link rel="modulepreload" href="./_import/components/ukuleleChordMethods.aaa0d639.js">
+<link rel="modulepreload" href="./_import/components/ukuleleChordMethods.12ced1b8.js">
 <link rel="modulepreload" href="./_npm/@observablehq/plot@0.6.15/_esm.js">
 <link rel="modulepreload" href="./_node/lit-html@3.1.4/index.js">
 <link rel="modulepreload" href="./_npm/htl@0.3.1/_esm.js">
-<link rel="modulepreload" href="./_npm/d3@7.9.0/_esm.js">
+<link rel="modulepreload" href="./_observablehq/stdlib/inputs.js">
 <link rel="modulepreload" href="./_npm/isoformat@0.2.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3@7.9.0/_esm.js">
 <link rel="modulepreload" href="./_npm/interval-tree-1d@1.0.4/_esm.js">
 <link rel="modulepreload" href="./_npm/d3-array@3.2.4/_esm.js">
 <link rel="modulepreload" href="./_npm/d3-axis@3.0.0/_esm.js">
@@ -55,45 +58,68 @@
 
 import {define} from "./_observablehq/client.js";
 
-define({id: "d99c6d8a", outputs: ["chordData","parseLyrics","ukuchord","strings","frets"], body: async () => {
-const {chordData, parseLyrics, ukuchord, strings, frets} = await import("./_import/components/ukuleleChordMethods.aaa0d639.js");
+define({id: "cbcfceaa", outputs: ["chordData","parseLyrics","ukuchord","strings","frets"], body: async () => {
+const {chordData, parseLyrics, ukuchord, strings, frets} = await import("./_import/components/ukuleleChordMethods.12ced1b8.js");
 // Define the chord data
 
 return {chordData,parseLyrics,ukuchord,strings,frets};
 }});
 
-define({id: "2263d74b", inputs: ["parseLyrics","html","ukuchord"], outputs: ["renderLyricsWithChords"], body: (parseLyrics,html,ukuchord) => {
+define({id: "a0a95a55", inputs: ["view","Inputs"], outputs: ["text"], body: (view,Inputs) => {
+const text = view(
+  Inputs.textarea({
+    value: `<<Fm>>Steve walks warily down the street, <<Bbm>>with the brim pulled way down low
+<<Fm>>Ain't no sound but the sound of his feet, <<Bbm>>Machine guns ready to go
+<<Db>>Are you ready, <<Ab>>Are you ready for this
+<<Db>>Are you hanging on the <<Ab>>edge of your seat
+<<Db>>Out of the door<<Ab>>way the bullets rip, <<Bbm>>to the sound of the <<C>>beat
+`,
+  })
+);
+return {text};
+}});
+
+define({id: "c4c80171", inputs: ["view","text","renderLyricsWithChords"], body: (view,text,renderLyricsWithChords) => {
+view(text);
+view(renderLyricsWithChords(text));
+}});
+
+define({id: "0afbfe44", inputs: ["parseLyrics","html","ukuchord"], outputs: ["renderLyricsWithChords"], body: (parseLyrics,html,ukuchord) => {
 function renderLyricsWithChords(lyrics) {
-  const parsedLines = parseLyrics(lyrics)
+  const parsedLines = parseLyrics(lyrics);
   return html`${parsedLines.map(
     (lineParts) => html`
-      <div style="display: flex; align-items: flex-start;">
-        ${lineParts.map((part) =>
-          part.chord
-            ? html` <div
-                style="display: flex; flex-direction: column; align-items: center; margin: 0 10px;"
-              >
-                <span style="margin-bottom: 5px;"></span>
-                ${ukuchord(part.chord)}
+      <div
+        style="display: flex; flex-direction: column; align-items: flex-start;"
+      >
+        <div style="display: flex;">
+          ${lineParts.map(
+            (part) =>
+              html`<div style="margin: 0 2px; text-align: center;">
+                ${part.text.replace(/<<[^>]+>>/g, "")}
               </div>`
-            : html` <div
-                style="display: flex; flex-direction: column; align-items: center; margin: 0 10px;"
-              >
-                <span>${part.text}</span>
+          )}
+        </div>
+        <div style="display: flex;">
+          ${lineParts.map(
+            (part) =>
+              html`<div style="margin: 0 4px; text-align: center;">
+                ${part.chord ? ukuchord(part.chord) : ""}
               </div>`
-        )}
+          )}
+        </div>
       </div>
     `
-  )}`
+  )}`;
 }
 return {renderLyricsWithChords};
 }});
 
-define({id: "d55f64b2", inputs: ["view","renderLyricsWithChords"], body: (view,renderLyricsWithChords) => {
-view(renderLyricsWithChords("<<Am>>"))
+define({id: "11345edf", inputs: ["view","renderLyricsWithChords"], body: (view,renderLyricsWithChords) => {
+view(renderLyricsWithChords("<<Am>>"));
 }});
 
-define({id: "95d485fc", inputs: ["view","renderLyricsWithChords"], outputs: ["chord_chart"], body: (view,renderLyricsWithChords) => {
+define({id: "c8cd0c20", inputs: ["view","renderLyricsWithChords"], outputs: ["chord_chart"], body: (view,renderLyricsWithChords) => {
 const chord_chart = `
 <<C>> <<C7>> <<Cm>> <<Cm7>> <<Cdim>> <<Caug>> <<C6>> <<Cmaj7>> <<C9>>
 <<Db>> <<Db7>> <<Dbm>> <<Dbm7>> <<Dbdim>> <<Dbaug>> <<Db6>> <<Dbmaj7>> <<Db9>>
@@ -107,25 +133,25 @@ const chord_chart = `
 <<A>> <<A7>> <<Am>> <<Am7>> <<Adim>> <<Aaug>> <<A6>> <<Amaj7>> <<A9>>
 <<Bb>> <<Bb7>> <<Bbm>> <<Bbm7>> <<Bbdim>> <<Bbaug>> <<Bb6>> <<Bbmaj7>> <<Bb9>>
 <<B>> <<B7>> <<Bm>> <<Bm7>> <<Bdim>> <<Baug>> <<B6>> <<Bmaj7>> <<B9>>
-`
+`;
 
-view(renderLyricsWithChords(chord_chart))
+view(renderLyricsWithChords(chord_chart));
 return {chord_chart};
 }});
 
-define({id: "0d78e2cf", inputs: ["view","renderLyricsWithChords"], outputs: ["lyrics"], body: (view,renderLyricsWithChords) => {
+define({id: "a4652fb1", inputs: ["view","renderLyricsWithChords"], outputs: ["lyrics"], body: (view,renderLyricsWithChords) => {
 const lyrics = `
-<<Am>> I was scared of <<G>> dentists and the <<C>> dark
+<<Am>> I was scared of <<G>> dentists and the <<C>> dark \n
 <<Am>> I was scared of <<G>> pretty girls and <<C>> starting conversations
 <<Am>> Oh, all my <<G>> friends are turning <<C>> green
 <<Am>> You're the <<G>> magicians assistant in <<C>> their dreams
-`
+`;
 
-view(renderLyricsWithChords(lyrics))
+view(renderLyricsWithChords(lyrics));
 return {lyrics};
 }});
 
-define({id: "db939860", inputs: ["view","renderLyricsWithChords"], body: (view,renderLyricsWithChords) => {
+define({id: "7c078808", inputs: ["view","renderLyricsWithChords"], body: (view,renderLyricsWithChords) => {
 view(
   renderLyricsWithChords(`
 <<C>> Wise <<Em>> men <<Am>> say, <<F>> only <<C>> fools <<G>> ruuuush in
@@ -146,7 +172,7 @@ REPEAT BRIDGE
 <<F>> For <<G>> I <<Am>> can't <<F>> help <<C>> faaalling <<G>> in <<C>> love with you
 <<F>> For <<G>> I <<Am>> can't <<F>> help <<C>> faaalling <<G>> in <<C>> love with you
 `)
-)
+);
 }});
 
 </script>
@@ -178,6 +204,7 @@ REPEAT BRIDGE
     <summary>Ukelele Modeling</summary>
     <ol>
     <li class="observablehq-link observablehq-link-active"><a href="./ukulele">Chord Maker</a></li>
+    <li class="observablehq-link"><a href="./ukutabs/blackbird">Blackbird - The Beatles</a></li>
     </ol>
   </section>
   <section>
@@ -198,6 +225,7 @@ REPEAT BRIDGE
 <nav>
 <div>Contents</div>
 <ol>
+<li class="observablehq-secondary-link"><a href="#make-your-own">Make your own</a></li>
 <li class="observablehq-secondary-link"><a href="#setting-up">Setting up</a></li>
 <li class="observablehq-secondary-link"><a href="#individual-chords">Individual chords</a></li>
 <li class="observablehq-secondary-link"><a href="#rendering-a-chord-chart">Rendering a chord chart</a></li>
@@ -208,9 +236,13 @@ REPEAT BRIDGE
 </aside>
 <div id="observablehq-center">
 <main id="observablehq-main" class="observablehq">
-<div id="cell-d99c6d8a" class="observablehq observablehq--block"></div>
+<div id="cell-cbcfceaa" class="observablehq observablehq--block"></div>
 <h1 id="ukulele" tabindex="-1"><a class="observablehq-header-anchor" href="#ukulele">Ukulele</a></h1>
 <p>I love playing the ukulele. I hate the tab sites out there. I love observable framework js. I think I can make chord plots in observable js.</p>
+<h2 id="make-your-own" tabindex="-1"><a class="observablehq-header-anchor" href="#make-your-own">Make your own</a></h2>
+<p>Let's start by letting you copy and paste in any chords you want. Just surround them by &lt;&lt;&gt;&gt; and you'll be good to go e.g., <code>&lt;&lt;Am&gt;&gt;</code>.</p>
+<div id="cell-a0a95a55" class="observablehq observablehq--block"></div>
+<div id="cell-c4c80171" class="observablehq observablehq--block"></div>
 <h2 id="setting-up" tabindex="-1"><a class="observablehq-header-anchor" href="#setting-up">Setting up</a></h2>
 <p>First, import the methods:</p>
 <pre data-language="md"><code class="language-md"><span class="hljs-code">```js
@@ -221,29 +253,39 @@ import {
   ukuchord,
   strings,
   frets,
-} from "./components/ukuleleChordMethods.js"
+} from "./components/ukuleleChordMethods.js";
 ```</span>
 </code></pre>
 <p>Then create the following function in your markdown file.</p>
-<div id="cell-2263d74b" class="observablehq observablehq--block"></div>
+<div id="cell-0afbfe44" class="observablehq observablehq--block"></div>
+<p>Note: I've updated this function for slightly better formatting.</p>
 <pre data-language="md"><code class="language-md"><span class="hljs-code">```js
 function renderLyricsWithChords(lyrics) {
-  const parsedLines = parseLyrics(lyrics)
+  const parsedLines = parseLyrics(lyrics);
   return html`${parsedLines.map(
     (lineParts) =&gt; html`
-      &lt;div style="display: flex; align-items: center;"&gt;
-        ${lineParts.map((part) =&gt;
-          part.chord
-            ? html` &lt;div
-                style="display: flex; flex-direction: column; align-items: center; margin: 0 10px;"
-              &gt;
-                ${ukuchord(part.chord)}
+      &lt;div
+        style="display: flex; flex-direction: column; align-items: flex-start;"
+      &gt;
+        &lt;div style="display: flex;"&gt;
+          ${lineParts.map(
+            (part) =&gt;
+              html`&lt;div style="margin: 0 10px; text-align: center;"&gt;
+                ${part.text.replace(/&lt;&lt;[^&gt;]+&gt;&gt;/g, "")}
               &lt;/div&gt;`
-            : html` &lt;span style="margin: 0 10px;"&gt;${part.text}&lt;/span&gt;`
-        )}
+          )}
+        &lt;/div&gt;
+        &lt;div style="display: flex;"&gt;
+          ${lineParts.map(
+            (part) =&gt;
+              html`&lt;div style="margin: 0 10px; text-align: center;"&gt;
+                ${part.chord ? ukuchord(part.chord) : ""}
+              &lt;/div&gt;`
+          )}
+        &lt;/div&gt;
       &lt;/div&gt;
     `
-  )}`
+  )}`;
 }
 ```</span>
 </code></pre>
@@ -252,7 +294,7 @@ function renderLyricsWithChords(lyrics) {
 <p>Simply put in the following:</p>
 <pre data-language="md"><code class="language-md">view(renderLyricsWithChords("&lt;<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">Am</span>&gt;</span></span>&gt;"))
 </code></pre>
-<div id="cell-d55f64b2" class="observablehq observablehq--block"><span class="observablehq-loading"></span></div>
+<div id="cell-11345edf" class="observablehq observablehq--block"></div>
 <h2 id="rendering-a-chord-chart" tabindex="-1"><a class="observablehq-header-anchor" href="#rendering-a-chord-chart">Rendering a chord chart</a></h2>
 <p>Here are the chords. I <em>think</em> these are pretty close, but there may be some mistakes in them.</p>
 <p>With the package I've developed, here's what you would run to get a chord chart:</p>
@@ -270,13 +312,13 @@ const chord_chart = `
 &lt;&lt;A&gt;&gt; &lt;&lt;A7&gt;&gt; &lt;&lt;Am&gt;&gt; &lt;&lt;Am7&gt;&gt; &lt;&lt;Adim&gt;&gt; &lt;&lt;Aaug&gt;&gt; &lt;&lt;A6&gt;&gt; &lt;&lt;Amaj7&gt;&gt; &lt;&lt;A9&gt;&gt;
 &lt;&lt;Bb&gt;&gt; &lt;&lt;Bb7&gt;&gt; &lt;&lt;Bbm&gt;&gt; &lt;&lt;Bbm7&gt;&gt; &lt;&lt;Bbdim&gt;&gt; &lt;&lt;Bbaug&gt;&gt; &lt;&lt;Bb6&gt;&gt; &lt;&lt;Bbmaj7&gt;&gt; &lt;&lt;Bb9&gt;&gt;
 &lt;&lt;B&gt;&gt; &lt;&lt;B7&gt;&gt; &lt;&lt;Bm&gt;&gt; &lt;&lt;Bm7&gt;&gt; &lt;&lt;Bdim&gt;&gt; &lt;&lt;Baug&gt;&gt; &lt;&lt;B6&gt;&gt; &lt;&lt;Bmaj7&gt;&gt; &lt;&lt;B9&gt;&gt;
-`
+`;
 
-view(renderLyricsWithChords(chord_chart))
+view(renderLyricsWithChords(chord_chart));
 ```</span>
 </code></pre>
 <p>That would display the following:</p>
-<div id="cell-95d485fc" class="observablehq observablehq--block"></div>
+<div id="cell-c8cd0c20" class="observablehq observablehq--block"></div>
 <h2 id="rendering-a-song" tabindex="-1"><a class="observablehq-header-anchor" href="#rendering-a-song">Rendering a song</a></h2>
 <p>Now let's render a simple song. How about "Riptide" by Vance Joy.</p>
 <p>To do this, you need to write the lyrics in the following manner:</p>
@@ -291,15 +333,21 @@ const lyrics = `
 &lt;&lt;Am&gt;&gt; I was scared of &lt;&lt;G&gt;&gt; dentists and the &lt;&lt;C&gt;&gt; dark
 &lt;&lt;Am&gt;&gt; I was scared of &lt;&lt;G&gt;&gt; pretty girls and &lt;&lt;C&gt;&gt; starting conversations
 &lt;&lt;Am&gt;&gt; Oh, all my &lt;&lt;G&gt;&gt; friends are turning &lt;&lt;C&gt;&gt; green
-&lt;&lt;Am&gt;&gt; You're the &lt;&lt;G&gt;&gt; magicians assistant in &lt;&lt;C&gt;&gt; their dreams`
+&lt;&lt;Am&gt;&gt; You're the &lt;&lt;G&gt;&gt; magicians assistant in &lt;&lt;C&gt;&gt; their dreams`;
 ```</span>
 </code></pre>
-<div id="cell-0d78e2cf" class="observablehq observablehq--block"></div>
+<div id="cell-a4652fb1" class="observablehq observablehq--block"></div>
 <h2 id="another-example" tabindex="-1"><a class="observablehq-header-anchor" href="#another-example">Another example</a></h2>
-<div id="cell-db939860" class="observablehq observablehq--block"><span class="observablehq-loading"></span></div>
+<style>
+  .shrink-wrapper {
+      transform: scale(0.5); /* Adjust the scale value to shrink */
+      transform-origin: top left; /* Keep the content aligned */
+  }
+</style>
+<div id="cell-7c078808" class="observablehq observablehq--block"></div>
 </main>
 <footer id="observablehq-footer">
-<nav><a rel="prev" href="./pbpk"><span>Drug Elimination</span></a><a rel="next" href="./happy-city"><span>Is Minneapolis &#x27;happier&#x27; than Boston?</span></a></nav>
-<div>Built with <a href="https://observablehq.com/" target="_blank" rel="noopener noreferrer">Observable</a> on <a title="2024-06-22T23:21:24">Jun 22, 2024</a>.</div>
+<nav><a rel="prev" href="./pbpk"><span>Drug Elimination</span></a><a rel="next" href="./ukutabs/blackbird"><span>Blackbird - The Beatles</span></a></nav>
+<div>Built with <a href="https://observablehq.com/" target="_blank" rel="noopener noreferrer">Observable</a> on <a title="2024-06-29T12:00:06">Jun 29, 2024</a>.</div>
 </footer>
 </div>

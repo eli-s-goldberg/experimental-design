@@ -1,5 +1,5 @@
-import * as Plot from "../../_npm/@observablehq/plot@0.6.15/_esm.js"
-import { html, render } from "../../_node/lit-html@3.1.4/index.js"
+import * as Plot from "../../_npm/@observablehq/plot@0.6.15/_esm.js";
+import { html, render } from "../../_node/lit-html@3.1.4/index.js";
 
 const chordData = {
   C: [
@@ -650,22 +650,22 @@ const chordData = {
     { string: "C", fret: 3 },
     { string: "G", fret: 2 },
   ],
-}
+};
 
 // Function to get chord data by name
 function chordmap(chord) {
-  return chordData[chord] || []
+  return chordData[chord] || [];
 }
 
 // Function to create the chord plot
 
-export const strings = ["A", "E", "C", "G"]
-export const frets = Array.from({ length: 5 }, (_, i) => i)
+export const strings = ["A", "E", "C", "G"];
+export const frets = Array.from({ length: 5 }, (_, i) => i);
 export function ukuchord(chord) {
   const chordData = chordmap(chord).map((position) => ({
     ...position,
     fret: position.fret === null ? position.fret : position.fret - 0.5,
-  }))
+  }));
   return Plot.plot({
     subtitle: chord,
     // marginTop: 20,
@@ -690,31 +690,31 @@ export function ukuchord(chord) {
       Plot.ruleY([0, 1, 2, 3, 4, 5]), // Vertical lines for frets
       Plot.dot(chordData, { y: "fret", x: "string", r: 4, fill: "black" }), // Plot chord positions
     ],
-  })
+  });
 }
 
 // Function to parse lyrics and extract chords
 export function parseLyrics(lyrics) {
-  const lines = lyrics.split("\n")
+  const lines = lyrics.split("\n");
   const parsedLines = lines.map((line) => {
-    const regex = /<<([^>>]+)>>/g
-    let match
-    const parts = []
-    let lastIndex = 0
+    const regex = /<<([^>>]+)>>/g;
+    let match;
+    const parts = [];
+    let lastIndex = 0;
     while ((match = regex.exec(line)) !== null) {
       if (match.index > lastIndex) {
         parts.push({
           text: line.substring(lastIndex, match.index),
           chord: null,
-        })
+        });
       }
-      parts.push({ text: match[0], chord: match[1] })
-      lastIndex = regex.lastIndex
+      parts.push({ text: match[0], chord: match[1] });
+      lastIndex = regex.lastIndex;
     }
     if (lastIndex < line.length) {
-      parts.push({ text: line.substring(lastIndex), chord: null })
+      parts.push({ text: line.substring(lastIndex), chord: null });
     }
-    return parts
-  })
-  return parsedLines
+    return parts;
+  });
+  return parsedLines;
 }
