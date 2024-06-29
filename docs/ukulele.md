@@ -12,12 +12,34 @@ import {
   ukuchord,
   strings,
   frets,
-} from "./components/ukuleleChordMethods.js"
+} from "./components/ukuleleChordMethods.js";
 ```
 
 # Ukulele
 
 I love playing the ukulele. I hate the tab sites out there. I love observable framework js. I think I can make chord plots in observable js.
+
+## Make your own
+
+Let's start by letting you copy and paste in any chords you want. Just surround them by <<>> and you'll be good to go e.g., `<<Am>>`.
+
+```js
+const text = view(
+  Inputs.textarea({
+    value: `<<Fm>>Steve walks warily down the street, <<Bbm>>with the brim pulled way down low
+<<Fm>>Ain't no sound but the sound of his feet, <<Bbm>>Machine guns ready to go
+<<Db>>Are you ready, <<Ab>>Are you ready for this
+<<Db>>Are you hanging on the <<Ab>>edge of your seat
+<<Db>>Out of the door<<Ab>>way the bullets rip, <<Bbm>>to the sound of the <<C>>beat
+`,
+  })
+);
+```
+
+```js
+view(text);
+view(renderLyricsWithChords(text));
+```
 
 ## Setting up
 
@@ -32,7 +54,7 @@ import {
   ukuchord,
   strings,
   frets,
-} from "./components/ukuleleChordMethods.js"
+} from "./components/ukuleleChordMethods.js";
 ```
 ````
 
@@ -40,49 +62,64 @@ Then create the following function in your markdown file.
 
 ```js
 function renderLyricsWithChords(lyrics) {
-  const parsedLines = parseLyrics(lyrics)
+  const parsedLines = parseLyrics(lyrics);
   return html`${parsedLines.map(
     (lineParts) => html`
-      <div style="display: flex; align-items: flex-start;">
-        ${lineParts.map((part) =>
-          part.chord
-            ? html` <div
-                style="display: flex; flex-direction: column; align-items: center; margin: 0 10px;"
-              >
-                <span style="margin-bottom: 5px;"></span>
-                ${ukuchord(part.chord)}
+      <div
+        style="display: flex; flex-direction: column; align-items: flex-start;"
+      >
+        <div style="display: flex;">
+          ${lineParts.map(
+            (part) =>
+              html`<div style="margin: 0 2px; text-align: center;">
+                ${part.text.replace(/<<[^>]+>>/g, "")}
               </div>`
-            : html` <div
-                style="display: flex; flex-direction: column; align-items: center; margin: 0 10px;"
-              >
-                <span>${part.text}</span>
+          )}
+        </div>
+        <div style="display: flex;">
+          ${lineParts.map(
+            (part) =>
+              html`<div style="margin: 0 4px; text-align: center;">
+                ${part.chord ? ukuchord(part.chord) : ""}
               </div>`
-        )}
+          )}
+        </div>
       </div>
     `
-  )}`
+  )}`;
 }
 ```
+
+Note: I've updated this function for slightly better formatting.
 
 ````md
 ```js
 function renderLyricsWithChords(lyrics) {
-  const parsedLines = parseLyrics(lyrics)
+  const parsedLines = parseLyrics(lyrics);
   return html`${parsedLines.map(
     (lineParts) => html`
-      <div style="display: flex; align-items: center;">
-        ${lineParts.map((part) =>
-          part.chord
-            ? html` <div
-                style="display: flex; flex-direction: column; align-items: center; margin: 0 10px;"
-              >
-                ${ukuchord(part.chord)}
+      <div
+        style="display: flex; flex-direction: column; align-items: flex-start;"
+      >
+        <div style="display: flex;">
+          ${lineParts.map(
+            (part) =>
+              html`<div style="margin: 0 10px; text-align: center;">
+                ${part.text.replace(/<<[^>]+>>/g, "")}
               </div>`
-            : html` <span style="margin: 0 10px;">${part.text}</span>`
-        )}
+          )}
+        </div>
+        <div style="display: flex;">
+          ${lineParts.map(
+            (part) =>
+              html`<div style="margin: 0 10px; text-align: center;">
+                ${part.chord ? ukuchord(part.chord) : ""}
+              </div>`
+          )}
+        </div>
       </div>
     `
-  )}`
+  )}`;
 }
 ```
 ````
@@ -98,7 +135,7 @@ view(renderLyricsWithChords("<<Am>>"))
 ```
 
 ```js
-view(renderLyricsWithChords("<<Am>>"))
+view(renderLyricsWithChords("<<Am>>"));
 ```
 
 ## Rendering a chord chart
@@ -122,9 +159,9 @@ const chord_chart = `
 <<A>> <<A7>> <<Am>> <<Am7>> <<Adim>> <<Aaug>> <<A6>> <<Amaj7>> <<A9>>
 <<Bb>> <<Bb7>> <<Bbm>> <<Bbm7>> <<Bbdim>> <<Bbaug>> <<Bb6>> <<Bbmaj7>> <<Bb9>>
 <<B>> <<B7>> <<Bm>> <<Bm7>> <<Bdim>> <<Baug>> <<B6>> <<Bmaj7>> <<B9>>
-`
+`;
 
-view(renderLyricsWithChords(chord_chart))
+view(renderLyricsWithChords(chord_chart));
 ```
 ````
 
@@ -144,9 +181,9 @@ const chord_chart = `
 <<A>> <<A7>> <<Am>> <<Am7>> <<Adim>> <<Aaug>> <<A6>> <<Amaj7>> <<A9>>
 <<Bb>> <<Bb7>> <<Bbm>> <<Bbm7>> <<Bbdim>> <<Bbaug>> <<Bb6>> <<Bbmaj7>> <<Bb9>>
 <<B>> <<B7>> <<Bm>> <<Bm7>> <<Bdim>> <<Baug>> <<B6>> <<Bmaj7>> <<B9>>
-`
+`;
 
-view(renderLyricsWithChords(chord_chart))
+view(renderLyricsWithChords(chord_chart));
 ```
 
 ## Rendering a song
@@ -170,22 +207,29 @@ const lyrics = `
 <<Am>> I was scared of <<G>> dentists and the <<C>> dark
 <<Am>> I was scared of <<G>> pretty girls and <<C>> starting conversations
 <<Am>> Oh, all my <<G>> friends are turning <<C>> green
-<<Am>> You're the <<G>> magicians assistant in <<C>> their dreams`
+<<Am>> You're the <<G>> magicians assistant in <<C>> their dreams`;
 ```
 ````
 
 ```js
 const lyrics = `
-<<Am>> I was scared of <<G>> dentists and the <<C>> dark
+<<Am>> I was scared of <<G>> dentists and the <<C>> dark \n
 <<Am>> I was scared of <<G>> pretty girls and <<C>> starting conversations
 <<Am>> Oh, all my <<G>> friends are turning <<C>> green
 <<Am>> You're the <<G>> magicians assistant in <<C>> their dreams
-`
+`;
 
-view(renderLyricsWithChords(lyrics))
+view(renderLyricsWithChords(lyrics));
 ```
 
 ## Another example
+
+<style>
+  .shrink-wrapper {
+      transform: scale(0.5); /* Adjust the scale value to shrink */
+      transform-origin: top left; /* Keep the content aligned */
+  }
+</style>
 
 ```js
 view(
@@ -208,5 +252,5 @@ REPEAT BRIDGE
 <<F>> For <<G>> I <<Am>> can't <<F>> help <<C>> faaalling <<G>> in <<C>> love with you
 <<F>> For <<G>> I <<Am>> can't <<F>> help <<C>> faaalling <<G>> in <<C>> love with you
 `)
-)
+);
 ```

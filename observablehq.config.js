@@ -44,6 +44,10 @@ export default {
           name: "Chord Maker",
           path: "/ukulele",
         },
+        {
+          name: "Blackbird - The Beatles",
+          path: "/ukutabs/blackbird",
+        },
       ],
     },
     {
