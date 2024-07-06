@@ -60,6 +60,15 @@ export default {
       ],
     },
     {
+      name: "Healthcare Diatribes",
+      pages: [
+        {
+          name: "What are stars?",
+          path: "/stars-hedis-insanity",
+        },
+      ],
+    },
+    {
       name: "Self Aggrandizing",
       pages: [
         {
@@ -79,4 +88,4 @@ export default {
   // root: "docs", // path to the source root for preview
   // output: "dist", // path to the output root for build
   // search: true, // activate search
-};
+}
