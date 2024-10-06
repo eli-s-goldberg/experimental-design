@@ -57,6 +57,10 @@ export default {
           name: "Is Minneapolis 'happier' than Boston?",
           path: "/happy-city",
         },
+        {
+          name: "Diddy didn't, did he?",
+          path: "/diddy-did-he",
+        },
       ],
     },
     {
@@ -88,4 +92,4 @@ export default {
   // root: "docs", // path to the source root for preview
   // output: "dist", // path to the output root for build
   // search: true, // activate search
-}
+};
