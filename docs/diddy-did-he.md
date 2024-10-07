@@ -20,7 +20,7 @@ FYI - I modified this timeline script that uses an LLM to extract information fr
   margin: 0 auto;
   display: block;
   font-family: sans-serif;
-  font-size: 12px;
+  /* font-size: 12px; */
 }
 
 mark {
@@ -84,7 +84,7 @@ mark {
 }
 
 .timeline .entries .entry .title {
-  font-size: 14px;
+  font-size: 20px;
   font-weight: bold;
   margin-bottom: 4px;
   color: #222;
