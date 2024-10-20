@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>FEMA | Data Matters</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&amp;display=swap" crossorigin>
+<link rel="preload" as="style" href="./_observablehq/theme-air,near-midnight.css">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&amp;display=swap" crossorigin>
+<link rel="stylesheet" type="text/css" href="./_observablehq/theme-air,near-midnight.css">
+<link rel="modulepreload" href="./_observablehq/client.js">
+<link rel="modulepreload" href="./_observablehq/runtime.js">
+<link rel="modulepreload" href="./_observablehq/stdlib.js">
+<link rel="modulepreload" href="./_npm/d3@7.9.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-array@3.2.4/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-axis@3.0.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-brush@3.0.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-chord@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-color@3.1.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-contour@4.0.2/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-delaunay@6.0.4/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-dispatch@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-drag@3.0.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-dsv@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-ease@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-fetch@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-force@3.0.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-format@3.1.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-geo@3.1.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-hierarchy@3.1.2/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-interpolate@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-path@3.1.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-polygon@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-quadtree@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-random@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-scale@4.0.2/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-scale-chromatic@3.1.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-selection@3.0.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-shape@3.2.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-time@3.1.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-time-format@4.1.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-timer@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-transition@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-zoom@3.0.0/_esm.js">
+<link rel="modulepreload" href="./_npm/internmap@2.0.3/_esm.js">
+<link rel="modulepreload" href="./_npm/delaunator@5.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/robust-predicates@3.0.2/_esm.js">
+<script type="module">
+
+import {define} from "./_observablehq/client.js";
+
+define({id: "8f250948", outputs: ["row_assignments","height","senator_radius"], body: () => {
+function row_assignments() {
+  let arr = [];
+  let r = 0;
+  const row_max = [8, 9, 10, 11, 12];
+  const row_count = [0, 0, 0, 0, 0];
+
+  for (let i = 0; i < 50; i++) {
+    while (row_count[r] == row_max[r]) r = (r + 1) % 5;
+    row_count[r] += 1;
+    arr[i] = r;
+    r = (r + 1) % 5;
+  }
+
+  return arr;
+}
+
+// const width = 800; // Adjust as needed
+const height = 500; // Adjust as needed
+const senator_radius = 4; // Adjust as needed
+return {row_assignments,height,senator_radius};
+}});
+
+define({id: "6419ca5b", inputs: ["d3"], outputs: ["get_senators","senators"], body: async (d3) => {
+// let's cobble together the original method into one that works in framework.
+async function get_senators() {
+  const data = await d3.json(
+    "https://theunitedstates.io/congress-legislators/legislators-current.json"
+  );
+
+  const senators = data
+    .map(({ name, id, terms }) => ({
+      name,
+      bioguide: id.bioguide,
+      ...terms[terms.length - 1],
+    }))
+    .filter((d) => d.type === "sen")
+    .sort((a, b) => (a.party < b.party ? -1 : 1))
+    .reverse();
+
+  return senators;
+}
+
+const senators = await get_senators();
+return {get_senators,senators};
+}});
+
+define({id: "607f1152", inputs: ["width","height","d3"], outputs: ["senator_radius","images","legendItems","color","angle","senators_in_row","position_in_row","row","radius","row_assignments","x","y","senate_plot"], body: (width,height,d3) => {
+const senator_radius = 14;
+const images = true;
+
+const legendItems = ["Democrat", "Republican", "Independent"];
+
+function color(party) {
+  switch (party) {
+    case "Democrat":
+      return "blue";
+    case "Republican":
+      return "red";
+    case "Independent":
+      return "green";
+    default:
+      return "gray";
+  }
+}
+
+function angle(i) {
+  return -(Math.PI / 2) * (position_in_row(i) / (senators_in_row(i) - 1));
+}
+
+function senators_in_row(i) {
+  return 8 + row(i);
+}
+
+function position_in_row(i) {
+  let pos = 0;
+  for (let j = 50; j > i; j--) {
+    if (row(j) == row(i)) pos++;
+  }
+  return pos;
+}
+
+function row(i) {
+  return row_assignments()[i];
+}
+
+function radius(i) {
+  return row(i) * senator_radius * 6 + 200;
+}
+
+function row_assignments() {
+  let arr = [];
+  let r = 0;
+  const row_max = [8, 9, 10, 11, 12];
+  const row_count = [0, 0, 0, 0, 0];
+
+  for (let i = 0; i < 50; i++) {
+    while (row_count[r] == row_max[r]) r = (r + 1) % 5;
+    row_count[r] += 1;
+    arr[i] = r;
+    r = (r + 1) % 5;
+  }
+
+  return arr;
+}
+
+function x(i) {
+  const j = i < 50 ? i : i - 50;
+  const offset = Math.cos(angle(j)) * radius(j) + senator_radius * 3;
+  return width / 2 + (i < 50 ? offset : -offset);
+}
+
+function y(i) {
+  const j = i < 50 ? i : i - 50;
+  return height - senator_radius + 50 + Math.sin(angle(j)) * radius(j);
+}
+
+function senate_plot(senators) {
+  const height = 2000;
+  const width = 2000;
+  // const margin = { top: 200, right: 20, bottom: 20, left: 20 };
+
+  const svg = d3.create("svg").attr("width", width).attr("height", height);
+  // .attr("transform", `translate(${margin.left},${margin.top})`);
+
+  svg
+    .append("defs")
+    .append("clipPath")
+    .attr("id", "clip-circle")
+    .append("circle")
+    .attr("cx", senator_radius)
+    .attr("cy", senator_radius)
+    .attr("r", senator_radius);
+
+  const sens = svg
+    .selectAll("g.senator")
+    .data(senators)
+    .enter()
+    .append("g")
+    .attr("class", "senator")
+    .attr("transform", (d, i) => `translate(${x(i)}, ${y(i)})`);
+
+  // Outer circle with party color
+  sens
+    .append("circle")
+    .attr("r", senator_radius + 2)
+    .attr("cx", 0)
+    .attr("cy", 0)
+    .attr("fill", (d) => color(d.party))
+    .append("title")
+    .text((d) => d.name.official_full);
+
+  // Inner white circle
+  sens
+    .append("circle")
+    .attr("r", senator_radius + 1)
+    .attr("cx", 0)
+    .attr("cy", 0)
+    .attr("fill", "rgba(255, 255, 255, 0.8)")
+    .append("title")
+    .text((d) => d.name.official_full);
+
+  // Senator's image
+  if (images) {
+    sens
+      .append("g")
+      .attr("clip-path", "url(#clip-circle)")
+      .attr("transform", `translate(${-senator_radius}, ${-senator_radius})`)
+      .append("image")
+      .attr(
+        "xlink:href",
+        (d) =>
+          `https://theunitedstates.io/images/congress/225x275/${d.bioguide}.jpg`
+      )
+      .attr("width", senator_radius * 2)
+      .attr("height", senator_radius * 2)
+      .append("title")
+      .text((d) => d.name.official_full);
+  }
+
+  // Add labels beneath each image
+  sens
+    .append("text")
+    .attr("x", 0)
+    .attr("y", senator_radius + 12) // Increased spacing
+    .attr("text-anchor", "middle")
+    .attr("font-size", "8px") // Increased font size
+    .attr("fill", "black") // Ensure text is visible
+    .text((d) => d.name.last)
+    .append("title")
+    .text((d) => d.name.official_full);
+
+  // // Append the legend
+  // const legend = svg
+  //   .append("g")
+  //   .attr("transform", `translate(${width - 125}, 20)`)
+  //   .selectAll("g.legend")
+  //   .data(legendItems)
+  //   .enter()
+  //   .append("g")
+  //   .attr("class", "legend")
+  //   .attr("transform", (d, i) => `translate(0, ${i * 25})`);
+
+  // legend
+  //   .append("rect")
+  //   .attr("x", 0)
+  //   .attr("y", -5)
+  //   .attr("width", 10)
+  //   .attr("height", 10)
+  //   .attr("fill", (d) => color(d));
+
+  // legend
+  //   .append("text")
+  //   .attr("x", 15)
+  //   .attr("alignment-baseline", "middle")
+  //   .text((d) => d);
+
+  return svg.node();
+}
+return {senator_radius,images,legendItems,color,angle,senators_in_row,position_in_row,row,radius,row_assignments,x,y,senate_plot};
+}});
+
+define({id: "97a49ec0", inputs: ["view","senate_plot","senators"], body: (view,senate_plot,senators) => {
+view(senate_plot(senators));
+}});
+
+</script>
+<input id="observablehq-sidebar-toggle" type="checkbox" title="Toggle sidebar">
+<label id="observablehq-sidebar-backdrop" for="observablehq-sidebar-toggle"></label>
+<nav id="observablehq-sidebar">
+  <ol>
+    <label id="observablehq-sidebar-close" for="observablehq-sidebar-toggle"></label>
+    <li class="observablehq-link"><a href="./">Data Matters</a></li>
+  </ol>
+  <ol>
+    <li class="observablehq-link"><a href="./">Introduction</a></li>
+  </ol>
+  <section>
+    <summary>Experimental Design</summary>
+    <ol>
+    <li class="observablehq-link"><a href="./experimental-design">Experimental Design </a></li>
+    <li class="observablehq-link"><a href="./parallel-arm-designs">Individual Randomized Parallel Designs</a></li>
+    <li class="observablehq-link"><a href="./cluster-randomized-designs">Individual Randomized Cluster Designs</a></li>
+    </ol>
+  </section>
+  <section>
+    <summary>Data Science Experiments</summary>
+    <ol>
+    <li class="observablehq-link"><a href="./random-forest">Random Forests</a></li>
+    </ol>
+  </section>
+  <section>
+    <summary>Transport Modeling</summary>
+    <ol>
+    <li class="observablehq-link"><a href="./pbpk">Drug Elimination</a></li>
+    </ol>
+  </section>
+  <section>
+    <summary>Ukelele Modeling</summary>
+    <ol>
+    <li class="observablehq-link"><a href="./ukulele">Chord Maker</a></li>
+    <li class="observablehq-link"><a href="./ukutabs/blackbird">Blackbird - The Beatles</a></li>
+    </ol>
+  </section>
+  <section class="observablehq-section-active">
+    <summary>Miscellaneous Visualizations</summary>
+    <ol>
+    <li class="observablehq-link"><a href="./happy-city">Is Minneapolis &#x27;happier&#x27; than Boston?</a></li>
+    <li class="observablehq-link"><a href="./diddy-did-he">Diddy didn&#x27;t, did he?</a></li>
+    <li class="observablehq-link observablehq-link-active"><a href="./fema-votes">FEMA Votes</a></li>
+    </ol>
+  </section>
+  <section>
+    <summary>Healthcare Diatribes</summary>
+    <ol>
+    <li class="observablehq-link"><a href="./stars-hedis-insanity">What are stars?</a></li>
+    </ol>
+  </section>
+  <section>
+    <summary>Self Aggrandizing</summary>
+    <ol>
+    <li class="observablehq-link"><a href="./podcasts">Podcasts &amp; Presentations</a></li>
+    </ol>
+  </section>
+</nav>
+<script>{Object.assign(document.createElement("a"),{href:""}).password&&location.replace(location.href);const e=document.querySelector("#observablehq-sidebar"),t=document.querySelector("#observablehq-sidebar-toggle"),r=sessionStorage.getItem("observablehq-sidebar");r?t.checked=r==="true":t.indeterminate=!0;for(const o of document.querySelectorAll("#observablehq-sidebar summary")){const s=o.parentElement;switch(sessionStorage.getItem(`observablehq-sidebar:${o.textContent}`)){case"true":s.open=!0;break;case"false":s.classList.contains("observablehq-section-active")||(s.open=!1);break}}addEventListener("beforeunload",()=>sessionStorage.setItem("observablehq-sidebar-scrolly",`${e.scrollTop}`));const a=sessionStorage.getItem("observablehq-sidebar-scrolly");a!=null&&(e.style.cssText="overflow: hidden;",e.scrollTop=+a,e.style.cssText="");}</script>
+<aside id="observablehq-toc" data-selector="h1:not(:first-of-type)[id], h2:first-child[id], :not(h1) + h2[id]">
+<nav>
+<div>Contents</div>
+<ol>
+<li class="observablehq-secondary-link"><a href="#the-act-in-question%3A-h.r.255---federal-disaster-assistance-coordination-act">The Act in question: H.R.255 - Federal Disaster Assistance Coordination Act</a></li>
+<li class="observablehq-secondary-link"><a href="#the-plot">The plot</a></li>
+</ol>
+</nav>
+</aside>
+<div id="observablehq-center">
+<main id="observablehq-main" class="observablehq">
+<h1 id="fema" tabindex="-1"><a class="observablehq-header-anchor" href="#fema">FEMA</a></h1>
+<div class="note">
+Ok. This is _obviously_ unfinished, but I'm going to upload it anyway... 
+</div>
+<p>Hurricanes are absoultely NO joke. Helene was super destructive. However, what may be even <em>more</em> destructive, is a voting body that puts party over people.</p>
+<p>Let's do some investigation of voting record for FEMA.</p>
+<h2 id="the-act-in-question%3A-h.r.255---federal-disaster-assistance-coordination-act" tabindex="-1"><a class="observablehq-header-anchor" href="#the-act-in-question%3A-h.r.255---federal-disaster-assistance-coordination-act">The Act in question: H.R.255 - Federal Disaster Assistance Coordination Act</a></h2>
+<p><a href="https://www.congress.gov/bill/118th-congress/house-bill/255/text" target="_blank" rel="noopener noreferrer">https://www.congress.gov/bill/118th-congress/house-bill/255/text</a></p>
+<h2 id="the-plot" tabindex="-1"><a class="observablehq-header-anchor" href="#the-plot">The plot</a></h2>
+<div id="cell-8f250948" class="observablehq observablehq--block"></div>
+<div id="cell-6419ca5b" class="observablehq observablehq--block"></div>
+<div id="cell-607f1152" class="observablehq observablehq--block"></div>
+<style>
+.aspectwrapper {
+  display: inline-block; /* shrink to fit */
+  width: 100%;           /* whatever width you like */
+  position: relative;    /* so .content can use position: absolute */
+}
+.aspectwrapper::after {
+  padding-top: 56.25%; /* percentage of containing block _width_ */
+  display: block;
+  content: '';
+}
+.content {
+  position: absolute;
+  top: 0; bottom: 0; right: 0; left: 0;  /* follow the parent's edges */
+  outline: thin dashed green;            /* just so you can see the box */
+}
+</style>
+<div class="aspectwrapper">
+  <div class="content" style="width: 100%; height: 100%;">
+<div id="cell-97a49ec0" class="observablehq observablehq--block"></div>
+  </div>
+</div>
+</main>
+<footer id="observablehq-footer">
+<nav><a rel="prev" href="./diddy-did-he"><span>Diddy didn&#x27;t, did he?</span></a><a rel="next" href="./stars-hedis-insanity"><span>What are stars?</span></a></nav>
+<div>Built with <a href="https://observablehq.com/" target="_blank" rel="noopener noreferrer">Observable</a> on <a title="2024-10-19T23:51:13">Oct 19, 2024</a>.</div>
+</footer>
+</div>
