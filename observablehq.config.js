@@ -29,6 +29,15 @@ export default {
       ],
     },
     {
+      name: "Data Science Experiments",
+      pages: [
+        {
+          name: "Random Forests",
+          path: "/random-forest",
+        },
+      ],
+    },
+    {
       name: "Transport Modeling",
       pages: [
         {
@@ -60,6 +69,10 @@ export default {
         {
           name: "Diddy didn't, did he?",
           path: "/diddy-did-he",
+        },
+        {
+          name: "FEMA Votes",
+          path: "/fema-votes",
         },
       ],
     },

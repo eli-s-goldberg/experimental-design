@@ -1,0 +1,325 @@
+"city_state","city_or_county","state","incidents","victims_killed","victims_injured","victims_harmed","lat","long"
+"Abbeville Louisiana","Abbeville","Louisiana",1,0,4,4,29.9746502,-92.1342921
+"Adelanto California","Adelanto","California",1,2,5,7,34.5827699,-117.409215
+"Akron Ohio","Akron","Ohio",1,0,4,4,41.083064,-81.518485
+"Albany Georgia","Albany","Georgia",1,0,4,4,31.5782062,-84.1556809
+"Alexandria Louisiana","Alexandria","Louisiana",3,2,11,13,31.2909782,-92.4616292
+"Allen Texas","Allen","Texas",1,8,7,15,33.1031744,-96.6705503
+"Allentown Pennsylvania","Allentown","Pennsylvania",1,0,4,4,40.6022059,-75.4712794
+"Amarillo Texas","Amarillo","Texas",1,2,5,7,35.2072185,-101.833824
+"Anderson Indiana","Anderson","Indiana",1,0,6,6,40.1053196,-85.6802541
+"Andrews South Carolina","Andrews","South Carolina",1,2,2,4,33.451278,-79.5608971
+"Annapolis Maryland","Annapolis","Maryland",1,3,3,6,38.9786401,-76.492786
+"Antioch California","Antioch","California",1,1,6,7,38.0049214,-121.805789
+"Asheboro North Carolina","Asheboro","North Carolina",1,0,4,4,35.7079146,-79.8136446
+"Athens Georgia","Athens","Georgia",1,1,3,4,33.9597677,-83.376398
+"Atlanta Georgia","Atlanta","Georgia",4,2,16,18,33.7489924,-84.3902644
+"Auburn Washington","Auburn","Washington",1,0,4,4,47.3075369,-122.2301808
+"Augusta Georgia","Augusta","Georgia",2,2,8,10,33.4709714,-81.9748429
+"Austin Texas","Austin","Texas",1,2,3,5,30.2711286,-97.7436995
+"Azusa California","Azusa","California",1,0,4,4,34.1338751,-117.9056046
+"Baltimore Maryland","Baltimore","Maryland",11,9,67,76,39.2908816,-76.610759
+"Barnwell South Carolina","Barnwell","South Carolina",1,1,5,6,33.2641009,-81.4190808
+"Bastrop Louisiana","Bastrop","Louisiana",1,2,2,4,32.7761446,-91.9082967
+"Baton Rouge Louisiana","Baton Rouge","Louisiana",1,0,12,12,30.4494155,-91.1869659
+"Bay Saint Louis Mississippi","Bay Saint Louis","Mississippi",1,2,4,6,30.3132453,-89.3343223
+"Beaumont Texas","Beaumont","Texas",1,0,5,5,30.0860459,-94.1018461
+"Benton City Washington","Benton City","Washington",1,1,5,6,46.2631897,-119.487802
+"Beverly Hills California","Beverly Hills","California",1,3,2,5,34.0696501,-118.3963062
+"Biloxi Mississippi","Biloxi","Mississippi",1,0,5,5,30.4007626,-88.8893818
+"Birmingham Alabama","Birmingham","Alabama",4,6,11,17,33.5206824,-86.8024326
+"Bladensburg Maryland","Bladensburg","Maryland",1,0,5,5,38.9392997,-76.9337983
+"Bolingbrook Illinois","Bolingbrook","Illinois",1,3,1,4,41.7003302,-88.0717708
+"Borger Texas","Borger","Texas",1,1,3,4,35.6689767,-101.3919481
+"Bossier City Louisiana","Bossier City","Louisiana",1,2,2,4,32.515887,-93.7336536
+"Boston Massachusetts","Boston","Massachusetts",3,0,17,17,42.3554334,-71.060511
+"Bothell Washington","Bothell","Washington",1,1,3,4,47.7623204,-122.2054035
+"Bowdoin Maine","Bowdoin","Maine",1,4,3,7,44.0364973,-69.9720794
+"Bronx New York","Bronx","New York",5,3,17,20,40.8466508,-73.8785937
+"Brooklyn New York","Brooklyn","New York",4,2,14,16,40.6526006,-73.9497211
+"Brunswick Georgia","Brunswick","Georgia",1,0,5,5,31.1499528,-81.4914894
+"Bryan Texas","Bryan","Texas",1,0,4,4,30.6743643,-96.3699632
+"Buffalo New York","Buffalo","New York",1,0,5,5,42.8867166,-78.8783922
+"Canal Winchester Ohio","Canal Winchester","Ohio",1,0,7,7,39.8428215,-82.805646
+"Cape Girardeau Missouri","Cape Girardeau","Missouri",1,0,5,5,37.3034933,-89.5230357
+"Capitol Heights Maryland","Capitol Heights","Maryland",1,0,4,4,38.8849913,-76.9134765
+"Carson California","Carson","California",1,0,8,8,33.8322043,-118.2517547
+"Cedar City (Enoch) Utah","Cedar City (Enoch)","Utah",1,7,0,7,37.7319149,-113.054742775113
+"Champaign Illinois","Champaign","Illinois",1,0,4,4,40.1164841,-88.2430932
+"Charlotte North Carolina","Charlotte","North Carolina",3,1,11,12,35.2272086,-80.8430827
+"Chesapeake Virginia","Chesapeake","Virginia",1,1,4,5,36.7183708,-76.2466798
+"Chester Pennsylvania","Chester","Pennsylvania",1,0,8,8,39.9829308,-75.7652424
+"Chicago Heights (Ford Heights) Illinois","Chicago Heights (Ford Heights)","Illinois",1,1,4,5,41.5180907,-87.5864315
+"Chicago Illinois","Chicago","Illinois",32,25,136,161,41.8755616,-87.6244212
+"Chico California","Chico","California",1,1,5,6,39.7284945,-121.8374777
+"Chula Vista California","Chula Vista","California",1,0,4,4,32.6400541,-117.0841955
+"Cincinnati Ohio","Cincinnati","Ohio",4,0,16,16,39.1014537,-84.5124602
+"Clarksdale Mississippi","Clarksdale","Mississippi",2,0,17,17,34.2006479,-90.5702071
+"Clarksville Tennessee","Clarksville","Tennessee",1,0,5,5,36.5277607,-87.3588703
+"Cleveland Mississippi","Cleveland","Mississippi",1,2,2,4,33.7440023,-90.7248187
+"Cleveland Ohio","Cleveland","Ohio",7,7,27,34,41.4996574,-81.6936772
+"Cleveland Texas","Cleveland","Texas",1,5,0,5,30.3414794,-95.0900115
+"Clifton New Jersey","Clifton","New Jersey",1,0,4,4,40.8584328,-74.1637553
+"Clinton North Carolina","Clinton","North Carolina",1,5,0,5,34.9979453,-78.3233325
+"Cocoa Florida","Cocoa","Florida",1,4,0,4,28.3553873,-80.7318827
+"Coldwater Mississippi","Coldwater","Mississippi",1,6,0,6,34.6917684,-89.9773124
+"College Station Texas","College Station","Texas",1,0,4,4,30.5955289,-96.3071042
+"Colorado Springs Colorado","Colorado Springs","Colorado",1,0,5,5,38.8339578,-104.825348
+"Columbia Missouri","Columbia","Missouri",2,3,7,10,38.951883,-92.3337366
+"Columbia South Carolina","Columbia","South Carolina",3,4,13,17,34.0374165,-80.8224044537886
+"Columbia Tennessee","Columbia","Tennessee",1,1,4,5,35.6150716,-87.0352831
+"Columbus Georgia","Columbus","Georgia",2,3,10,13,32.4610708,-84.9880449
+"Columbus Indiana","Columbus","Indiana",1,0,4,4,39.2014405,-85.9213796
+"Columbus Mississippi","Columbus","Mississippi",2,1,8,9,33.4956744,-88.4272627
+"Columbus Ohio","Columbus","Ohio",6,5,27,32,39.9622601,-83.0007065
+"Corpus Christi Texas","Corpus Christi","Texas",1,1,3,4,27.7635302,-97.4033191
+"Covington Tennessee","Covington","Tennessee",1,1,4,5,35.5642474,-89.6464672
+"Crosby Texas","Crosby","Texas",1,1,4,5,33.5778818,-101.2855737
+"Crystal Lake Illinois","Crystal Lake","Illinois",1,3,1,4,42.2411344,-88.3161965
+"Cumberland Maryland","Cumberland","Maryland",1,1,3,4,39.6526498,-78.762383
+"Dadeville Alabama","Dadeville","Alabama",1,4,32,36,32.831238,-85.7635692
+"Dallas Texas","Dallas","Texas",11,13,36,49,32.7762719,-96.7968559
+"Daytona Beach Florida","Daytona Beach","Florida",1,0,4,4,29.2108147,-81.0228331
+"Decatur Georgia","Decatur","Georgia",2,0,9,9,30.8736613,-84.5740953
+"Denison Texas","Denison","Texas",1,1,3,4,33.7556593,-96.536658
+"Denver Colorado","Denver","Colorado",5,4,25,29,39.7392364,-104.984862
+"Detroit Michigan","Detroit","Michigan",5,5,16,21,42.3315509,-83.0466403
+"Dodge City Kansas","Dodge City","Kansas",1,2,2,4,37.7527982,-100.0170787
+"Douglasville Georgia","Douglasville","Georgia",1,2,7,9,33.7514966,-84.7477136
+"Downey California","Downey","California",1,0,4,4,33.9404441,-118.1292846
+"Dublin Georgia","Dublin","Georgia",1,1,3,4,32.5404447,-82.903754
+"Dubuque Iowa","Dubuque","Iowa",1,1,3,4,42.5006243,-90.6647985
+"Dumfries Virginia","Dumfries","Virginia",1,1,4,5,38.5676202,-77.3280382
+"Durango Colorado","Durango","Colorado",1,1,3,4,37.2769484,-107.8766
+"Durham North Carolina","Durham","North Carolina",2,2,7,9,35.996653,-78.9018053
+"East Lansing Michigan","East Lansing","Michigan",1,3,5,8,42.7320307,-84.4721678
+"East Saint Louis Illinois","East Saint Louis","Illinois",2,2,8,10,38.6133731,-90.14629
+"Edgewood Maryland","Edgewood","Maryland",1,0,4,4,39.4187194,-76.2944016
+"Edinburg Texas","Edinburg","Texas",1,0,7,7,26.3013982,-98.1624501
+"El Paso (Socorro) Texas","El Paso (Socorro)","Texas",1,0,4,4,31.6606629,-106.244628691953
+"El Paso Texas","El Paso","Texas",4,5,19,24,31.7550511,-106.488234
+"Elizabeth City North Carolina","Elizabeth City","North Carolina",1,0,4,4,36.2956836,-76.2247697
+"Fargo North Dakota","Fargo","North Dakota",1,1,3,4,46.877229,-96.789821
+"Farmington New Mexico","Farmington","New Mexico",1,3,6,9,36.7291152,-108.205445
+"Fayetteville North Carolina","Fayetteville","North Carolina",4,5,11,16,35.0525759,-78.878292
+"Flint Michigan","Flint","Michigan",1,0,4,4,43.0161693,-83.6900211
+"Florence South Carolina","Florence","South Carolina",1,0,4,4,34.1984435,-79.7671658
+"Florin California","Florin","California",1,0,4,4,38.4897749,-121.405747236447
+"Fond Du Lac Wisconsin","Fond Du Lac","Wisconsin",1,1,3,4,43.7533414,-88.4493796
+"Fort Lauderdale Florida","Fort Lauderdale","Florida",3,1,12,13,26.1223084,-80.1433786
+"Fort Pierce Florida","Fort Pierce","Florida",1,1,7,8,27.4467056,-80.3256056
+"Fort Wayne Indiana","Fort Wayne","Indiana",1,1,3,4,41.0799898,-85.1386015
+"Fort Worth Texas","Fort Worth","Texas",3,4,15,19,32.753177,-97.3327459
+"Freeport Illinois","Freeport","Illinois",1,1,3,4,42.2966861,-89.6212271
+"Frostburg Maryland","Frostburg","Maryland",1,1,3,4,39.6581425,-78.928357
+"Galveston Texas","Galveston","Texas",1,2,2,4,29.3872254,-94.992736
+"Gary Indiana","Gary","Indiana",1,1,3,4,41.6020962,-87.3370647
+"Glendale Arizona","Glendale","Arizona",1,0,4,4,33.5386858,-112.185994
+"Goldsboro North Carolina","Goldsboro","North Carolina",1,1,5,6,35.3848841,-77.9927651
+"Gonzales Louisiana","Gonzales","Louisiana",1,0,4,4,30.2385294,-90.9200987
+"Goshen California","Goshen","California",1,6,0,6,36.3510616,-119.4201204
+"Grand Rapids Michigan","Grand Rapids","Michigan",1,0,4,4,42.9632425,-85.6678639
+"Greensboro North Carolina","Greensboro","North Carolina",3,5,11,16,36.0726355,-79.7919754
+"Greenville North Carolina","Greenville","North Carolina",2,2,8,10,35.613224,-77.3724593
+"Greenville South Carolina","Greenville","South Carolina",1,0,4,4,34.851354,-82.3984882
+"Half Moon Bay California","Half Moon Bay","California",1,7,1,8,37.4635519,-122.428586
+"Hampton Georgia","Hampton","Georgia",1,4,3,7,33.3870578,-84.2829784
+"Harrisburg Pennsylvania","Harrisburg","Pennsylvania",2,0,8,8,40.2663107,-76.8861122
+"Hartford Connecticut","Hartford","Connecticut",1,1,3,4,41.764582,-72.6908547
+"Hartville Ohio","Hartville","Ohio",1,4,0,4,40.9636685,-81.3312195
+"Hattiesburg Mississippi","Hattiesburg","Mississippi",1,0,4,4,31.3271189,-89.2903392
+"Hayward California","Hayward","California",1,0,5,5,37.6688205,-122.080796
+"Hazlehurst Mississippi","Hazlehurst","Mississippi",1,0,5,5,31.8604382,-90.3959255
+"Hazleton Pennsylvania","Hazleton","Pennsylvania",1,0,4,4,40.9646867,-75.9852789
+"Hempstead New York","Hempstead","New York",1,0,4,4,40.6736812,-73.6190736
+"Henryetta Oklahoma","Henryetta","Oklahoma",1,6,0,6,35.4396625,-95.9865145
+"Hialeah Florida","Hialeah","Florida",1,4,0,4,25.8575963,-80.2781057
+"High Point North Carolina","High Point","North Carolina",2,5,3,8,35.9556924,-80.0053176
+"Hollywood Florida","Hollywood","Florida",1,0,9,9,26.0112014,-80.1494901
+"Hollywood South Carolina","Hollywood","South Carolina",1,1,5,6,32.7343442,-80.2417651
+"Homestead (Munhall) Pennsylvania","Homestead (Munhall)","Pennsylvania",1,1,3,4,40.4071046,-79.9029436
+"Homestead Florida","Homestead","Florida",1,1,3,4,25.4718946,-80.4759905
+"Houston Texas","Houston","Texas",9,7,33,40,29.7589382,-95.3676974
+"Huntsville Alabama","Huntsville","Alabama",1,2,9,11,34.729847,-86.5859011
+"Huntsville Texas","Huntsville","Texas",1,2,2,4,30.7235263,-95.5507771
+"Indiana Pennsylvania","Indiana","Pennsylvania",1,1,8,9,40.6424116,-79.1262839
+"Indianapolis Indiana","Indianapolis","Indiana",7,6,29,35,39.7683331,-86.1583502
+"Indio California","Indio","California",1,1,3,4,33.7192808,-116.2188054
+"Inglewood California","Inglewood","California",1,2,3,5,33.9562003,-118.353132
+"Isle Of Palms South Carolina","Isle Of Palms","South Carolina",1,0,5,5,32.7867697,-79.7880359
+"Jackson Mississippi","Jackson","Mississippi",2,1,8,9,32.2998686,-90.1830408
+"Jackson Tennessee","Jackson","Tennessee",1,0,4,4,35.6144446,-88.8177418
+"Jacksonville Florida","Jacksonville","Florida",2,3,7,10,30.3321838,-81.655651
+"Jasper Texas","Jasper","Texas",1,0,11,11,30.7485258,-94.000884
+"Jeannette Pennsylvania","Jeannette","Pennsylvania",1,1,4,5,40.3281247,-79.6153198
+"Jersey City New Jersey","Jersey City","New Jersey",2,0,10,10,40.7215682,-74.047455
+"Jonestown Mississippi","Jonestown","Mississippi",1,0,4,4,34.3195524,-90.4556535
+"Kansas City Missouri","Kansas City","Missouri",5,7,21,28,39.100105,-94.5781416
+"Kellogg Idaho","Kellogg","Idaho",1,4,0,4,47.5382349,-116.118887
+"Keysville Georgia","Keysville","Georgia",1,0,4,4,33.242412,-82.2298780998402
+"La Crosse Wisconsin","La Crosse","Wisconsin",1,0,7,7,43.8122836,-91.2514355
+"Labadieville Louisiana","Labadieville","Louisiana",1,0,7,7,29.823894,-90.9529261942724
+"Lafayette Louisiana","Lafayette","Louisiana",2,2,9,11,30.2262187,-92.0178202
+"Lagrange Georgia","Lagrange","Georgia",1,0,4,4,33.039291,-85.0313269
+"Lake Charles Louisiana","Lake Charles","Louisiana",2,1,9,10,30.2305095,-93.2169807
+"Lake City Florida","Lake City","Florida",1,0,4,4,30.1894252,-82.6394803
+"Lake Wales Florida","Lake Wales","Florida",1,4,0,4,27.9014133,-81.5859099
+"Lakeland Florida","Lakeland","Florida",1,0,11,11,28.0394654,-81.9498042
+"Lancaster Pennsylvania","Lancaster","Pennsylvania",1,0,4,4,40.08067,-76.2411283
+"Lansing Michigan","Lansing","Michigan",3,0,14,14,42.7337712,-84.5553805
+"Laredo Texas","Laredo","Texas",2,0,18,18,27.5030915,-99.5075644
+"Las Cruces New Mexico","Las Cruces","New Mexico",1,0,7,7,32.3140354,-106.779807
+"Las Vegas (Enterprise) Nevada","Las Vegas (Enterprise)","Nevada",1,0,4,4,36.00913325,-115.17580095251
+"Laurel Maryland","Laurel","Maryland",1,0,4,4,39.0984317,-76.8485094
+"Laurinburg North Carolina","Laurinburg","North Carolina",1,0,4,4,34.7740495,-79.4628248
+"Lawrence Massachusetts","Lawrence","Massachusetts",1,1,5,6,42.7070354,-71.1631137
+"Lebanon Pennsylvania","Lebanon","Pennsylvania",1,3,1,4,40.375713,-76.4626118
+"Lewiston Maine","Lewiston","Maine",1,18,13,31,44.0951078,-70.2155454
+"Lexington Kentucky","Lexington","Kentucky",1,0,4,4,38.0464066,-84.4970393
+"Lincoln Nebraska","Lincoln","Nebraska",1,0,4,4,40.8088861,-96.7077751
+"Little Rock Arkansas","Little Rock","Arkansas",1,2,5,7,34.7465071,-92.2896267
+"Loris South Carolina","Loris","South Carolina",1,0,4,4,34.0562812,-78.8903044
+"Los Angeles California","Los Angeles","California",8,6,29,35,34.0536909,-118.242766
+"Louisville Georgia","Louisville","Georgia",1,0,5,5,33.0015407,-82.4112377
+"Louisville Kentucky","Louisville","Kentucky",6,10,25,35,38.2542376,-85.759407
+"Louisville Mississippi","Louisville","Mississippi",1,1,5,6,33.1237377,-89.0550624
+"Lubbock Texas","Lubbock","Texas",1,1,3,4,33.5855677,-101.8470215
+"Luttrell Tennessee","Luttrell","Tennessee",1,4,0,4,36.1995269,-83.7418507
+"Lynn Massachusetts","Lynn","Massachusetts",1,2,5,7,42.466763,-70.9494939
+"Machesney Park Illinois","Machesney Park","Illinois",1,0,4,4,42.3472406,-89.0389956
+"Macomb Illinois","Macomb","Illinois",1,1,10,11,40.4588934,-90.6713939
+"Macon Georgia","Macon","Georgia",1,1,3,4,32.8406946,-83.6324022
+"Madison Wisconsin","Madison","Wisconsin",1,1,3,4,43.074761,-89.3837613
+"Manchester New Hampshire","Manchester","New Hampshire",1,0,4,4,42.9956397,-71.4547891
+"Mansfield Ohio","Mansfield","Ohio",2,3,7,10,40.75839,-82.5154471
+"Marianna Arkansas","Marianna","Arkansas",1,1,4,5,34.7737082,-90.7576112
+"Marrero Louisiana","Marrero","Louisiana",1,1,3,4,29.8993723,-90.1003506
+"Marysville Washington","Marysville","Washington",1,2,2,4,48.0517429,-122.1768209
+"Memphis Tennessee","Memphis","Tennessee",11,11,49,60,35.1460249,-90.0517638
+"Meridian Mississippi","Meridian","Mississippi",1,1,3,4,32.3643098,-88.703656
+"Mesa Arizona","Mesa","Arizona",1,4,1,5,33.4151005,-111.831455
+"Miami Gardens Florida","Miami Gardens","Florida",2,0,19,19,25.9420377,-80.2456045
+"Michigan City Indiana","Michigan City","Indiana",1,0,4,4,41.7075394,-86.8950297
+"Milwaukee Wisconsin","Milwaukee","Wisconsin",6,1,33,34,43.0349931,-87.922497
+"Minden Louisiana","Minden","Louisiana",1,0,4,4,32.6154278,-93.2868354
+"Minneapolis Minnesota","Minneapolis","Minnesota",8,1,40,41,44.9772995,-93.2654692
+"Missouri City Texas","Missouri City","Texas",1,1,3,4,29.6185669,-95.5377215
+"Mojave California","Mojave","California",1,4,0,4,35.0524699,-118.1739645
+"Monroe Louisiana","Monroe","Louisiana",1,1,5,6,32.5102427,-92.1032411
+"Monterey Park California","Monterey Park","California",1,11,9,20,34.051522,-118.129807
+"Montgomery Alabama","Montgomery","Alabama",2,2,9,11,32.3669656,-86.3006485
+"Moreno Valley California","Moreno Valley","California",2,0,8,8,33.937517,-117.2305944
+"Muncie Indiana","Muncie","Indiana",1,1,17,18,40.1936892,-85.3865271
+"Myrtle Beach South Carolina","Myrtle Beach","South Carolina",1,0,1,1,33.6956461,-78.8900409
+"Nashville Tennessee","Nashville","Tennessee",1,6,0,6,36.1622767,-86.7742984
+"Natchez Mississippi","Natchez","Mississippi",1,2,3,5,31.5604076,-91.403171
+"New Orleans Louisiana","New Orleans","Louisiana",6,7,22,29,29.9759983,-90.0782127
+"New Richmond Ohio","New Richmond","Ohio",2,6,2,8,38.9486757,-84.2799366
+"Newark New Jersey","Newark","New Jersey",3,3,10,13,40.735657,-74.1723667
+"Newport Arkansas","Newport","Arkansas",1,1,4,5,35.608376,-91.2688024
+"Norfolk Virginia","Norfolk","Virginia",1,0,4,4,36.8448348,-76.2863999
+"North Charleston South Carolina","North Charleston","South Carolina",1,1,3,4,32.8546197,-79.9748103
+"Northridge California","Northridge","California",1,2,2,4,34.2345615,-118.5369316
+"Oak Park Illinois","Oak Park","Illinois",1,0,4,4,41.8878145,-87.7887615
+"Oakland California","Oakland","California",1,1,4,5,37.8044557,-122.271356
+"Oakley California","Oakley","California",1,1,3,4,37.9974219,-121.7124536
+"Ocala Florida","Ocala","Florida",1,2,4,6,29.1871986,-82.1400923
+"Ocean Springs Mississippi","Ocean Springs","Mississippi",1,1,6,7,30.4112904,-88.8279165
+"Odessa Texas","Odessa","Texas",1,1,4,5,31.8457149,-102.367687
+"Oklahoma City Oklahoma","Oklahoma City","Oklahoma",3,5,7,12,35.4729886,-97.5170536
+"Omaha Nebraska","Omaha","Nebraska",1,1,5,6,41.2587459,-95.9383758
+"Orem Utah","Orem","Utah",1,0,5,5,40.2981599,-111.6944313
+"Orlando Florida","Orlando","Florida",3,8,6,14,28.5421109,-81.3790304
+"Paducah Kentucky","Paducah","Kentucky",1,0,4,4,37.0833893,-88.6000478
+"Palm Bay Florida","Palm Bay","Florida",1,0,4,4,27.9946969,-80.6366144
+"Pasadena California","Pasadena","California",1,0,5,5,34.1476507,-118.1441551
+"Paterson New Jersey","Paterson","New Jersey",3,2,13,15,40.9167654,-74.171811
+"Pensacola Florida","Pensacola","Florida",1,1,4,5,30.421309,-87.2169149
+"Peoria Illinois","Peoria","Illinois",2,1,8,9,40.6938609,-89.5891008
+"Peyton Colorado","Peyton","Colorado",1,2,3,5,39.0288809,-104.4830238
+"Philadelphia Pennsylvania","Philadelphia","Pennsylvania",18,23,64,87,39.9527237,-75.1635262
+"Phoenix Arizona","Phoenix","Arizona",2,0,8,8,33.4484367,-112.074141
+"Pine Bluff Arkansas","Pine Bluff","Arkansas",4,3,14,17,34.2157064,-92.0140402
+"Pittsburgh Pennsylvania","Pittsburgh","Pennsylvania",3,0,13,13,40.4416941,-79.9900861
+"Pomona California","Pomona","California",1,1,5,6,34.0553813,-117.7517496
+"Pompano Beach Florida","Pompano Beach","Florida",1,2,2,4,26.2378597,-80.1247667
+"Pontiac Michigan","Pontiac","Michigan",1,1,3,4,42.6389216,-83.2910468
+"Port Arthur Texas","Port Arthur","Texas",1,0,7,7,29.8716717,-93.9333107
+"Portland Oregon","Portland","Oregon",2,2,6,8,45.5202471,-122.674194
+"Princeton Minnesota","Princeton","Minnesota",1,0,5,5,45.5698156,-93.5803054
+"Pueblo Colorado","Pueblo","Colorado",2,2,6,8,38.2544472,-104.609141
+"Quincy Washington","Quincy","Washington",1,2,2,4,47.2343673,-119.8535054
+"Red River New Mexico","Red River","New Mexico",1,3,4,7,36.7094826,-105.407563
+"Red Springs North Carolina","Red Springs","North Carolina",1,3,1,4,34.815158,-79.1837649
+"Redwood City California","Redwood City","California",1,0,5,5,37.4863239,-122.232523
+"Reno Nevada","Reno","Nevada",1,0,7,7,39.5261206,-119.8126581
+"Renton Washington","Renton","Washington",1,0,5,5,47.4799078,-122.2034496
+"Richmond Virginia","Richmond","Virginia",1,2,5,7,37.5385087,-77.43428
+"Ripley Mississippi","Ripley","Mississippi",1,0,4,4,34.7307014,-88.9488276
+"Robinsonville (Tunica Resorts) Mississippi","Robinsonville (Tunica Resorts)","Mississippi",2,0,8,8,NA,NA
+"Rochester New York","Rochester","New York",1,0,4,4,43.157285,-77.615214
+"Rock Hill South Carolina","Rock Hill","South Carolina",1,0,4,4,34.9248667,-81.0250784
+"Rockford Illinois","Rockford","Illinois",2,3,8,11,42.2713945,-89.093966
+"Rockmart Georgia","Rockmart","Georgia",1,0,4,4,34.0026005,-85.0416133
+"Romeoville Illinois","Romeoville","Illinois",1,4,0,4,41.6475306,-88.0895061
+"Sacramento California","Sacramento","California",3,3,12,15,38.5810606,-121.493895
+"Saginaw Michigan","Saginaw","Michigan",1,2,11,13,43.4200387,-83.9490365
+"Saint Ann Missouri","Saint Ann","Missouri",1,3,1,4,38.7272735,-90.3831719
+"Saint Louis (Moline Acres) Missouri","Saint Louis (Moline Acres)","Missouri",1,0,4,4,NA,NA
+"Saint Louis Missouri","Saint Louis","Missouri",4,5,17,22,38.6280278,-90.1910154
+"Saint Paul Minnesota","Saint Paul","Minnesota",2,3,6,9,44.9497487,-93.0931028
+"Salisbury Maryland","Salisbury","Maryland",1,1,6,7,38.366027,-75.6009964
+"San Antonio Texas","San Antonio","Texas",3,2,10,12,29.4246002,-98.4951405
+"San Diego California","San Diego","California",1,1,3,4,32.7174202,-117.1627728
+"San Francisco California","San Francisco","California",2,1,12,13,37.7790262,-122.419906
+"San Pedro California","San Pedro","California",2,1,7,8,33.7358518,-118.2922934
+"Sanford Florida","Sanford","Florida",1,1,5,6,28.8117345,-81.2680223
+"Santa Maria California","Santa Maria","California",1,1,3,4,34.9531295,-120.435857
+"Seattle Washington","Seattle","Washington",3,3,15,18,47.6038321,-122.330062
+"Sequatchie Tennessee","Sequatchie","Tennessee",1,5,1,6,35.3594724,-85.401448
+"Severn Maryland","Severn","Maryland",1,0,4,4,39.1278864,-76.6869128
+"Shreveport Louisiana","Shreveport","Louisiana",8,7,45,52,32.5135356,-93.7477839
+"Silver Spring Maryland","Silver Spring","Maryland",1,0,4,4,38.9959461,-77.0276231
+"South Bend Indiana","South Bend","Indiana",1,0,4,4,41.6833813,-86.2500066
+"Spring Lake North Carolina","Spring Lake","North Carolina",1,1,3,4,35.1679396,-78.9728056
+"Springfield Massachusetts","Springfield","Massachusetts",1,0,4,4,42.1018764,-72.5886727
+"Stockton California","Stockton","California",1,1,3,4,37.9577016,-121.2907796
+"Sumter South Carolina","Sumter","South Carolina",1,4,0,4,33.8998826,-80.3237032
+"Sunnyvale Texas","Sunnyvale","Texas",1,1,4,5,32.7965165,-96.5608242
+"Syracuse New York","Syracuse","New York",2,1,7,8,43.0481221,-76.1474244
+"Tallahassee Florida","Tallahassee","Florida",1,0,4,4,30.4380832,-84.2809332
+"Tampa Florida","Tampa","Florida",3,3,23,26,27.9477595,-82.458444
+"Tchula Mississippi","Tchula","Mississippi",1,1,6,7,33.1829034,-90.2228629
+"Temple Hills (Marlow Heights) Maryland","Temple Hills (Marlow Heights)","Maryland",1,0,4,4,38.81050355,-76.95000596047
+"Texarkana Texas","Texarkana","Texas",2,7,3,10,33.44667445,-94.0771483052202
+"Texas City Texas","Texas City","Texas",1,0,4,4,29.396013,-94.9175485
+"Thibodaux Louisiana","Thibodaux","Louisiana",1,0,7,7,29.7957633,-90.822871
+"Thomson Georgia","Thomson","Georgia",1,0,4,4,33.4663248,-82.5026089
+"Thornton California","Thornton","California",1,1,3,4,38.2260268,-121.4246733
+"Toledo Ohio","Toledo","Ohio",2,1,9,10,41.6529143,-83.5378173
+"Toppenish Washington","Toppenish","Washington",1,3,1,4,46.3775015,-120.308938
+"Trabuco Canyon California","Trabuco Canyon","California",1,3,5,8,33.6626232,-117.58938
+"Trenton New Jersey","Trenton","New Jersey",3,2,10,12,40.2203074,-74.7659
+"Truman Minnesota","Truman","Minnesota",1,0,4,4,43.8277419,-94.4389338
+"Tucson Arizona","Tucson","Arizona",1,1,3,4,32.2228765,-110.974847
+"Tulsa Oklahoma","Tulsa","Oklahoma",3,4,8,12,36.1563122,-95.9927516
+"Upper Darby Pennsylvania","Upper Darby","Pennsylvania",1,1,3,4,39.9284459,-75.2737955
+"Valley Stream New York","Valley Stream","New York",1,1,3,4,40.6631362,-73.7056955
+"Vancouver Washington","Vancouver","Washington",1,1,3,4,45.6306954,-122.6744557
+"Vicksburg Mississippi","Vicksburg","Mississippi",1,0,4,4,32.3528055,-90.8777342
+"Virginia Beach Virginia","Virginia Beach","Virginia",1,0,4,4,36.8529841,-75.9774183
+"Wade North Carolina","Wade","North Carolina",1,1,3,4,35.1629419,-78.7361323
+"Wadesboro North Carolina","Wadesboro","North Carolina",1,1,6,7,34.9681767,-80.07674
+"Waianae Hawaii","Waianae","Hawaii",1,2,3,5,21.446678,-158.185272
+"Warren (Howland) Ohio","Warren (Howland)","Ohio",1,0,4,4,41.2321932,-80.7482461
+"Washington District of Columbia","Washington","District of Columbia",10,8,44,52,38.8950368,-77.0365427
+"Wichita Kansas","Wichita","Kansas",1,0,9,9,37.6922361,-97.3375448
+"Wiggins Mississippi","Wiggins","Mississippi",1,1,3,4,30.858244,-89.1353283
+"Williamston North Carolina","Williamston","North Carolina",1,0,5,5,35.8546039,-77.0555114
+"Willowbrook Illinois","Willowbrook","Illinois",1,1,22,23,41.7697533,-87.9358931
+"Wilmington Delaware","Wilmington","Delaware",1,0,4,4,39.7459468,-75.546589
+"Wilson North Carolina","Wilson","North Carolina",1,0,4,4,35.7059114,-77.9175714
+"Winston Salem (Winston-salem) North Carolina","Winston Salem (Winston-salem)","North Carolina",2,1,8,9,36.0895154,-80.2239737306511
+"Woodbridge Virginia","Woodbridge","Virginia",1,3,1,4,38.6581723,-77.2497049
+"Ypsilanti Michigan","Ypsilanti","Michigan",1,2,2,4,42.2410562,-83.613055
+"Yuma Arizona","Yuma","Arizona",2,2,10,12,32.665135,-114.476031572498
