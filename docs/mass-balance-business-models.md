@@ -169,11 +169,11 @@ figcaption {
 
 # Combating Unnecessary ER Visits: Mass Balance Business Models and Behavior Change
 
-Why focus on reducing unnecessary ER visits when musculoskeletal (MSK) spending is so high?
+<!-- Why focus on reducing unnecessary ER visits when musculoskeletal (MSK) spending is so high?
 
-Indeed, MSK-related healthcare costs in the U.S. are staggering—exceeding **$874 billion** annually in medical expenses and lost wages. MSK disorders are the **#1 medical cost driver** for employers, outpacing expenditures on cancer, cardiovascular diseases, diabetes, and maternity combined. They account for over 50% of disabling health conditions reported by adults and are influenced by factors like age, occupation, activity level, lifestyle, and family history. With an aging population and rising obesity rates, MSK-related costs are only expected to increase.
+Indeed, MSK-related healthcare costs in the U.S. are staggering—exceeding **$874 billion** annually in medical expenses and lost wages. MSK disorders are the **#1 medical cost driver** for employers, outpacing expenditures on cancer, cardiovascular diseases, diabetes, and maternity combined. They account for over 50% of disabling health conditions reported by adults and are influenced by factors like age, occupation, activity level, lifestyle, and family history. With an aging population and rising obesity rates, MSK-related costs are only expected to increase. -->
 
-However, while tackling MSK spending is crucial, the issue of unnecessary **Emergency Room (ER) visits** demands immediate attention. Consider this alarming statistic:
+The number of unnecessary **Emergency Room (ER) visits** is alarming. Consider the following:
 
 <div class="quote-box">
     <p class="quote-text">"Most studies find that at least 30% of all ED visits in the US are non-urgent, although select studies such as those using National Hospital Ambulatory Medical Survey data report lower percentages (<10%).<sup><a href="#source-1">[1]</a></sup>
@@ -632,6 +632,7 @@ function useCurrentOutputs() {
 
   // Display the LaTeX equations
   solverOutputElement.appendChild(tex.block`${output_generic["latex-matrices"].calculationStateMatrix_tex}`);
+  
   solverOutputElement.appendChild(tex.block`${output_generic["latex-cost-difference"].costDifferenceMatrix_tex}`);
 
 
@@ -1098,7 +1099,7 @@ const n_proportions_wand = calculateSampleSizeForProportions(
 )
 ```
 
-With these parameters, we determine that approximately <strong>${n_proportions_wand} </strong> are needed in each group to detect a <strong> ${relative_p2_calc.toFixed(2)} </strong> % relative reduction in ER utilization with 80% power at a 5% significance level (assuming you didn't change the Z's above :-).
+With these parameters, we determine that approximately <strong>${n_proportions_wand} </strong> are needed in each group to detect a <strong> ${Example1Form_Selections.relative_decrease*100} </strong> % relative reduction in ER utilization with 80% power at a 5% significance level (assuming you didn't change the Z's above :-).
 
 That's not very much, but then again, this would be a _true_ RCT and not an intent to treat RCT. Further, the behavior change rate and relative reduction observed is somewhat _absurd_. If we were to redo this for something more reasonable (like a ~10% relative reduction in Uneccessary ER), we would need a lot more people (<strong>~7890</strong> per arm).
 
