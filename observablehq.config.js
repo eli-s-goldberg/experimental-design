@@ -35,6 +35,10 @@ export default {
           name: "Random Forests",
           path: "/random-forest",
         },
+        {
+          name: "Mass Balance Business Models",
+          path: "/mass-balance-business-models",
+        },
       ],
     },
     {

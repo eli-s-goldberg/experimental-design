@@ -82,6 +82,7 @@ Derived from this video [S4b Sample size and power for cluster randomised trial]
 <iframe width="560" height="315" src="https://www.youtube.com/embed/JOtwZyaJZpk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <div class = "horizontal-line"></div>
+
 ## Notes
 
 4.b Parallel arm cluster randomization (no repeated measure)

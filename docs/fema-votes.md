@@ -36,8 +36,9 @@ function row_assignments() {
 }
 
 // const width = 800; // Adjust as needed
-const height = 500; // Adjust as needed
-const senator_radius = 4; // Adjust as needed
+const width = window.innerWidth;
+const height = window.innerHeight
+const senator_radius = Math.min(width, height) / 25; // Adjust as needed
 ```
 
 ```js
@@ -64,203 +65,166 @@ const senators = await get_senators();
 ```
 
 ```js
-const senator_radius = 14;
-const images = true;
+// function calculatePositions(senators) {
+//   const positions = [];
+//   const seatsPerRow = [16, 22, 29, 33]; // Adjust as needed
+//   let index = 0;
 
-const legendItems = ["Democrat", "Republican", "Independent"];
+//   const centerX = width / 2;
+//   const centerY = height / 2;
+//   const baseRadius = 50; // Base distance between rows
+//   const textOffset = 30; // Distance to offset the text from the image along the radial direction
 
-function color(party) {
-  switch (party) {
-    case "Democrat":
-      return "blue";
-    case "Republican":
-      return "red";
-    case "Independent":
-      return "green";
-    default:
-      return "gray";
+//   for (let row = 0; row < seatsPerRow.length; row++) {
+//     const seats = seatsPerRow[row];
+//     const radiusX = (row + 1) * baseRadius * 1.5; // Horizontal stretching factor
+//     const radiusY = (row + 1) * baseRadius * 0.7; // Vertical compression factor
+
+//     for (let seat = 0; seat < seats; seat++) {
+//       const angle = (Math.PI * (seat - (seats - 1) / 2)) / seats;
+//       const x = centerX + radiusX * Math.sin(angle);
+//       const y = centerY - radiusY * Math.cos(angle);
+
+//       // Calculate the unit vector in the radial direction
+//       const dx = x - centerX;
+//       const dy = y - centerY;
+//       const length = Math.sqrt(dx * dx + dy * dy);
+//       const ux = dx / length;
+//       const uy = dy / length;
+
+//       // Calculate text position by extending along the radial direction
+//       const text_x = x + textOffset * ux;
+//       const text_y = y + textOffset * uy;
+
+//       positions.push({ x, y, text_x, text_y });
+//       index++;
+//       if (index >= senators.length) break;
+//     }
+//     if (index >= senators.length) break;
+//   }
+//   return positions;
+// }
+
+function calculatePositions(senators) {
+  const positions = [];
+  const seatsPerRow = [16, 22, 29, 33]; // Adjust as needed based on actual rows
+  let index = 0;
+
+  const centerX = width / 2;
+  const centerY = height / 2;
+  const baseRadius = 20;      // Base distance between rows
+  const textOffset = 5;      // Distance to offset the text from the image along the radial direction
+  const nameLineSpacing = 2; // Vertical spacing between first and last names
+
+  for (let row = 0; row < seatsPerRow.length; row++) {
+    const seats = seatsPerRow[row];
+    const radiusX = (row + 1) * baseRadius * 1.5; // Horizontal stretching factor
+    const radiusY = (row + 1) * baseRadius * 0.7; // Vertical compression factor
+
+    for (let seat = 0; seat < seats; seat++) {
+      const angle = (Math.PI * (seat - (seats - 1) / 2)) / seats;
+      const x = centerX + radiusX * Math.sin(angle);
+      const y = centerY - radiusY * Math.cos(angle);
+
+      // Calculate the unit vector in the radial direction
+      const dx = x - centerX;
+      const dy = y - centerY;
+      const length = Math.sqrt(dx * dx + dy * dy);
+      const ux = dx / length;
+      const uy = dy / length;
+
+      // Calculate text position by extending along the radial direction
+      const text_x = x + textOffset * ux;
+      const text_y = y + textOffset * uy;
+
+      positions.push({ x, y, text_x, text_y });
+      index++;
+      if (index >= senators.length) break;
+    }
+    if (index >= senators.length) break;
   }
-}
-
-function angle(i) {
-  return -(Math.PI / 2) * (position_in_row(i) / (senators_in_row(i) - 1));
-}
-
-function senators_in_row(i) {
-  return 8 + row(i);
-}
-
-function position_in_row(i) {
-  let pos = 0;
-  for (let j = 50; j > i; j--) {
-    if (row(j) == row(i)) pos++;
-  }
-  return pos;
-}
-
-function row(i) {
-  return row_assignments()[i];
-}
-
-function radius(i) {
-  return row(i) * senator_radius * 6 + 200;
-}
-
-function row_assignments() {
-  let arr = [];
-  let r = 0;
-  const row_max = [8, 9, 10, 11, 12];
-  const row_count = [0, 0, 0, 0, 0];
-
-  for (let i = 0; i < 50; i++) {
-    while (row_count[r] == row_max[r]) r = (r + 1) % 5;
-    row_count[r] += 1;
-    arr[i] = r;
-    r = (r + 1) % 5;
-  }
-
-  return arr;
-}
-
-function x(i) {
-  const j = i < 50 ? i : i - 50;
-  const offset = Math.cos(angle(j)) * radius(j) + senator_radius * 3;
-  return width / 2 + (i < 50 ? offset : -offset);
-}
-
-function y(i) {
-  const j = i < 50 ? i : i - 50;
-  return height - senator_radius + 50 + Math.sin(angle(j)) * radius(j);
-}
-
-function senate_plot(senators) {
-  const height = 2000;
-  const width = 2000;
-  // const margin = { top: 200, right: 20, bottom: 20, left: 20 };
-
-  const svg = d3.create("svg").attr("width", width).attr("height", height);
-  // .attr("transform", `translate(${margin.left},${margin.top})`);
-
-  svg
-    .append("defs")
-    .append("clipPath")
-    .attr("id", "clip-circle")
-    .append("circle")
-    .attr("cx", senator_radius)
-    .attr("cy", senator_radius)
-    .attr("r", senator_radius);
-
-  const sens = svg
-    .selectAll("g.senator")
-    .data(senators)
-    .enter()
-    .append("g")
-    .attr("class", "senator")
-    .attr("transform", (d, i) => `translate(${x(i)}, ${y(i)})`);
-
-  // Outer circle with party color
-  sens
-    .append("circle")
-    .attr("r", senator_radius + 2)
-    .attr("cx", 0)
-    .attr("cy", 0)
-    .attr("fill", (d) => color(d.party))
-    .append("title")
-    .text((d) => d.name.official_full);
-
-  // Inner white circle
-  sens
-    .append("circle")
-    .attr("r", senator_radius + 1)
-    .attr("cx", 0)
-    .attr("cy", 0)
-    .attr("fill", "rgba(255, 255, 255, 0.8)")
-    .append("title")
-    .text((d) => d.name.official_full);
-
-  // Senator's image
-  if (images) {
-    sens
-      .append("g")
-      .attr("clip-path", "url(#clip-circle)")
-      .attr("transform", `translate(${-senator_radius}, ${-senator_radius})`)
-      .append("image")
-      .attr(
-        "xlink:href",
-        (d) =>
-          `https://theunitedstates.io/images/congress/225x275/${d.bioguide}.jpg`
-      )
-      .attr("width", senator_radius * 2)
-      .attr("height", senator_radius * 2)
-      .append("title")
-      .text((d) => d.name.official_full);
-  }
-
-  // Add labels beneath each image
-  sens
-    .append("text")
-    .attr("x", 0)
-    .attr("y", senator_radius + 12) // Increased spacing
-    .attr("text-anchor", "middle")
-    .attr("font-size", "8px") // Increased font size
-    .attr("fill", "black") // Ensure text is visible
-    .text((d) => d.name.last)
-    .append("title")
-    .text((d) => d.name.official_full);
-
-  // // Append the legend
-  // const legend = svg
-  //   .append("g")
-  //   .attr("transform", `translate(${width - 125}, 20)`)
-  //   .selectAll("g.legend")
-  //   .data(legendItems)
-  //   .enter()
-  //   .append("g")
-  //   .attr("class", "legend")
-  //   .attr("transform", (d, i) => `translate(0, ${i * 25})`);
-
-  // legend
-  //   .append("rect")
-  //   .attr("x", 0)
-  //   .attr("y", -5)
-  //   .attr("width", 10)
-  //   .attr("height", 10)
-  //   .attr("fill", (d) => color(d));
-
-  // legend
-  //   .append("text")
-  //   .attr("x", 15)
-  //   .attr("alignment-baseline", "middle")
-  //   .text((d) => d);
-
-  return svg.node();
+  return positions;
 }
 ```
 
-<style>
-.aspectwrapper {
-  display: inline-block; /* shrink to fit */
-  width: 100%;           /* whatever width you like */
-  position: relative;    /* so .content can use position: absolute */
-}
-.aspectwrapper::after {
-  padding-top: 56.25%; /* percentage of containing block _width_ */
-  display: block;
-  content: '';
-}
-.content {
-  position: absolute;
-  top: 0; bottom: 0; right: 0; left: 0;  /* follow the parent's edges */
-  outline: thin dashed green;            /* just so you can see the box */
-}
-</style>
-
-<div class="aspectwrapper">
-  <div class="content" style="width: 100%; height: 100%;">
 
 ```js
-view(senate_plot(senators));
+// const positions = calculatePositions(senators)
+// const mergedData = senators.map((senator, index) => ({
+//   ...senator,
+//   x: positions[index].x,
+//   y: positions[index].y,
+//   text_x: positions[index].text_x,
+//   text_y: positions[index].text_y
+// }));
+
+const positions = calculatePositions(senators);
+const mergedData = senators.map((senator, index) => {
+  const fullName = senator.name.official_full.trim();
+  
+  // Split the name into first and last names
+  // This simple split assumes exactly two parts; adjust as needed for middle names, etc.
+  const nameParts = fullName.split(' ');
+  const firstName = nameParts.slice(0, -1).join(' ');
+  const lastName = nameParts.slice(-1).join(' ');
+
+  return {
+    ...senator,
+    x: positions[index].x,
+    y: positions[index].y,
+    text_x: positions[index].text_x,
+    text_y: positions[index].text_y,
+    first_name: firstName,
+    last_name: lastName
+  };
+});
+
+view(mergedData)
+
+```
+```js
+Plot.plot({
+  width: 1000,
+  height: 600,
+  grid: true,
+  inset: 10,
+  marginLeft: 40,
+  marginTop: 40, 
+  marginBottom:40, 
+  marginRight:40, 
+  x: {label: "", axis: null},
+  y: {label: "", axis: null},
+  marks: [
+    Plot.text(mergedData, {
+      x: "text_x",
+      y: "text_y",
+      text: d => d.first_name,
+      textAnchor: "end",
+      // fontSize: 12,
+      dy: -5 
+    }),
+    // Last Names
+    Plot.text(mergedData, {
+      x: "text_x",
+      y: "text_y",
+      text: d => d.last_name,
+      textAnchor: "end",
+      // fontSize: 12,
+      dy: 5
+    }),
+
+    Plot.dot(mergedData, {x: "x", y: "y"}),
+    Plot.image(mergedData, {
+      x: "x",
+      y: "y",
+      src: d => `https://theunitedstates.io/images/congress/225x275/${d.bioguide}.jpg`,
+      r: 10,
+      title: d=> d.name.official_full
+    })
+  ]
+})
 ```
 
-  </div>
-</div>
+```js
+view(calculatePositions(senators))
+```
