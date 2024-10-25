@@ -190,12 +190,13 @@ export class MatrixSolver {
             [0.0500, 0.1000, 0.0000, 0.9500, 0.1000],
             [0.0000, 0.0500, 0.0500, 0.0000, 0.8500]
           ]),
-        costMatrix = math.matrix([
-            [500], 
-            [200], 
-            [150], 
-            [100], 
-            [50]]) 
+        costMatrix = math.matrix( 
+            [[2032], 
+            [105], 
+            [193], 
+            [90], 
+            [5]
+        ]) 
         } = {}) 
         {
             this.currentState = currentState;
@@ -320,7 +321,7 @@ export class MatrixSolver {
     \\\\
     \\\\
     ~\\\\
-    \\text{Total Cost Differential} = \\$${this.cost_difference_total.toFixed(2)}
+    \\text{Total Cost Differential} = \\$${this.cost_difference_total}
 `;
     
         // Return two separate LaTeX outputs: one for the main equation and one for cost difference

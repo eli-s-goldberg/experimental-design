@@ -14,7 +14,7 @@
 <link rel="modulepreload" href="./_observablehq/client.js">
 <link rel="modulepreload" href="./_observablehq/runtime.js">
 <link rel="modulepreload" href="./_observablehq/stdlib.js">
-<link rel="modulepreload" href="./_import/components/DistP.83baa9e3.js">
+<link rel="modulepreload" href="./_import/components/DistP.b43afe35.js">
 <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3@7/+esm">
 <link rel="modulepreload" href="./_node/d3-require@1.3.0/index.js">
 <link rel="modulepreload" href="./_import/components/parallelmethods.8f1a55e7.js">
@@ -65,7 +65,7 @@
 import {define} from "./_observablehq/client.js";
 
 define({id: "6fb9f70f", outputs: ["DistP","MatrixSolver","d3","require","jStat","math","calculateSampleSizeForMeans","calculateSampleSizeForProportions","calculateVarianceFormulaIndividualRandomized","calculateVarianceFormulaClusterRandomized","generateVarianceData","generateUnifiedVarianceData"], body: async () => {
-const [{DistP, MatrixSolver}, d3, {require}, {calculateSampleSizeForMeans, calculateSampleSizeForProportions, calculateVarianceFormulaIndividualRandomized, calculateVarianceFormulaClusterRandomized, generateVarianceData, generateUnifiedVarianceData}] = await Promise.all([import("./_import/components/DistP.83baa9e3.js"), import("https://cdn.jsdelivr.net/npm/d3@7/+esm"), import("./_node/d3-require@1.3.0/index.js"), import("./_import/components/parallelmethods.8f1a55e7.js")]);
+const [{DistP, MatrixSolver}, d3, {require}, {calculateSampleSizeForMeans, calculateSampleSizeForProportions, calculateVarianceFormulaIndividualRandomized, calculateVarianceFormulaClusterRandomized, generateVarianceData, generateUnifiedVarianceData}] = await Promise.all([import("./_import/components/DistP.b43afe35.js"), import("https://cdn.jsdelivr.net/npm/d3@7/+esm"), import("./_node/d3-require@1.3.0/index.js"), import("./_import/components/parallelmethods.8f1a55e7.js")]);
 // imports
 
 
@@ -289,7 +289,7 @@ view(tex.block`${output["latex-cost-difference"].costDifferenceMatrix_tex}`)
 return {current_state,cost_matrix,transfer_matrix,solver,cost_diff,output};
 }});
 
-define({id: "c37664d3", inputs: ["updateTable","view","html","MatrixSolver","math","tex"], outputs: ["tableInfo","currentMatrix","costMatrix","currentStateMatrix","currentLabels","currentOutputs","outputsElement","solverOutputElement","matrixOutputElement","updateMatrixOutputElement","updateOutputsDisplay","useCurrentOutputs"], body: (updateTable,view,html,MatrixSolver,math,tex) => {
+define({id: "b9066f58", inputs: ["updateTable","view","html","MatrixSolver","math","tex"], outputs: ["tableInfo","currentMatrix","costMatrix","currentStateMatrix","currentLabels","currentOutputs","outputsElement","solverOutputElement","matrixOutputElement","updateMatrixOutputElement","updateOutputsDisplay","useCurrentOutputs"], body: (updateTable,view,html,MatrixSolver,math,tex) => {
 // Initialize the table and get the reference
 let tableInfo = updateTable();
 
@@ -340,6 +340,7 @@ function useCurrentOutputs() {
 
   // Display the LaTeX equations
   solverOutputElement.appendChild(tex.block`${output_generic["latex-matrices"].calculationStateMatrix_tex}`);
+  
   solverOutputElement.appendChild(tex.block`${output_generic["latex-cost-difference"].costDifferenceMatrix_tex}`);
 
 
@@ -835,9 +836,9 @@ n_proportions_wand
 ))
 }});
 
-define({id: "941d9494", inline: true, inputs: ["relative_p2_calc","display"], body: async (relative_p2_calc,display) => {
+define({id: "5581e322", inline: true, inputs: ["Example1Form_Selections","display"], body: async (Example1Form_Selections,display) => {
 display(await(
-relative_p2_calc.toFixed(2)
+Example1Form_Selections.relative_decrease*100
 ))
 }});
 
@@ -1153,9 +1154,10 @@ figcaption {
 
 </style>
 <h1 id="combating-unnecessary-er-visits%3A-mass-balance-business-models-and-behavior-change" tabindex="-1"><a class="observablehq-header-anchor" href="#combating-unnecessary-er-visits%3A-mass-balance-business-models-and-behavior-change">Combating Unnecessary ER Visits: Mass Balance Business Models and Behavior Change</a></h1>
-<p>Why focus on reducing unnecessary ER visits when musculoskeletal (MSK) spending is so high?</p>
-<p>Indeed, MSK-related healthcare costs in the U.S. are staggering—exceeding <strong>$874 billion</strong> annually in medical expenses and lost wages. MSK disorders are the <strong>#1 medical cost driver</strong> for employers, outpacing expenditures on cancer, cardiovascular diseases, diabetes, and maternity combined. They account for over 50% of disabling health conditions reported by adults and are influenced by factors like age, occupation, activity level, lifestyle, and family history. With an aging population and rising obesity rates, MSK-related costs are only expected to increase.</p>
-<p>However, while tackling MSK spending is crucial, the issue of unnecessary <strong>Emergency Room (ER) visits</strong> demands immediate attention. Consider this alarming statistic:</p>
+<!-- Why focus on reducing unnecessary ER visits when musculoskeletal (MSK) spending is so high?
+
+Indeed, MSK-related healthcare costs in the U.S. are staggering—exceeding **$874 billion** annually in medical expenses and lost wages. MSK disorders are the **#1 medical cost driver** for employers, outpacing expenditures on cancer, cardiovascular diseases, diabetes, and maternity combined. They account for over 50% of disabling health conditions reported by adults and are influenced by factors like age, occupation, activity level, lifestyle, and family history. With an aging population and rising obesity rates, MSK-related costs are only expected to increase. -->
+<p>The number of unnecessary <strong>Emergency Room (ER) visits</strong> is alarming. Consider the following:</p>
 <div class="quote-box">
     <p class="quote-text">"Most studies find that at least 30% of all ED visits in the US are non-urgent, although select studies such as those using National Hospital Ambulatory Medical Survey data report lower percentages (&lt;10%).<sup><a href="#source-1">[1]</a></sup>
         <sup><a href="#source-2">[2]</a></sup>
@@ -1302,7 +1304,7 @@ figcaption {
 <p>You can mess with this however you'd like, but let's initialize this generic solver with some practical information.</p>
 <p>To generalize this approach, we can adjust the model parameters interactively, allowing us to simulate different scenarios and interventions. By updating the transfer matrix, cost array, and initial state, we can observe how changes impact the future state and cost savings.</p>
 <p>N.b., that the transition matrix needs to sum to 1 by column. I've implemented a little function that shows you if you've done it correctly. If everything is <strong><span style="color:green">green</span></strong>, you're all good. If it's <strong><span style="color:blue">blue</span></strong>, then the sum is too high; <strong><span style="color:red">red</span></strong> if it's too low.</p>
-<div id="cell-c37664d3" class="observablehq observablehq--block"></div>
+<div id="cell-b9066f58" class="observablehq observablehq--block"></div>
 <div id="cell-b403d91b" class="observablehq observablehq--block"></div>
 <p>Oh good! If you haven't played with the example, and despite some of our off targeted effects driving spend a bit less efficiently than hoped, we'll save some money (~$1M or so). Nice. We'll see ~ 630 less ER visits than we would have otherwise normally observed. I hope we save some lives and some out of pocket costs for our members, as well!</p>
 <div class="figure-container">
@@ -1334,7 +1336,7 @@ Reduction of Avoidable Visits: 50% of avoidable visits = 50% of 66% = 33% of tot
 <div id="cell-81e6e81c" class="observablehq observablehq--block"></div>
 <p>Calculating the required sample size:</p>
 <div id="cell-011e8b6b" class="observablehq observablehq--block"></div>
-<p>With these parameters, we determine that approximately <strong><span id="cell-185a128e"><span class="observablehq-loading"></span></span> </strong> are needed in each group to detect a <strong> <span id="cell-941d9494"><span class="observablehq-loading"></span></span> </strong> % relative reduction in ER utilization with 80% power at a 5% significance level (assuming you didn't change the Z's above :-).</p>
+<p>With these parameters, we determine that approximately <strong><span id="cell-185a128e"><span class="observablehq-loading"></span></span> </strong> are needed in each group to detect a <strong> <span id="cell-5581e322"><span class="observablehq-loading"></span></span> </strong> % relative reduction in ER utilization with 80% power at a 5% significance level (assuming you didn't change the Z's above :-).</p>
 <p>That's not very much, but then again, this would be a <em>true</em> RCT and not an intent to treat RCT. Further, the behavior change rate and relative reduction observed is somewhat <em>absurd</em>. If we were to redo this for something more reasonable (like a ~10% relative reduction in Uneccessary ER), we would need a lot more people (<strong>~7890</strong> per arm).</p>
 </div>
 <h2 id="citations" tabindex="-1"><a class="observablehq-header-anchor" href="#citations">Citations</a></h2>
@@ -1851,6 +1853,6 @@ Here are some citations.
 </div> --></main>
 <footer id="observablehq-footer">
 <nav><a rel="prev" href="./random-forest"><span>Random Forests</span></a><a rel="next" href="./pbpk"><span>Drug Elimination</span></a></nav>
-<div>Built with <a href="https://observablehq.com/" target="_blank" rel="noopener noreferrer">Observable</a> on <a title="2024-10-25T00:04:34">Oct 25, 2024</a>.</div>
+<div>Built with <a href="https://observablehq.com/" target="_blank" rel="noopener noreferrer">Observable</a> on <a title="2024-10-25T09:13:57">Oct 25, 2024</a>.</div>
 </footer>
 </div>
