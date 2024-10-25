@@ -289,7 +289,7 @@ view(tex.block`${output["latex-cost-difference"].costDifferenceMatrix_tex}`)
 return {current_state,cost_matrix,transfer_matrix,solver,cost_diff,output};
 }});
 
-define({id: "b9066f58", inputs: ["updateTable","view","html","MatrixSolver","math","tex"], outputs: ["tableInfo","currentMatrix","costMatrix","currentStateMatrix","currentLabels","currentOutputs","outputsElement","solverOutputElement","matrixOutputElement","updateMatrixOutputElement","updateOutputsDisplay","useCurrentOutputs"], body: (updateTable,view,html,MatrixSolver,math,tex) => {
+define({id: "229eb3b3", inputs: ["updateTable","view","html","MatrixSolver","math","tex"], outputs: ["tableInfo","currentMatrix","costMatrix","currentStateMatrix","currentLabels","currentOutputs","outputsElement","solverOutputElement","matrixOutputElement","updateMatrixOutputElement","updateOutputsDisplay","useCurrentOutputs"], body: (updateTable,view,html,MatrixSolver,math,tex) => {
 // Initialize the table and get the reference
 let tableInfo = updateTable();
 
@@ -340,7 +340,7 @@ function useCurrentOutputs() {
 
   // Display the LaTeX equations
   solverOutputElement.appendChild(tex.block`${output_generic["latex-matrices"].calculationStateMatrix_tex}`);
-  
+
   solverOutputElement.appendChild(tex.block`${output_generic["latex-cost-difference"].costDifferenceMatrix_tex}`);
 
 
@@ -1131,12 +1131,12 @@ tex`R_{wand, relative~increase}=0.3`
 }
 
 .figure-container {
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
+    /* border: 1px solid #ccc; */
+    /* background-color: #f9f9f9; */
     padding: 15px;
-    margin: 20px 0;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* margin: 20px 0; */
+    /* border-radius: 5px; */
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
 }
 
 figure {
@@ -1304,7 +1304,7 @@ Indeed, MSK-related healthcare costs in the U.S. are staggering—exceeding **$8
 <p>You can mess with this however you'd like, but let's initialize this generic solver with some practical information.</p>
 <p>To generalize this approach, we can adjust the model parameters interactively, allowing us to simulate different scenarios and interventions. By updating the transfer matrix, cost array, and initial state, we can observe how changes impact the future state and cost savings.</p>
 <p>N.b., that the transition matrix needs to sum to 1 by column. I've implemented a little function that shows you if you've done it correctly. If everything is <strong><span style="color:green">green</span></strong>, you're all good. If it's <strong><span style="color:blue">blue</span></strong>, then the sum is too high; <strong><span style="color:red">red</span></strong> if it's too low.</p>
-<div id="cell-b9066f58" class="observablehq observablehq--block"></div>
+<div id="cell-229eb3b3" class="observablehq observablehq--block"></div>
 <div id="cell-b403d91b" class="observablehq observablehq--block"></div>
 <p>Oh good! If you haven't played with the example, and despite some of our off targeted effects driving spend a bit less efficiently than hoped, we'll save some money (~$1M or so). Nice. We'll see ~ 630 less ER visits than we would have otherwise normally observed. I hope we save some lives and some out of pocket costs for our members, as well!</p>
 <div class="figure-container">
@@ -1853,6 +1853,6 @@ Here are some citations.
 </div> --></main>
 <footer id="observablehq-footer">
 <nav><a rel="prev" href="./random-forest"><span>Random Forests</span></a><a rel="next" href="./pbpk"><span>Drug Elimination</span></a></nav>
-<div>Built with <a href="https://observablehq.com/" target="_blank" rel="noopener noreferrer">Observable</a> on <a title="2024-10-25T09:13:57">Oct 25, 2024</a>.</div>
+<div>Built with <a href="https://observablehq.com/" target="_blank" rel="noopener noreferrer">Observable</a> on <a title="2024-10-25T09:16:20">Oct 25, 2024</a>.</div>
 </footer>
 </div>
