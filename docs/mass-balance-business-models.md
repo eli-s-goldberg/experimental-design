@@ -144,12 +144,12 @@ import {
 }
 
 .figure-container {
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
+    /* border: 1px solid #ccc; */
+    /* background-color: #f9f9f9; */
     padding: 15px;
-    margin: 20px 0;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* margin: 20px 0; */
+    /* border-radius: 5px; */
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
 }
 
 figure {
@@ -632,7 +632,7 @@ function useCurrentOutputs() {
 
   // Display the LaTeX equations
   solverOutputElement.appendChild(tex.block`${output_generic["latex-matrices"].calculationStateMatrix_tex}`);
-  
+
   solverOutputElement.appendChild(tex.block`${output_generic["latex-cost-difference"].costDifferenceMatrix_tex}`);
 
 
