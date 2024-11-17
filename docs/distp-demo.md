@@ -61,7 +61,7 @@ view(normalDist.plot())
 ```js
 const ldp = view(Inputs.form(
     {
-        'mean': Inputs.range([0, 200], { label: "Mean", value: 0.2, step: 0.1 }),
+        'mean': Inputs.range([0, 1], { label: "Mean", value: 0.2, step: 0.1 }),
         'shape' : Inputs.range([0.1, 1], { label: "Shape", value: 0.8, step: 0.01 }),
         'size' : Inputs.range([1000, 100000], { label: "Size", value: 50000, step: 1000,disabled:true }),
         'lowerBound' : Inputs.range([0, 10], { label: "Lower Bound", value: 0, step: 1, disabled:true }),

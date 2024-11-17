@@ -92,10 +92,10 @@ view(normalDist.plot())
 return {normalDist};
 }});
 
-define({id: "6cad5c34", inputs: ["view","Inputs"], outputs: ["ldp"], body: (view,Inputs) => {
+define({id: "edb90f45", inputs: ["view","Inputs"], outputs: ["ldp"], body: (view,Inputs) => {
 const ldp = view(Inputs.form(
     {
-        'mean': Inputs.range([0, 200], { label: "Mean", value: 0.2, step: 0.1 }),
+        'mean': Inputs.range([0, 1], { label: "Mean", value: 0.2, step: 0.1 }),
         'shape' : Inputs.range([0.1, 1], { label: "Shape", value: 0.8, step: 0.01 }),
         'size' : Inputs.range([1000, 100000], { label: "Size", value: 50000, step: 1000,disabled:true }),
         'lowerBound' : Inputs.range([0, 10], { label: "Lower Bound", value: 0, step: 1, disabled:true }),
@@ -320,7 +320,7 @@ return {divResult};
 <div id="cell-587ed566" class="observablehq observablehq--block"></div>
 <div id="cell-ae457847" class="observablehq observablehq--block"></div>
 <h3 id="lognormal-distribution" tabindex="-1"><a class="observablehq-header-anchor" href="#lognormal-distribution">Lognormal distribution</a></h3>
-<div id="cell-6cad5c34" class="observablehq observablehq--block"></div>
+<div id="cell-edb90f45" class="observablehq observablehq--block"></div>
 <div id="cell-20c6309b" class="observablehq observablehq--block"></div>
 <h3 id="beta-distribution" tabindex="-1"><a class="observablehq-header-anchor" href="#beta-distribution">Beta distribution</a></h3>
 <p>Beta distributions are super flexible. They can be uniform, or resemble lognormal skewed left or right. Play around.</p>
@@ -369,6 +369,6 @@ return {divResult};
 </main>
 <footer id="observablehq-footer">
 <nav><a rel="prev" href="./live-table-data"><span>Live Tables</span></a><a rel="next" href="./pbpk"><span>Drug Elimination</span></a></nav>
-<div>Built with <a href="https://observablehq.com/" target="_blank" rel="noopener noreferrer">Observable</a> on <a title="2024-11-17T16:36:41">Nov 17, 2024</a>.</div>
+<div>Built with <a href="https://observablehq.com/" target="_blank" rel="noopener noreferrer">Observable</a> on <a title="2024-11-17T16:41:47">Nov 17, 2024</a>.</div>
 </footer>
 </div>
