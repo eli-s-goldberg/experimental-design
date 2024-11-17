@@ -4,138 +4,144 @@ import { require } from "d3-require";
 const jStat = await require("jstat@1.9.4");
 const math = await require("mathjs@9.4.2");
 
+// Define distributions
+export const distributions = {
+    
+    // Normal distribution using jStat
+    normal: ({ mean = 0, std = 1 } = {}) => {
+        return jStat.normal.sample(mean, std);
+    },
+    
+    // Uniform distribution using jStat
+    uniform: ({ min = 0, max = 1 } = {}) => {
+        return jStat.uniform.sample(min, max);
+    },
+    
+    // Exponential distribution using jStat
+    exponential: ({ rate = 1 } = {}) => {
+        return jStat.exponential.sample(rate);
+    },
+    
+    // Lognormal distribution using jStat, with real-space mean and shape
+    lognormal: ({ mean = 0.2, shape = 0.1 } = {}) => {
+        const logMu = Math.log(mean) - (shape ** 2) / 2;
+        const logSigma = shape;
+        return jStat.lognormal.sample(logMu, logSigma);
+    },
+    
+    // Triangular distribution (custom, as jStat lacks this)
+    triangular: ({ min = 0, max = 1, mode = (min + max) / 2 } = {}) => {
+        const u = Math.random();
+        const f = (mode - min) / (max - min);
+        return u < f
+            ? min + Math.sqrt(u * (max - min) * (mode - min))
+            : max - Math.sqrt((1 - u) * (max - min) * (max - mode));
+    },
+
+    // Beta distribution using jStat
+    beta: ({ alpha = 2, beta = 2 } = {}) => {
+        return jStat.beta.sample(alpha, beta);
+    },
+
+    // Gamma distribution using jStat
+    gamma: ({ shape = 1, scale = 1 } = {}) => {
+        return jStat.gamma.sample(shape, scale);
+    },
+
+    // Weibull distribution using jStat
+    weibull: ({ scale = 1, shape = 1 } = {}) => {
+        return jStat.weibull.sample(scale, shape);
+    },
+
+    // Custom discrete distribution from sample array
+    custom: ({ samples = [0, 1, 2, 3, 4, 5] } = {}) => {
+        return samples[Math.floor(Math.random() * samples.length)];
+    }
+};
 
 export class DistP {
     /**
-     * @param {string} name - Name of the distribution.
-     * @param {string} lever - Lever the distribution is associated with.
-     * @param {function|string} distfunc - A distribution function or 'fitted' to sample based on provided data.
-     * @param {array} bounds - Array [lower bound, upper bound].
-     * @param {string} boundMethod - Bound method to handle outliers, e.g., 'drop_recursive'.
-     * @param {object} kwargs - Keyword arguments for the distribution function.
-     * @param {number} size - Size of samples array.
-     * @param {array} samples - Sample data for the distribution.
+     * @param {Object} config - Configuration object for the distribution
+     * @param {string} config.name - Name of the distribution
+     * @param {string} config.lever - Lever the distribution is associated with
+     * @param {Function|string} config.distfunc - Distribution function or 'fitted'
+     * @param {Object} config.params - Parameters for the distribution function
+     * @param {Array<number>} config.bounds - [lower bound, upper bound]
+     * @param {string} config.boundMethod - Method to handle outliers ('drop_recursive' or 'stack')
+     * @param {number} config.size - Number of samples to generate
+     * @param {Array<number>} [config.samples] - Initial samples (required if distfunc is 'fitted')
      */
     constructor({
-        name = 'default name',
-        lever = 'default lever',
-        distfunc = 'default',
+        name = 'default',
+        lever = 'default',
+        distfunc = null,
+        params = {},
         bounds = [0, 1e6],
         boundMethod = 'drop_recursive',
         size = 5000,
-        kwargs = {},
-        samples = [0, 1, 2]
+        samples = null
     } = {}) {
         this.name = name;
         this.lever = lever;
         this.distfunc = distfunc;
+        this.params = params;
         this.bounds = bounds;
         this.boundMethod = boundMethod;
         this.size = size;
-        this.kwargs = kwargs;
         this.samples = samples;
-        this.samplesMean = 0;
-        this.samplesMedian = 0;
-        this.samplesStd = 0;
-        this.samplesPercentiles = [];
+        
+        // Initialize statistics
+        this.stats = {
+            mean: 0,
+            median: 0,
+            std: 0,
+            percentiles: []
+        };
 
-        this.postInit();
+        this.initialize();
     }
 
-    postInit() {
-        if (this.distfunc === 'default') return;
-
-        if (this.distfunc === 'fitted') {
-            this.samples = this._fitted();
-        } else {
-            this.samples = this.distfunc(this.size, this.kwargs);
-            if (this.bounds) this._bounds();
+    initialize() {
+        if (!this.distfunc && !this.samples) {
+            throw new Error("Either distfunc or samples must be provided");
         }
 
-        this.updateDistStats();
+        if (this.distfunc === 'fitted') {
+            if (!this.samples) {
+                throw new Error("Samples must be provided when using 'fitted' distribution");
+            }
+            this.samples = this._fitted();
+        } else if (typeof this.distfunc === 'function') {
+            this.generateSamples();
+        }
+
+        this.updateStats();
     }
 
-    updateDistStats() {
-        const mean = this._mean(this.samples);
-        const median = this._median(this.samples);
-        const std = this._std(this.samples);
+    generateSamples() {
+        // Generate samples using the provided distribution function
+        this.samples = Array.from({ length: this.size }, () => {
+            let sample = this.distfunc(this.params);
+            return sample;
+        });
 
-        this.samplesMean = mean;
-        this.samplesMedian = median;
-        this.samplesStd = std;
-        this.samplesPercentiles = [0, 25, 50, 75, 100].map(p =>
-            this._percentile(this.samples, p)
-        );
-    }
-
-    _mean(data) {
-        return data.reduce((a, b) => a + b, 0) / data.length;
-    }
-
-    _median(data) {
-        const sorted = data.slice().sort((a, b) => a - b);
-        const middle = Math.floor(sorted.length / 2);
-        return sorted.length % 2 !== 0
-            ? sorted[middle]
-            : (sorted[middle - 1] + sorted[middle]) / 2;
-    }
-
-    _std(data) {
-        const mean = this._mean(data);
-        const variance = data.reduce((sum, x) => sum + Math.pow(x - mean, 2), 0) / data.length;
-        return Math.sqrt(variance);
-    }
-
-    _percentile(arr, p) {
-        arr.sort((a, b) => a - b);
-        const index = (p / 100) * (arr.length - 1);
-        const lower = Math.floor(index);
-        const upper = lower + 1;
-        const weight = index % 1;
-
-        return upper < arr.length
-            ? arr[lower] * (1 - weight) + arr[upper] * weight
-            : arr[lower];
+        // Apply bounds if specified
+        if (this.bounds) {
+            this._applyBounds();
+        }
     }
 
     _fitted() {
         const filtered = this.samples.filter(
             x => x >= this.bounds[0] && x <= this.bounds[1]
         );
-        const randomIndices = Array.from({ length: this.size }, () =>
-            Math.floor(Math.random() * filtered.length)
-        );
-        return randomIndices.map(i => filtered[i]);
+        return this._sampleRandomly(filtered, this.size);
     }
 
-    multConst(k) {
-        this.samples = this.samples.map(x => x * k);
-    }
-
-    chainMult(distribution) {
-        this.samples = this.samples.map((x, i) => x * distribution.samples[i]);
-    }
-
-    chainDivide(distribution) {
-        this.samples = this.samples.map((x, i) => x / distribution.samples[i]);
-    }
-
-    chainAdd(distribution) {
-        this.samples = this.samples.map((x, i) => x + distribution.samples[i]);
-    }
-
-    chainSub(distribution) {
-        this.samples = this.samples.map((x, i) => x - distribution.samples[i]);
-    }
-
-    confInt(ci = [2.5, 97.5]) {
-        return ci.map(p => this._percentile(this.samples, p));
-    }
-
-    _bounds() {
+    _applyBounds() {
         if (this.boundMethod === 'stack') {
-            this.samples = this.samples.map(x =>
-                x < this.bounds[0] ? this.bounds[0] : x > this.bounds[1] ? this.bounds[1] : x
+            this.samples = this.samples.map(x => 
+                Math.min(Math.max(x, this.bounds[0]), this.bounds[1])
             );
         } else if (this.boundMethod === 'drop_recursive') {
             this.samples = this._boundsSampler(this.bounds, this.samples);
@@ -144,34 +150,151 @@ export class DistP {
 
     _boundsSampler(bounds, samples) {
         samples = samples.filter(x => x >= bounds[0] && x <= bounds[1]);
-
+        
         if (samples.length >= this.size) {
             return this._sampleRandomly(samples, this.size);
         } else {
-            const fracMiss = samples.length / this.size;
-            const newSize = Math.floor(this.size / fracMiss);
-            return this._sampleRandomly(samples.concat(samples), newSize);
+            // Resample with replacement until we reach desired size
+            return this._sampleRandomly(samples, this.size);
         }
     }
 
     _sampleRandomly(arr, size) {
-        return Array.from({ length: size }, () => arr[Math.floor(Math.random() * arr.length)]);
-    }
-
-    histplot(args = {}) {
-        // Use Plotly or d3.js to create a histogram for visualization
-        Plotly.newPlot(
-            args.container,
-            [{ x: this.samples, type: 'histogram', cumulative: { enabled: args.cumulative } }],
-            { title: 'Histogram Plot' }
+        return Array.from({ length: size }, () => 
+            arr[Math.floor(Math.random() * arr.length)]
         );
     }
 
-    kdeplot(args = {}) {
-        // Use d3.js or other libraries for KDE plot
-        // For simplicity, I leave this for customization
+    updateStats() {
+        if (!this.samples || this.samples.length === 0) return;
+        
+        this.stats.mean = d3.mean(this.samples);
+        this.stats.median = d3.median(this.samples);
+        this.stats.std = d3.deviation(this.samples);
+        this.stats.size = this.samples.length;
+        this.stats.percentiles = [0, 25, 50, 75, 100].map(p =>
+            d3.quantile(this.samples, p / 100)
+        );
+    }
+
+    // Chain operations
+    multConst(k) {
+        this.samples = this.samples.map(x => x * k);
+        this.updateStats();
+        return this;
+    }
+
+    chainMult(distribution) {
+        if (this.samples.length !== distribution.samples.length) {
+            throw new Error("Distributions must have the same number of samples");
+        }
+        this.samples = this.samples.map((x, i) => x * distribution.samples[i]);
+        this.updateStats();
+        return this;
+    }
+
+    chainDivide(distribution) {
+        if (this.samples.length !== distribution.samples.length) {
+            throw new Error("Distributions must have the same number of samples");
+        }
+        this.samples = this.samples.map((x, i) => x / distribution.samples[i]);
+        this.updateStats();
+        return this;
+    }
+
+    chainAdd(distribution) {
+        if (this.samples.length !== distribution.samples.length) {
+            throw new Error("Distributions must have the same number of samples");
+        }
+        this.samples = this.samples.map((x, i) => x + distribution.samples[i]);
+        this.updateStats();
+        return this;
+    }
+
+    chainSub(distribution) {
+        if (this.samples.length !== distribution.samples.length) {
+            throw new Error("Distributions must have the same number of samples");
+        }
+        this.samples = this.samples.map((x, i) => x - distribution.samples[i]);
+        this.updateStats();
+        return this;
+    }
+
+    confInt(ci = [2.5, 97.5]) {
+        return ci.map(p => d3.quantile(this.samples, p / 100));
+    }
+
+    plot(options = {}, markOptions = {}) {
+
+
+        // Default configuration
+        const defaultConfig = {
+            width: 600,
+            height: 200,
+            margin: 40,
+            grid: true,
+            x: { label: this.name },
+            y: { label: "Frequency" },
+            marks: [
+                Plot.areaY(
+                    this.samples,
+                    Plot.binX(
+                        { y: "count" },
+                        { 
+                            x: d => d,
+                            stroke: "black",
+                            thresholds: 10,
+          curve: "natural",
+                            ...markOptions 
+                        }
+                    )
+                ),
+                Plot.ruleY([0]),
+                Plot.ruleX([this.stats.mean], {stroke: "red", strokeWidth: 2}),
+                Plot.text([this.stats.mean], {
+                    x: d => d,
+                    text: [this.stats.mean.toFixed(2)],
+                    dy: 0, 
+                    textAnchor: 'middle',
+                    lineAnchor: "top",
+                    strokeWidth: 1,
+                    fill: 'black',
+                    stroke: 'white',
+                    dx: -2
+                })
+            ]
+        };
+
+        // Deep merge the configurations
+        const mergedConfig = this._deepMerge(defaultConfig, options);
+
+        // If marks are provided in options, completely replace the default marks
+        if (options.marks) {
+            mergedConfig.marks = options.marks;
+        }
+
+        return Plot.plot(mergedConfig);
+    }
+
+    /**
+     * Deep merge utility for configuration objects
+     * @private
+     */
+    _deepMerge(target, source) {
+        const output = { ...target };
+        
+        for (const key in source) {
+            if (source[key] instanceof Object && key in target) {
+                output[key] = this._deepMerge(target[key], source[key]);
+            } else {
+                output[key] = source[key];
+            }
+        }
+        
+        return output;
     }
 }
+
 
 export class MatrixSolver {
 

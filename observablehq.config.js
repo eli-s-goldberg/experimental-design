@@ -39,6 +39,14 @@ export default {
           name: "Mass Balance Business Models",
           path: "/mass-balance-business-models",
         },
+        {
+          name: "Live Tables",
+          path: "/live-table-data",
+        },
+        {
+          name: "Distribution Modeling",
+          path: "/distp-demo",
+        },
       ],
     },
     {
