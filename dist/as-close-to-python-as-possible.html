@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>DataFrame, DataFrame, DataFrame | Data Matters</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&amp;display=swap" crossorigin>
+<link rel="preload" as="style" href="./_observablehq/theme-air,near-midnight.css">
+<link rel="preload" as="style" href="./_observablehq/stdlib/inputs.css">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&amp;display=swap" crossorigin>
+<link rel="stylesheet" type="text/css" href="./_observablehq/theme-air,near-midnight.css">
+<link rel="stylesheet" type="text/css" href="./_observablehq/stdlib/inputs.css">
+<link rel="modulepreload" href="./_observablehq/client.js">
+<link rel="modulepreload" href="./_observablehq/runtime.js">
+<link rel="modulepreload" href="./_observablehq/stdlib.js">
+<link rel="modulepreload" href="./_import/components/styles.bb4f2475.js">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/d3@7/+esm">
+<link rel="modulepreload" href="./_node/d3-require@1.3.0/index.js">
+<link rel="modulepreload" href="./_import/components/DataFrame.87933b39.js">
+<link rel="modulepreload" href="./_npm/@observablehq/plot@0.6.15/_esm.js">
+<link rel="modulepreload" href="./_observablehq/stdlib/inputs.js">
+<link rel="modulepreload" href="./_npm/d3-dsv@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/htl@0.3.1/_esm.js">
+<link rel="modulepreload" href="./_npm/isoformat@0.2.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3@7.9.0/_esm.js">
+<link rel="modulepreload" href="./_npm/interval-tree-1d@1.0.4/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-array@3.2.4/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-axis@3.0.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-brush@3.0.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-chord@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-color@3.1.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-contour@4.0.2/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-delaunay@6.0.4/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-dispatch@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-drag@3.0.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-ease@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-fetch@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-force@3.0.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-format@3.1.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-geo@3.1.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-hierarchy@3.1.2/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-interpolate@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-path@3.1.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-polygon@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-quadtree@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-random@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-scale@4.0.2/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-scale-chromatic@3.1.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-selection@3.0.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-shape@3.2.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-time@3.1.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-time-format@4.1.0/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-timer@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-transition@3.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/d3-zoom@3.0.0/_esm.js">
+<link rel="modulepreload" href="./_npm/binary-search-bounds@2.0.5/_esm.js">
+<link rel="modulepreload" href="./_npm/internmap@2.0.3/_esm.js">
+<link rel="modulepreload" href="./_npm/delaunator@5.0.1/_esm.js">
+<link rel="modulepreload" href="./_npm/robust-predicates@3.0.2/_esm.js">
+<script type="module">
+
+import {define} from "./_observablehq/client.js";
+import {registerFile} from "./_observablehq/stdlib.js";
+
+registerFile("./data/nations.csv", {"name":"./data/nations.csv","mimeType":"text/csv","path":"./_file/data/nations.50673d2d.csv","lastModified":1734141798112});
+
+define({id: "d630149e", inputs: ["html"], outputs: ["defaultStyles","styleElement"], body: async (html) => {
+const {defaultStyles} = await import("./_import/components/styles.bb4f2475.js");
+// it's 'noisy' when we have so much CSS in the page
+const styleElement = html`<style>
+  ${defaultStyles}
+</style>`;
+document.head.appendChild(styleElement);
+return {defaultStyles,styleElement};
+}});
+
+define({id: "8726268e", outputs: ["d3","require","jStat","math","generateTestData","runTest","comparePerformance"], body: async () => {
+const [d3, {require}, {generateTestData, runTest, comparePerformance}] = await Promise.all([import("https://cdn.jsdelivr.net/npm/d3@7/+esm"), import("./_node/d3-require@1.3.0/index.js"), import("./_import/components/DataFrame.87933b39.js")]);
+// Run code
+const jStat = await require("jstat@1.9.4");
+const math = await require("mathjs@9.4.2");
+
+return {d3,require,jStat,math,generateTestData,runTest,comparePerformance};
+}});
+
+define({id: "d2114b39", inputs: ["FileAttachment"], outputs: ["DataFrame","nations","df"], body: async (FileAttachment) => {
+const {DataFrame} = await import("./_import/components/DataFrame.87933b39.js");
+// Run code
+const nations = await FileAttachment("./data/nations.csv").csv({ typed: true });
+const df = new DataFrame(nations);
+return {DataFrame,nations,df};
+}});
+
+define({id: "55a33645", inputs: ["view","df"], body: (view,df) => {
+// Run code
+view(df);
+view(df.table());
+}});
+
+define({id: "8bffd1e1", inputs: ["view","df"], body: (view,df) => {
+view(df.describe().table());
+}});
+
+define({id: "c15dc2f1", inputs: ["df","view"], outputs: ["highIncome"], body: (df,view) => {
+// Run code
+const highIncome = df
+  .query("row.income > 20000")
+  .sort_values("population", false)
+  .head(5);
+
+view(highIncome.table());
+return {highIncome};
+}});
+
+define({id: "4957b802", inputs: ["df","d3","DataFrame","view"], outputs: ["highIncomeUnique","highIncomeUniquedf"], body: (df,d3,DataFrame,view) => {
+// Run code
+const highIncomeUnique = [];
+for (const [key, group] of df.groupby("name", { iterable: true })) {
+  const data = group.dropna({ axis: 0, subset: ["population"] });
+  const lastYear = d3.max(data._data.year);
+  const lastYearData = data.query(`row.year === ${lastYear}`);
+  highIncomeUnique.push({
+    ...key,
+    year: lastYear,
+    income: lastYearData._data.income[0],
+    population: lastYearData._data.population[0],
+    region: lastYearData._data.region[0],
+  });
+}
+const highIncomeUniquedf = new DataFrame(highIncomeUnique).sort_values(
+  "population",
+  false
+);
+view(highIncomeUniquedf.table());
+return {highIncomeUnique,highIncomeUniquedf};
+}});
+
+define({id: "74a9429a", inputs: ["df","view"], outputs: ["highIncomeUnique2"], body: (df,view) => {
+// Run code
+const highIncomeUnique2 = df
+  .dropna({ axis: 0, subset: ["population"] })
+  .groupby(["name"])
+  .agg({
+    year: ["last"],
+    income: ["last"],
+    population: ["last"],
+    region: ["last"],
+  })
+  .query("row.income > 350")
+  .sort_values("population", false)
+  .head(20);
+
+view(highIncomeUnique2.table());
+return {highIncomeUnique2};
+}});
+
+define({id: "03a2ebbe", inputs: ["view","df"], outputs: ["width_plot"], body: (view,df) => {
+// Run code
+view(df.corr("income", "population"));
+
+const width_plot = 600;
+view(
+  df.corrPlot({
+    width: width_plot,
+    height: (width_plot * 240) / 300,
+    marginTop: 100,
+  })
+);
+return {width_plot};
+}});
+
+define({id: "83e1d176", inputs: ["df","view"], outputs: ["incomeSummary"], body: (df,view) => {
+// Run code
+const incomeSummary = df.groupby(["name", "region"]).agg({
+  population: ["min", "mean", "max"],
+  lifeExpectancy: ["mean", "max"],
+});
+
+view(incomeSummary.table());
+return {incomeSummary};
+}});
+
+define({id: "6305c858", inputs: ["comparePerformance","view"], outputs: ["results"], body: async (comparePerformance,view) => {
+// Run code
+const results = await comparePerformance();
+view(results.table());
+return {results};
+}});
+
+define({id: "eef6b84d", inputs: ["df"], outputs: ["regularGroupBy","concurrentResult"], body: async (df) => {
+// Run code
+const regularGroupBy = df.groupby(["name", "region"]).agg({
+  population: ["min", "mean", "max"],
+});
+
+const concurrentResult = await df.concurrentGroupBy(["name", "region"], {
+  population: ["min", "mean", "max"],
+});
+return {regularGroupBy,concurrentResult};
+}});
+
+define({id: "0a706d40", inputs: ["df"], outputs: ["plot","corrMatrix","corrData"], body: (df) => {
+// Run code
+const plot = df.corrPlot({
+  width: 600,
+  height: 480,
+  marginTop: 100,
+  scheme: "blues",
+  decimals: 2,
+});
+const corrMatrix = df.corrMatrix();
+const corrData = corrMatrix._data;
+return {plot,corrMatrix,corrData};
+}});
+
+</script>
+<input id="observablehq-sidebar-toggle" type="checkbox" title="Toggle sidebar">
+<label id="observablehq-sidebar-backdrop" for="observablehq-sidebar-toggle"></label>
+<nav id="observablehq-sidebar">
+  <ol>
+    <label id="observablehq-sidebar-close" for="observablehq-sidebar-toggle"></label>
+    <li class="observablehq-link"><a href="./">Data Matters</a></li>
+  </ol>
+  <ol>
+    <li class="observablehq-link"><a href="./">Introduction</a></li>
+  </ol>
+  <section>
+    <summary>Experimental Design</summary>
+    <ol>
+    <li class="observablehq-link"><a href="./experimental-design">Experimental Design </a></li>
+    <li class="observablehq-link"><a href="./parallel-arm-designs">Individual Randomized Parallel Designs</a></li>
+    <li class="observablehq-link"><a href="./cluster-randomized-designs">Individual Randomized Cluster Designs</a></li>
+    </ol>
+  </section>
+  <section class="observablehq-section-active">
+    <summary>Data Science Experiments</summary>
+    <ol>
+    <li class="observablehq-link"><a href="./random-forest">Random Forests</a></li>
+    <li class="observablehq-link"><a href="./mass-balance-business-models">Mass Balance Business Models</a></li>
+    <li class="observablehq-link"><a href="./live-table-data">Live Tables</a></li>
+    <li class="observablehq-link"><a href="./distp-demo">Distribution Modeling</a></li>
+    <li class="observablehq-link observablehq-link-active"><a href="./as-close-to-python-as-possible">Yet Another JS DataFrame</a></li>
+    </ol>
+  </section>
+  <section>
+    <summary>Transport Modeling</summary>
+    <ol>
+    <li class="observablehq-link"><a href="./pbpk">Drug Elimination</a></li>
+    </ol>
+  </section>
+  <section>
+    <summary>Ukelele Modeling</summary>
+    <ol>
+    <li class="observablehq-link"><a href="./ukulele">Chord Maker</a></li>
+    <li class="observablehq-link"><a href="./ukutabs/blackbird">Blackbird - The Beatles</a></li>
+    </ol>
+  </section>
+  <section>
+    <summary>Miscellaneous Visualizations</summary>
+    <ol>
+    <li class="observablehq-link"><a href="./happy-city">Is Minneapolis &#x27;happier&#x27; than Boston?</a></li>
+    <li class="observablehq-link"><a href="./diddy-did-he">Diddy didn&#x27;t, did he?</a></li>
+    <li class="observablehq-link"><a href="./fema-votes">FEMA Votes</a></li>
+    </ol>
+  </section>
+  <section>
+    <summary>Healthcare Diatribes</summary>
+    <ol>
+    <li class="observablehq-link"><a href="./stars-hedis-insanity">What are stars?</a></li>
+    </ol>
+  </section>
+  <section>
+    <summary>Self Aggrandizing</summary>
+    <ol>
+    <li class="observablehq-link"><a href="./podcasts">Podcasts &amp; Presentations</a></li>
+    </ol>
+  </section>
+</nav>
+<script>{Object.assign(document.createElement("a"),{href:""}).password&&location.replace(location.href);const e=document.querySelector("#observablehq-sidebar"),t=document.querySelector("#observablehq-sidebar-toggle"),r=sessionStorage.getItem("observablehq-sidebar");r?t.checked=r==="true":t.indeterminate=!0;for(const o of document.querySelectorAll("#observablehq-sidebar summary")){const s=o.parentElement;switch(sessionStorage.getItem(`observablehq-sidebar:${o.textContent}`)){case"true":s.open=!0;break;case"false":s.classList.contains("observablehq-section-active")||(s.open=!1);break}}addEventListener("beforeunload",()=>sessionStorage.setItem("observablehq-sidebar-scrolly",`${e.scrollTop}`));const a=sessionStorage.getItem("observablehq-sidebar-scrolly");a!=null&&(e.style.cssText="overflow: hidden;",e.scrollTop=+a,e.style.cssText="");}</script>
+<aside id="observablehq-toc" data-selector="h1:not(:first-of-type)[id], h2:first-child[id], :not(h1) + h2[id]">
+<nav>
+<div>Contents</div>
+<ol>
+<li class="observablehq-secondary-link"><a href="#table-of-contents">Table of Contents</a></li>
+<li class="observablehq-secondary-link"><a href="#quickstart">Quickstart</a></li>
+<li class="observablehq-secondary-link"><a href="#import-and-create">Import and Create</a></li>
+<li class="observablehq-secondary-link"><a href="#basic-inspection">Basic Inspection</a></li>
+<li class="observablehq-secondary-link"><a href="#selection-%26-filtering">Selection &amp; Filtering</a></li>
+<li class="observablehq-secondary-link"><a href="#statistical-analysis">Statistical Analysis</a></li>
+<li class="observablehq-secondary-link"><a href="#group-operations">Group Operations</a></li>
+<li class="observablehq-secondary-link"><a href="#key-methods-reference">Key Methods Reference</a></li>
+<li class="observablehq-secondary-link"><a href="#data-manipulation">Data Manipulation</a></li>
+<li class="observablehq-secondary-link"><a href="#mathematical-operations">Mathematical Operations</a></li>
+<li class="observablehq-secondary-link"><a href="#advanced-features">Advanced Features</a></li>
+</ol>
+</nav>
+</aside>
+<div id="observablehq-center">
+<main id="observablehq-main" class="observablehq">
+<div id="cell-d630149e" class="observablehq observablehq--block"></div>
+<h1 id="dataframe%3A-my-redundant-.js-pandas-clone" tabindex="-1"><a class="observablehq-header-anchor" href="#dataframe%3A-my-redundant-.js-pandas-clone">DataFrame: My redundant .js pandas clone</a></h1>
+<p>What I've done here is waste a bunch of time... also, I've created a JavaScript implementation of a pandas-like DataFrame for data manipulation and analysis in javascript. Once again, yes. There are already pretty good implementations of this, like <a href="https://idl.uw.edu/arquero/" target="_blank" rel="noopener noreferrer"><code>arquero</code></a>. However:</p>
+<ol>
+<li>I wanted to implement my own minimal version and nothing teaches you like implementing your own stuff, and</li>
+<li>I didn't think arquero was python-esque enough for me.</li>
+<li>I don't expect anyone else to use this stuff except me.</li>
+</ol>
+<p>With Claude and OpenAI these days, it's easier than ever to <em>learn</em>, which is exactly why I've done what I've done. As I really am starting to love typscript (save for the analysis part), this implementation aims to provide a Python/pandas-like experience in JavaScript, making data manipulation and analysis more intuitive for Python developers, like me.</p>
+<hr>
+<h2 id="table-of-contents" tabindex="-1"><a class="observablehq-header-anchor" href="#table-of-contents">Table of Contents</a></h2>
+<ol>
+<li><a href="#quickstart">Quickstart</a>
+<ol>
+<li><a href="#import-and-create">Import and Create</a></li>
+<li><a href="#basic-inspection">Basic Inspection</a></li>
+<li><a href="#selection--filtering">Selection &amp; Filtering</a></li>
+<li><a href="#statistical-analysis">Statistical Analysis</a></li>
+<li><a href="#group-operations">Group Operations</a></li>
+</ol>
+</li>
+<li><a href="#key-methods-reference">Key Methods Reference</a>
+<ol>
+<li><a href="#basic-operations">Basic Operations</a></li>
+<li><a href="#data-access--transformation">Data Access &amp; Transformation</a></li>
+<li><a href="#statistics">Statistics</a></li>
+<li><a href="#grouping">Grouping</a></li>
+<li><a href="#iteration-methods">Iteration Methods</a></li>
+</ol>
+</li>
+<li><a href="#advanced-features">Advanced Features</a>
+<ol>
+<li><a href="#performance-comparison">Performance Comparison</a></li>
+<li><a href="#concurrent-processing">Concurrent Processing</a></li>
+<li><a href="#corrplot">Correlation Plot</a></li>
+</ol>
+</li>
+</ol>
+<hr>
+<div id="cell-8726268e" class="observablehq observablehq--block"></div>
+<h2 id="quickstart" tabindex="-1"><a class="observablehq-header-anchor" href="#quickstart">Quickstart</a></h2>
+<h2 id="import-and-create" tabindex="-1"><a class="observablehq-header-anchor" href="#import-and-create">Import and Create</a></h2>
+<pre data-language="javascript"><code class="language-javascript"><span class="hljs-comment">// Show code</span>
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">DataFrame</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">"./components/DataFrame.js"</span>;
+<span class="hljs-keyword">const</span> nations = <span class="hljs-keyword">await</span> <span class="hljs-title class_">FileAttachment</span>(<span class="hljs-string">"./data/nations.csv"</span>).<span class="hljs-title function_">csv</span>({ <span class="hljs-attr">typed</span>: <span class="hljs-literal">true</span> });
+<span class="hljs-keyword">const</span> df = <span class="hljs-keyword">new</span> <span class="hljs-title class_">DataFrame</span>(nations);
+</code></pre>
+<div id="cell-d2114b39" class="observablehq observablehq--block"></div>
+<h2 id="basic-inspection" tabindex="-1"><a class="observablehq-header-anchor" href="#basic-inspection">Basic Inspection</a></h2>
+<pre data-language="javascript"><code class="language-javascript"><span class="hljs-comment">// Show code</span>
+<span class="hljs-title function_">view</span>(df);
+<span class="hljs-title function_">view</span>(df.<span class="hljs-title function_">table</span>());
+<span class="hljs-title function_">view</span>(df.<span class="hljs-title function_">describe</span>().<span class="hljs-title function_">table</span>());
+</code></pre>
+<p>Let's view the data and the table in its entirety.</p>
+<div id="cell-55a33645" class="observablehq observablehq--block"></div>
+<p>Let's use the describe function and turn that into a table.</p>
+<div id="cell-8bffd1e1" class="observablehq observablehq--block"></div>
+<hr>
+<h2 id="selection-%26-filtering" tabindex="-1"><a class="observablehq-header-anchor" href="#selection-%26-filtering">Selection &amp; Filtering</a></h2>
+<pre data-language="javascript"><code class="language-javascript"><span class="hljs-comment">// Show code</span>
+<span class="hljs-keyword">const</span> highIncome = df
+  .<span class="hljs-title function_">query</span>(<span class="hljs-string">"row.income &gt; 20000"</span>)
+  .<span class="hljs-title function_">sort_values</span>(<span class="hljs-string">"population"</span>, <span class="hljs-literal">false</span>)
+  .<span class="hljs-title function_">head</span>(<span class="hljs-number">5</span>);
+
+<span class="hljs-title function_">view</span>(highIncome.<span class="hljs-title function_">table</span>());
+</code></pre>
+<div id="cell-c15dc2f1" class="observablehq observablehq--block"></div>
+<p>Cool. That's great, but there are more than one entry per country, as it's a time series. Let's do a little pythonic manipulation to get just the last pop for each country. Let's do this in a basic pythonic way and then an <em>even more pythonic</em> way.</p>
+<p>Here's the basic way:</p>
+<pre data-language="javascript"><code class="language-javascript"><span class="hljs-comment">// Show code</span>
+<span class="hljs-keyword">const</span> highIncomeUnique = [];
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> [key, group] <span class="hljs-keyword">of</span> df.<span class="hljs-title function_">groupby</span>(<span class="hljs-string">"name"</span>, { <span class="hljs-attr">iterable</span>: <span class="hljs-literal">true</span> })) {
+  <span class="hljs-keyword">const</span> data = group.<span class="hljs-title function_">dropna</span>({ <span class="hljs-attr">axis</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">subset</span>: [<span class="hljs-string">"population"</span>] });
+  <span class="hljs-keyword">const</span> lastYear = d3.<span class="hljs-title function_">max</span>(data.<span class="hljs-property">_data</span>.<span class="hljs-property">year</span>);
+  <span class="hljs-keyword">const</span> lastYearData = data.<span class="hljs-title function_">query</span>(<span class="hljs-string">`row.year === <span class="hljs-subst">${lastYear}</span>`</span>);
+  highIncomeUnique.<span class="hljs-title function_">push</span>({
+    ...key,
+    <span class="hljs-attr">year</span>: lastYear,
+    <span class="hljs-attr">income</span>: lastYearData.<span class="hljs-property">_data</span>.<span class="hljs-property">income</span>[<span class="hljs-number">0</span>],
+    <span class="hljs-attr">population</span>: lastYearData.<span class="hljs-property">_data</span>.<span class="hljs-property">population</span>[<span class="hljs-number">0</span>],
+    <span class="hljs-attr">region</span>: lastYearData.<span class="hljs-property">_data</span>.<span class="hljs-property">region</span>[<span class="hljs-number">0</span>],
+  });
+}
+<span class="hljs-keyword">const</span> highIncomeUniquedf = <span class="hljs-keyword">new</span> <span class="hljs-title class_">DataFrame</span>(highIncomeUnique).<span class="hljs-title function_">sort_values</span>(
+  <span class="hljs-string">"population"</span>,
+  <span class="hljs-literal">false</span>
+);
+<span class="hljs-title function_">view</span>(highIncomeUniquedf.<span class="hljs-title function_">table</span>());
+</code></pre>
+<div id="cell-4957b802" class="observablehq observablehq--block"></div>
+<p>Here’s an <code>agg</code> version, because it's way nicer to write.</p>
+<pre data-language="javascript"><code class="language-javascript"><span class="hljs-comment">// Show code</span>
+<span class="hljs-keyword">const</span> highIncomeUnique2 = df
+  .<span class="hljs-title function_">dropna</span>({ <span class="hljs-attr">axis</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">subset</span>: [<span class="hljs-string">"population"</span>] })
+  .<span class="hljs-title function_">groupby</span>([<span class="hljs-string">"name"</span>])
+  .<span class="hljs-title function_">agg</span>({
+    <span class="hljs-attr">year</span>: [<span class="hljs-string">"last"</span>],
+    <span class="hljs-attr">income</span>: [<span class="hljs-string">"last"</span>],
+    <span class="hljs-attr">population</span>: [<span class="hljs-string">"last"</span>],
+    <span class="hljs-attr">region</span>: [<span class="hljs-string">"last"</span>],
+  })
+  .<span class="hljs-title function_">query</span>(<span class="hljs-string">"row.income &gt; 350"</span>)
+  .<span class="hljs-title function_">sort_values</span>(<span class="hljs-string">"population"</span>, <span class="hljs-literal">false</span>)
+  .<span class="hljs-title function_">head</span>(<span class="hljs-number">20</span>);
+
+<span class="hljs-title function_">view</span>(highIncomeUnique2.<span class="hljs-title function_">table</span>());
+</code></pre>
+<div id="cell-74a9429a" class="observablehq observablehq--block"></div>
+<hr>
+<h2 id="statistical-analysis" tabindex="-1"><a class="observablehq-header-anchor" href="#statistical-analysis">Statistical Analysis</a></h2>
+<pre data-language="javascript"><code class="language-javascript"><span class="hljs-comment">// Show code</span>
+<span class="hljs-title function_">view</span>(df.<span class="hljs-title function_">corr</span>(<span class="hljs-string">"income"</span>, <span class="hljs-string">"population"</span>));
+
+<span class="hljs-keyword">const</span> width_plot = <span class="hljs-number">600</span>;
+<span class="hljs-title function_">view</span>(
+  df.<span class="hljs-title function_">corrPlot</span>({
+    <span class="hljs-attr">width</span>: width_plot,
+    <span class="hljs-attr">height</span>: (width_plot * <span class="hljs-number">240</span>) / <span class="hljs-number">300</span>,
+    <span class="hljs-attr">marginTop</span>: <span class="hljs-number">100</span>,
+  })
+);
+</code></pre>
+<div id="cell-03a2ebbe" class="observablehq observablehq--block"></div>
+<h2 id="group-operations" tabindex="-1"><a class="observablehq-header-anchor" href="#group-operations">Group Operations</a></h2>
+<pre data-language="javascript"><code class="language-javascript"><span class="hljs-comment">// Show code</span>
+<span class="hljs-keyword">const</span> incomeSummary = df.<span class="hljs-title function_">groupby</span>([<span class="hljs-string">"name"</span>, <span class="hljs-string">"region"</span>]).<span class="hljs-title function_">agg</span>({
+  <span class="hljs-attr">population</span>: [<span class="hljs-string">"min"</span>, <span class="hljs-string">"mean"</span>, <span class="hljs-string">"max"</span>],
+  <span class="hljs-attr">lifeExpectancy</span>: [<span class="hljs-string">"mean"</span>, <span class="hljs-string">"max"</span>],
+});
+
+<span class="hljs-title function_">view</span>(incomeSummary.<span class="hljs-title function_">table</span>());
+</code></pre>
+<div id="cell-83e1d176" class="observablehq observablehq--block"></div>
+<hr>
+<h2 id="key-methods-reference" tabindex="-1"><a class="observablehq-header-anchor" href="#key-methods-reference">Key Methods Reference</a></h2>
+<h3 id="basic-operations" tabindex="-1"><a class="observablehq-header-anchor" href="#basic-operations">Basic Operations</a></h3>
+<pre data-language="javascript"><code class="language-javascript">df.<span class="hljs-title function_">head</span>(n);
+df.<span class="hljs-title function_">tail</span>(n);
+df.<span class="hljs-title function_">print</span>();
+df.<span class="hljs-title function_">table</span>();
+</code></pre>
+<h3 id="data-access-%26-transformation" tabindex="-1"><a class="observablehq-header-anchor" href="#data-access-%26-transformation">Data Access &amp; Transformation</a></h3>
+<pre data-language="javascript"><code class="language-javascript">df.<span class="hljs-title function_">select</span>([<span class="hljs-string">"colA"</span>, <span class="hljs-string">"colB"</span>]);
+df.<span class="hljs-title function_">query</span>(<span class="hljs-string">"row.colA &gt; 100"</span>);
+df.<span class="hljs-title function_">sort_values</span>(<span class="hljs-string">"colA"</span>, <span class="hljs-literal">true</span>);
+df.<span class="hljs-title function_">fillna</span>(<span class="hljs-number">0</span>);
+df.<span class="hljs-title function_">apply</span>(<span class="hljs-string">"colA"</span>, <span class="hljs-function">(<span class="hljs-params">x</span>) =&gt;</span> x * <span class="hljs-number">2</span>);
+df.<span class="hljs-title function_">map</span>(<span class="hljs-string">"colA"</span>, { <span class="hljs-attr">oldValue</span>: <span class="hljs-string">"newValue"</span> });
+</code></pre>
+<h3 id="statistics" tabindex="-1"><a class="observablehq-header-anchor" href="#statistics">Statistics</a></h3>
+<pre data-language="javascript"><code class="language-javascript">df.<span class="hljs-title function_">describe</span>();
+df.<span class="hljs-title function_">corr</span>(<span class="hljs-string">"colA"</span>, <span class="hljs-string">"colB"</span>);
+df.<span class="hljs-title function_">corrMatrix</span>();
+df.<span class="hljs-title function_">corrPlot</span>({ <span class="hljs-attr">width</span>: <span class="hljs-number">500</span>, <span class="hljs-attr">height</span>: <span class="hljs-number">500</span> });
+</code></pre>
+<h3 id="grouping" tabindex="-1"><a class="observablehq-header-anchor" href="#grouping">Grouping</a></h3>
+<pre data-language="javascript"><code class="language-javascript">df.<span class="hljs-title function_">groupby</span>([<span class="hljs-string">"colA"</span>]).<span class="hljs-title function_">agg</span>({ <span class="hljs-attr">colB</span>: [<span class="hljs-string">"min"</span>, <span class="hljs-string">"max"</span>, <span class="hljs-string">"mean"</span>] });
+df.<span class="hljs-title function_">concurrentGroupBy</span>([<span class="hljs-string">"colA"</span>, <span class="hljs-string">"colC"</span>], { <span class="hljs-attr">colB</span>: [<span class="hljs-string">"min"</span>, <span class="hljs-string">"mean"</span>] });
+</code></pre>
+<h3 id="iteration-methods" tabindex="-1"><a class="observablehq-header-anchor" href="#iteration-methods">Iteration Methods</a></h3>
+<pre data-language="javascript"><code class="language-javascript"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> [idx, row] <span class="hljs-keyword">of</span> df.<span class="hljs-title function_">iterrows</span>()) {
+  <span class="hljs-comment">/* ... */</span>
+}
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> tuple <span class="hljs-keyword">of</span> df.<span class="hljs-title function_">itertuples</span>(<span class="hljs-string">"Record"</span>)) {
+  <span class="hljs-comment">/* ... */</span>
+}
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> [col, values] <span class="hljs-keyword">of</span> df.<span class="hljs-title function_">items</span>()) {
+  <span class="hljs-comment">/* ... */</span>
+}
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> row <span class="hljs-keyword">of</span> df) {
+  <span class="hljs-comment">/* ... */</span>
+}
+</code></pre>
+<hr>
+<h3 id="describe()" tabindex="-1"><a class="observablehq-header-anchor" href="#describe()">describe()</a></h3>
+<p>Generate descriptive statistics for all columns. Returns a DataFrame containing statistics like count, mean, std, min/max, and percentiles for numeric columns, and category distributions for non-numeric columns.</p>
+<pre data-language="javascript"><code class="language-javascript"><span class="hljs-comment">// Get basic statistics</span>
+<span class="hljs-keyword">const</span> stats = df.<span class="hljs-title function_">describe</span>();
+
+<span class="hljs-comment">// Print the statistics in a formatted way</span>
+stats.<span class="hljs-title function_">print</span>();
+
+<span class="hljs-comment">// Access category distributions for non-numeric columns</span>
+<span class="hljs-keyword">const</span> categories = stats.<span class="hljs-property">_data</span>.<span class="hljs-property">categories</span>;
+
+<span class="hljs-comment">// Render as an HTML table using Observable's Inputs.table</span>
+<span class="hljs-title class_">Inputs</span>.<span class="hljs-title function_">table</span>(stats.<span class="hljs-title function_">print</span>());
+</code></pre>
+<p>The describe method provides different statistics based on column type:</p>
+<ul>
+<li>Numeric columns: count, mean, std, min, 25%, 50%, 75%, max</li>
+<li>Categorical columns: count, unique values, top values, frequency, category distribution</li>
+</ul>
+<h3 id="percentile(p%5B%2C-columns%5D)" tabindex="-1"><a class="observablehq-header-anchor" href="#percentile(p%5B%2C-columns%5D)">percentile(p[, columns])</a></h3>
+<p>Calculate percentile value(s) for numeric columns.</p>
+<pre data-language="javascript"><code class="language-javascript"><span class="hljs-comment">// 75th percentile of age</span>
+<span class="hljs-keyword">const</span> p75 = df.<span class="hljs-title function_">percentile</span>(<span class="hljs-number">0.75</span>, <span class="hljs-string">"age"</span>);
+
+<span class="hljs-comment">// Multiple columns</span>
+<span class="hljs-keyword">const</span> quartiles = df.<span class="hljs-title function_">percentile</span>(<span class="hljs-number">0.25</span>, [<span class="hljs-string">"age"</span>, <span class="hljs-string">"salary"</span>]);
+</code></pre>
+<h2 id="data-manipulation" tabindex="-1"><a class="observablehq-header-anchor" href="#data-manipulation">Data Manipulation</a></h2>
+<h3 id="fillna(value)" tabindex="-1"><a class="observablehq-header-anchor" href="#fillna(value)">fillna(value)</a></h3>
+<p>Fill missing values in the DataFrame.</p>
+<pre data-language="javascript"><code class="language-javascript"><span class="hljs-keyword">const</span> filled = df.<span class="hljs-title function_">fillna</span>(<span class="hljs-number">0</span>);
+</code></pre>
+<h3 id="apply(column%2C-func)" tabindex="-1"><a class="observablehq-header-anchor" href="#apply(column%2C-func)">apply(column, func)</a></h3>
+<p>Apply a function to a column.</p>
+<pre data-language="javascript"><code class="language-javascript"><span class="hljs-keyword">const</span> df2 = df.<span class="hljs-title function_">apply</span>(<span class="hljs-string">"name"</span>, <span class="hljs-function">(<span class="hljs-params">name</span>) =&gt;</span> name.<span class="hljs-title function_">toUpperCase</span>());
+</code></pre>
+<h3 id="map(column%2C-mapper)" tabindex="-1"><a class="observablehq-header-anchor" href="#map(column%2C-mapper)">map(column, mapper)</a></h3>
+<p>Map values in a column using a mapping object.</p>
+<pre data-language="javascript"><code class="language-javascript"><span class="hljs-keyword">const</span> df2 = df.<span class="hljs-title function_">map</span>(<span class="hljs-string">"status"</span>, {
+  <span class="hljs-attr">A</span>: <span class="hljs-string">"Active"</span>,
+  <span class="hljs-attr">I</span>: <span class="hljs-string">"Inactive"</span>,
+});
+</code></pre>
+<h3 id="drop()-%26-dropna()" tabindex="-1"><a class="observablehq-header-anchor" href="#drop()-%26-dropna()">drop() &amp; dropna()</a></h3>
+<p>Remove specified columns.</p>
+<pre data-language="javascript"><code class="language-javascript"><span class="hljs-keyword">const</span> df2 = df.<span class="hljs-title function_">drop</span>([<span class="hljs-string">"temp_col"</span>, <span class="hljs-string">"unused_col"</span>]);
+</code></pre>
+<pre data-language="javascript"><code class="language-javascript">coonst df2 = df.<span class="hljs-title function_">dropna</span>({ <span class="hljs-attr">axis</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">subset</span>: [<span class="hljs-string">"population"</span>] });
+</code></pre>
+<h3 id="rename(columnmap)" tabindex="-1"><a class="observablehq-header-anchor" href="#rename(columnmap)">rename(columnMap)</a></h3>
+<p>Rename columns using a mapping object.</p>
+<pre data-language="javascript"><code class="language-javascript"><span class="hljs-keyword">const</span> df2 = df.<span class="hljs-title function_">rename</span>({
+  <span class="hljs-attr">old_name</span>: <span class="hljs-string">"new_name"</span>,
+  <span class="hljs-attr">prev_col</span>: <span class="hljs-string">"next_col"</span>,
+});
+</code></pre>
+<h3 id="assign(columnname%2C-values)" tabindex="-1"><a class="observablehq-header-anchor" href="#assign(columnname%2C-values)">assign(columnName, values)</a></h3>
+<p>Add a new column.</p>
+<pre data-language="javascript"><code class="language-javascript"><span class="hljs-comment">// Add column with array</span>
+<span class="hljs-keyword">const</span> df2 = df.<span class="hljs-title function_">assign</span>(<span class="hljs-string">"new_col"</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]);
+
+<span class="hljs-comment">// Add column with function</span>
+<span class="hljs-keyword">const</span> df3 = df.<span class="hljs-title function_">assign</span>(<span class="hljs-string">"bmi"</span>, <span class="hljs-function">(<span class="hljs-params">row</span>) =&gt;</span> row.<span class="hljs-property">weight</span> / (row.<span class="hljs-property">height</span> * row.<span class="hljs-property">height</span>));
+</code></pre>
+<h3 id="merge(other%5B%2C-options%5D)" tabindex="-1"><a class="observablehq-header-anchor" href="#merge(other%5B%2C-options%5D)">merge(other[, options])</a></h3>
+<p>Merge two DataFrames.</p>
+<pre data-language="javascript"><code class="language-javascript"><span class="hljs-keyword">const</span> merged = df1.<span class="hljs-title function_">merge</span>(df2, {
+  <span class="hljs-attr">on</span>: <span class="hljs-string">"id"</span>, <span class="hljs-comment">// Join on same column name</span>
+  <span class="hljs-attr">how</span>: <span class="hljs-string">"inner"</span>, <span class="hljs-comment">// Join type</span>
+  <span class="hljs-attr">left_on</span>: <span class="hljs-string">"id_1"</span>, <span class="hljs-comment">// Custom left join column</span>
+  <span class="hljs-attr">right_on</span>: <span class="hljs-string">"id_2"</span>, <span class="hljs-comment">// Custom right join column</span>
+});
+</code></pre>
+<h2 id="mathematical-operations" tabindex="-1"><a class="observablehq-header-anchor" href="#mathematical-operations">Mathematical Operations</a></h2>
+<h3 id="add(other)" tabindex="-1"><a class="observablehq-header-anchor" href="#add(other)">add(other)</a></h3>
+<p>Add scalar or DataFrame to numeric columns.</p>
+<pre data-language="javascript"><code class="language-javascript"><span class="hljs-comment">// Add scalar</span>
+<span class="hljs-keyword">const</span> df2 = df.<span class="hljs-title function_">add</span>(<span class="hljs-number">10</span>);
+
+<span class="hljs-comment">// Add DataFrame</span>
+<span class="hljs-keyword">const</span> df3 = df1.<span class="hljs-title function_">add</span>(df2);
+</code></pre>
+<h3 id="sub(other)" tabindex="-1"><a class="observablehq-header-anchor" href="#sub(other)">sub(other)</a></h3>
+<p>Subtract scalar or DataFrame from numeric columns.</p>
+<pre data-language="javascript"><code class="language-javascript"><span class="hljs-keyword">const</span> df2 = df.<span class="hljs-title function_">sub</span>(<span class="hljs-number">5</span>);
+</code></pre>
+<h3 id="mul(other)" tabindex="-1"><a class="observablehq-header-anchor" href="#mul(other)">mul(other)</a></h3>
+<p>Multiply numeric columns by scalar or DataFrame.</p>
+<pre data-language="javascript"><code class="language-javascript"><span class="hljs-keyword">const</span> df2 = df.<span class="hljs-title function_">mul</span>(<span class="hljs-number">2</span>);
+</code></pre>
+<h3 id="div(other)" tabindex="-1"><a class="observablehq-header-anchor" href="#div(other)">div(other)</a></h3>
+<p>Divide numeric columns by scalar or DataFrame.</p>
+<pre data-language="javascript"><code class="language-javascript"><span class="hljs-keyword">const</span> df2 = df.<span class="hljs-title function_">div</span>(<span class="hljs-number">100</span>);
+</code></pre>
+<h2 id="advanced-features" tabindex="-1"><a class="observablehq-header-anchor" href="#advanced-features">Advanced Features</a></h2>
+<h3 id="performance-comparison" tabindex="-1"><a class="observablehq-header-anchor" href="#performance-comparison">Performance Comparison</a></h3>
+<p>Here's a comparison of regular and concurrent groupby performance on different dataset sizes. Spoiler: concurrency overhead is real, so if your DataFrame is tiny, you’re just wasting CPU cycles. However, we do see some good speedup for larger dataframes. On my computer (M2 air), I can groupby aggregate 10M rows in ~1.2 seconds or less.</p>
+<pre data-language="javascript"><code class="language-javascript"><span class="hljs-keyword">const</span> results = <span class="hljs-keyword">await</span> <span class="hljs-title function_">comparePerformance</span>();
+<span class="hljs-title function_">view</span>(results.<span class="hljs-title function_">table</span>());
+</code></pre>
+<div id="cell-6305c858" class="observablehq observablehq--block"></div>
+<h3 id="concurrent-processing" tabindex="-1"><a class="observablehq-header-anchor" href="#concurrent-processing">Concurrent Processing</a></h3>
+<pre data-language="javascript"><code class="language-javascript"><span class="hljs-keyword">const</span> regularGroupBy = df.<span class="hljs-title function_">groupby</span>([<span class="hljs-string">"name"</span>, <span class="hljs-string">"region"</span>]).<span class="hljs-title function_">agg</span>({
+  <span class="hljs-attr">population</span>: [<span class="hljs-string">"min"</span>, <span class="hljs-string">"mean"</span>, <span class="hljs-string">"max"</span>],
+});
+
+<span class="hljs-keyword">const</span> concurrentResult = <span class="hljs-keyword">await</span> df.<span class="hljs-title function_">concurrentGroupBy</span>([<span class="hljs-string">"name"</span>, <span class="hljs-string">"region"</span>], {
+  <span class="hljs-attr">population</span>: [<span class="hljs-string">"min"</span>, <span class="hljs-string">"mean"</span>, <span class="hljs-string">"max"</span>],
+});
+</code></pre>
+<div id="cell-eef6b84d" class="observablehq observablehq--block"></div>
+<h3 id="corrplot" tabindex="-1"><a class="observablehq-header-anchor" href="#corrplot">corrPlot</a></h3>
+<pre data-language="javascript"><code class="language-javascript"><span class="hljs-comment">// Show code</span>
+<span class="hljs-keyword">const</span> plot = df.<span class="hljs-title function_">corrPlot</span>({
+  <span class="hljs-attr">width</span>: <span class="hljs-number">600</span>,
+  <span class="hljs-attr">height</span>: <span class="hljs-number">480</span>,
+  <span class="hljs-attr">marginTop</span>: <span class="hljs-number">100</span>,
+  <span class="hljs-attr">scheme</span>: <span class="hljs-string">"blues"</span>,
+  <span class="hljs-attr">decimals</span>: <span class="hljs-number">2</span>,
+});
+<span class="hljs-keyword">const</span> corrMatrix = df.<span class="hljs-title function_">corrMatrix</span>();
+<span class="hljs-keyword">const</span> corrData = corrMatrix.<span class="hljs-property">_data</span>;
+</code></pre>
+<div id="cell-0a706d40" class="observablehq observablehq--block"></div>
+</main>
+<footer id="observablehq-footer">
+<nav><a rel="prev" href="./distp-demo"><span>Distribution Modeling</span></a><a rel="next" href="./pbpk"><span>Drug Elimination</span></a></nav>
+<div>Built with <a href="https://observablehq.com/" target="_blank" rel="noopener noreferrer">Observable</a> on <a title="2024-12-22T20:56:20">Dec 22, 2024</a>.</div>
+</footer>
+</div>
