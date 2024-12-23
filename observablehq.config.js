@@ -47,10 +47,10 @@ export default {
           name: "Distribution Modeling",
           path: "/distp-demo",
         },
-        {
-          name: "CapTable",
-          path: "/cap-table",
-        },
+        // {
+        //   name: "CapTable",
+        //   path: "/cap-table",
+        // },
         {
           name: "Yet Another JS DataFrame",
           path: "/as-close-to-python-as-possible",
