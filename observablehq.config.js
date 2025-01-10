@@ -26,6 +26,10 @@ export default {
           name: "Individual Randomized Cluster Designs",
           path: "/cluster-randomized-designs",
         },
+        {
+          name: "DataFrame Design & Eval",
+          path: "/dataframe-exp-design",
+        },
       ],
     },
     {
@@ -47,13 +51,14 @@ export default {
           name: "Distribution Modeling",
           path: "/distp-demo",
         },
-        // {
-        //   name: "CapTable",
-        //   path: "/cap-table",
-        // },
+
         {
           name: "Yet Another JS DataFrame",
           path: "/as-close-to-python-as-possible",
+        },
+        {
+          name: "Summary Tables",
+          path: "/summaryTable",
         },
       ],
     },
@@ -63,6 +68,15 @@ export default {
         {
           name: "Drug Elimination",
           path: "/pbpk",
+        },
+      ],
+    },
+    {
+      name: "Investor Support",
+      pages: [
+        {
+          name: "Investor Accreditation Exemption",
+          path: "/investor-accredit",
         },
       ],
     },

@@ -10,13 +10,17 @@
   },
   "dependencies": {
     "@observablehq/framework": "latest",
+    "@observablehq/plot": "^0.6.16",
+    "@tensorflow/tfjs": "^4.22.0",
     "arquero": "^7.2.0",
     "d3-dsv": "^3.0.1",
     "d3-time-format": "^4.1.0",
     "jstat": "^1.9.6",
     "lit-html": "^3.1.4",
+    "lodash": "^4.17.21",
     "mathjs": "^13.0.0",
-    "observable": "^2.1.4"
+    "observable": "^2.1.4",
+    "umap-js": "^1.4.0"
   },
   "devDependencies": {
     "rimraf": "^5.0.5"
